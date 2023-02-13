@@ -1,0 +1,13 @@
+.logoPlaceholder:hover {
+    cursor: pointer;
+}
+
+.Navbar_navbuttonslist {
+    list-style-type: none;
+    display: flex;
+    column-gap: 1em;
+}
+
+.Navbar_navbutton:hover {
+    cursor: pointer;
+}

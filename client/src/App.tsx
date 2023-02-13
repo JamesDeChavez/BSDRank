@@ -1,9 +1,17 @@
-import React from 'react';
+import { useState } from 'react';
+import AuthBranch from './branches/Auth';
+import NonAuthBranch from './branches/NonAuth';
 
 function App() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      {!userLoggedIn ?
+        <NonAuthBranch/>
+      :
+        <AuthBranch/>
+      }
     </div>
   );
 }
