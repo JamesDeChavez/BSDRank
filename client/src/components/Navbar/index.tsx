@@ -10,7 +10,7 @@ const Navbar = () => {
         setRender(RENDERS[0]);
     };
 
-    const navClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, n: number) => {
+    const navClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, n: number) => {
         e.preventDefault();
         setRender(RENDERS[n]);
     };
@@ -22,18 +22,18 @@ const Navbar = () => {
                 className='logoPlaceholder'
                 onClick={logoClick}
             >
-                LOGO PLACEHOLDER
+                LOGO
             </div>
-            <ul className={`${className}_navbuttonslist`}>
-                <li 
+            <div className={`${className}_navbuttonslist`}>
+                <div 
                     className={`${className}_navbutton`}
                     onClick={(e) => navClick(e, 1)}
-                >Login</li>
-                <li 
+                >Login</div>
+                <div 
                     className={`${className}_navbutton`}
                     onClick={(e) => navClick(e, 2)}
-                >Register</li>
-            </ul>
+                >Register</div>
+            </div>
         </div>
     );
 };

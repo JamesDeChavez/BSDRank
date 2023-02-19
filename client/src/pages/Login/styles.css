@@ -1,0 +1,7 @@
+.LoginPage {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    min-height: 100vh;
+    padding: .5rem 1rem;
+    box-sizing: border-box;
+}

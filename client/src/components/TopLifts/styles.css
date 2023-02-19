@@ -1,0 +1,9 @@
+.TopLifts_header {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.TopLifter {
+    display: flex;
+    justify-content: space-between;
+}

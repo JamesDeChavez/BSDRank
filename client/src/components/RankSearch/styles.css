@@ -1,0 +1,15 @@
+.RankSearch_form {
+    display: grid;
+    place-content: center;
+}
+
+.RankSearch_header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.RankSearch_inputContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}

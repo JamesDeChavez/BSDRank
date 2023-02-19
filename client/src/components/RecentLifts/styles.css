@@ -1,0 +1,9 @@
+.RecentLifts_header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.RecentLifter {
+    display: flex;
+    justify-content: space-between;
+}

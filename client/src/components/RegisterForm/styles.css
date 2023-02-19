@@ -1,0 +1,13 @@
+.RegisterForm_form {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.RegisterForm_header {
+    text-align: center;
+}
+
+.RegisterForm_inputContainer {
+    display: flex;
+    justify-content: space-between;
+}

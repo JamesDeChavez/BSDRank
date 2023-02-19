@@ -1,0 +1,8 @@
+.LandingPage {
+    display: grid;
+    grid-template-rows: repeat(5, auto) 1fr;
+    gap: 1rem;
+    min-height: 100vh;
+    padding: .5rem 1rem;
+    box-sizing: border-box;
+}

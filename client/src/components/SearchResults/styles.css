@@ -1,0 +1,21 @@
+.SearchResults {
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr;
+}
+
+.SearchResults_header {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.SearchResults_image {
+    width: 30vw;
+    height: auto;
+    justify-self: center;
+}
+
+.SearchResults_liftContainer {
+    display: flex;
+    justify-content: space-between;
+}

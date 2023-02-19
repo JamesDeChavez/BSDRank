@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AuthBranch from './branches/Auth';
 import NonAuthBranch from './branches/NonAuth';
+import './App.css';
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
