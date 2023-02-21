@@ -1,0 +1,6 @@
+.ProfilePage {
+    display: grid;
+    grid-template-rows: repeat(4, auto) 1fr;
+    min-height: 100vh;
+    padding: .5rem 1rem;
+}

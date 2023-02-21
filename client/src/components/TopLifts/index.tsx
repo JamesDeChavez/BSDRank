@@ -1,5 +1,5 @@
 import './styles.css'
-import TopLifter from './TopLifter'
+import LifterItem from '../LifterItem'
 
 const TopLifts = () => {
     const className = 'TopLifts'
@@ -7,11 +7,11 @@ const TopLifts = () => {
         <div className={className}>
             <div className={`${className}_table`}>
                 <h1 className={`${className}_header`}>Top Verified Lifters</h1>
-                <TopLifter/>
-                <TopLifter/>
-                <TopLifter/>
-                <TopLifter/>
-                <TopLifter/>
+                <LifterItem/>
+                <LifterItem/>
+                <LifterItem/>
+                <LifterItem/>
+                <LifterItem/>
             </div>
         </div>
     )

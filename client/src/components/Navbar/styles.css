@@ -7,12 +7,12 @@
     cursor: pointer;
 }
 
-.Navbar_navbuttonslist {
+.NonAuthNavButtons {
     list-style-type: none;
     display: flex;
     column-gap: 1em;
 }
 
-.Navbar_navbutton:hover {
+.NonAuthNavButtons_navbutton:hover {
     cursor: pointer;
 }

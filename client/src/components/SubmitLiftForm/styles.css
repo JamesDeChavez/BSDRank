@@ -1,0 +1,20 @@
+.SubmitLiftForm_form {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+}
+
+.SubmitLiftForm_header {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.SubmitLiftForm_inputContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.SubmitLiftForm_buttonsContainer {
+    display: flex;
+    place-content: center;
+}

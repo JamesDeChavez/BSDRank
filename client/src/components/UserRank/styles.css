@@ -1,0 +1,72 @@
+.UserRank {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-content: center;
+}
+
+.UserRank_header {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.UserRank_image {
+    width: 30vw;
+    justify-self: center;
+}
+
+.UserRank_liftContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*User Weight Item Styling*/
+
+.UserWeightItem {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 2rem;
+}
+
+.UserWeightItem_weightContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.UserWeightItem_button {
+    border: solid 1px #000000;
+}
+
+.UserWeightItem_button:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #FFFFFF;
+}
+
+/*User Weight Form Styling*/
+
+.UserWeightForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 2rem;
+}
+
+.UserWeightForm_form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.UserWeightForm_buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+}
+
+.UserWeightForm_button {
+    border: solid 1px #000000;
+}
+
+.UserWeightForm_button:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #FFFFFF;
+}

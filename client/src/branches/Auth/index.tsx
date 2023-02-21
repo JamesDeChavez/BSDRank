@@ -3,7 +3,7 @@ import CommunityPage from "../../pages/Community";
 import ProfilePage from "../../pages/Profile";
 import SubmitLiftPage from "../../pages/SubmitLift";
 
-export const AuthRenderContext = React.createContext<[string[], React.Dispatch<React.SetStateAction<string>>]>([[], () => {}]);
+export const AuthRenderContext = React.createContext<[string[], React.Dispatch<React.SetStateAction<string>>, string]>([[], () => {}, '']);
 
 const AuthBranch = () => {
     const RENDERS = ['PROFILE', 'SUBMITLIFT', 'COMMUNITY'];
@@ -11,7 +11,7 @@ const AuthBranch = () => {
 
     return (
     <>
-        <AuthRenderContext.Provider value={[RENDERS, setRender]}>
+        <AuthRenderContext.Provider value={[RENDERS, setRender, render]}>
             {{
                 [RENDERS[0]]: <ProfilePage/>,
                 [RENDERS[1]]: <SubmitLiftPage/>,

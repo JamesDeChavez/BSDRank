@@ -1,0 +1,48 @@
+.UserLifts {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.UserLifts_header {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.UserLifts_liftContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*User Lift Item Styling*/
+
+.UserLiftItem {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px #000000;
+}
+
+.UserLiftItem_verify {
+    color: blue;
+}
+
+.UserLiftItem_verify:hover {
+    cursor: pointer;
+    color: red;
+}
+
+/* User Lift Form Styling  */
+
+.UserLiftForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.UserLiftForm_button {
+    border: solid 1px #000000;
+}
+
+.UserLiftForm_button:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: #FFFFFF;
+}

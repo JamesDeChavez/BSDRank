@@ -1,0 +1,10 @@
+.FollowedLifters {
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr;
+}
+
+.FollowedLifters_header {
+    text-align: center;
+    font-size: 1.5rem;
+}

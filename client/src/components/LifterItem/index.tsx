@@ -1,7 +1,7 @@
 import './styles.css'
 
-const TopLifter = () => {
-    const className = 'TopLifter'
+const LifterItem = () => {
+    const className = 'LifterItem'
     return (
         <div className={className}>
             <span>Username</span>
@@ -14,4 +14,4 @@ const TopLifter = () => {
     )
 }
 
-export default TopLifter
+export default LifterItem

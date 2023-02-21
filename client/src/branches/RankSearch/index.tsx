@@ -5,9 +5,8 @@ import SearchResults from '../../components/SearchResults'
 export const ResultsVisibleContext = React.createContext<React.Dispatch<React.SetStateAction<boolean>>>(() => {});
 
 const RankSearchBranch = () => {
-    const [resultsVisible, setResultsVisible] = useState(true)
-    return (
-    <>
+    const [resultsVisible, setResultsVisible] = useState(false)
+    return (    
         <ResultsVisibleContext.Provider value={setResultsVisible}>
         {resultsVisible ? 
             <SearchResults/>
@@ -15,7 +14,6 @@ const RankSearchBranch = () => {
             <RankSearch/>
         }
         </ResultsVisibleContext.Provider>
-    </>
     )
 }
 
