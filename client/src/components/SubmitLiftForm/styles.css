@@ -1,7 +1,7 @@
 .SubmitLiftForm_form {
     display: grid;
-    grid-template-columns: 1fr;
-    place-content: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .SubmitLiftForm_header {
@@ -10,8 +10,33 @@
 }
 
 .SubmitLiftForm_inputContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+
+.SubmitLiftForm_liftOptionsContainer {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.SubmitLiftForm_liftOption {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.SubmitLiftForm_liftSelected {
+    background-color: blue;
+}
+
+.SubmitLiftForm_weightSelectionContainer,
+.SubmitLiftForm_repsSelectionContainer,
+.SubmitLiftForm_setsSelectionContainer {
     display: flex;
     justify-content: space-between;
+    padding: 1rem;
+    background-color: grey;
 }
 
 .SubmitLiftForm_buttonsContainer {

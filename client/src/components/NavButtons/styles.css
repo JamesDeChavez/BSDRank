@@ -1,12 +1,14 @@
 .NavButtons {
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .NavButtons_button {
-    border: solid 1px #000000;
-    padding: .1rem .5rem;
+    padding: 1rem 0;
 }
 
 .NavButtons_button:hover {

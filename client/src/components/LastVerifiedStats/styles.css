@@ -1,0 +1,23 @@
+.LastVerifiedStats_header {
+    text-align: center;
+}
+
+.LastVerifiedStats_sectionHeader {
+    text-align: center;
+}
+
+.LastVerifiedStats_verifyTextContainer {
+    display: grid;
+    margin: 0 1rem;
+    padding: 1rem 0;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: solid 1px;
+}
+
+.LastVerifiedStats_verifyText {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px grey;
+    padding: 0.5rem;
+}

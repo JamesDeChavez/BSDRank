@@ -1,17 +1,17 @@
 import Navbar from "../../components/Navbar"
 import NavButtons from "../../components/NavButtons"
-import SubmitLiftForm from "../../components/SubmitLiftForm"
+import VerifySection from "../../components/VerifySection"
 import './styles.css'
 
-const SubmitLiftPage = () => {
-    const className = 'SubmitLiftPage'
+const VerifyPage = () => {
+    const className = 'VerifyPage'
     return (
         <div className={className}>
             <Navbar/>
-            <SubmitLiftForm/>
+            <VerifySection/>
             <NavButtons/>
         </div>
     )
 }
 
-export default SubmitLiftPage
+export default VerifyPage

@@ -1,4 +1,13 @@
 .CallToAction {
     display: grid;
-    place-content: center;
+    row-gap: 0.5rem;
+    text-align: center;
+    margin: 0.5rem;
+    padding: 2rem 0;
+    border-top: solid 1px grey;
+    border-bottom: solid 1px grey;
+}
+
+.CallToAction_button {
+    padding: 0.5rem 0;
 }

@@ -1,6 +1,7 @@
 .UserLifts {
     display: grid;
     row-gap: 1rem;
+    padding: 0 0.5rem;
 }
 
 .UserLifts_header {
@@ -8,17 +9,21 @@
     font-size: 1.5rem;
 }
 
-.UserLifts_liftContainer {
-    display: flex;
-    justify-content: space-between;
+.UserLifts_liftsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    text-align: center;
 }
 
 /*User Lift Item Styling*/
 
 .UserLiftItem {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     border: solid 1px #000000;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
 
 .UserLiftItem_verify {
@@ -28,21 +33,4 @@
 .UserLiftItem_verify:hover {
     cursor: pointer;
     color: red;
-}
-
-/* User Lift Form Styling  */
-
-.UserLiftForm {
-    display: grid;
-    grid-template-columns: 1fr auto;
-}
-
-.UserLiftForm_button {
-    border: solid 1px #000000;
-}
-
-.UserLiftForm_button:hover {
-    cursor: pointer;
-    background-color: blue;
-    color: #FFFFFF;
 }

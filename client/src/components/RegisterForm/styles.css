@@ -1,6 +1,11 @@
+.RegisterForm {
+    padding: 0 0.5rem;
+}
+
 .RegisterForm_form {
     display: grid;
-    grid-template-columns: 1fr;
+    place-content: center;
+    gap: 0.5rem;
 }
 
 .RegisterForm_header {
@@ -10,4 +15,5 @@
 .RegisterForm_inputContainer {
     display: flex;
     justify-content: space-between;
+    gap: 0.5rem;
 }

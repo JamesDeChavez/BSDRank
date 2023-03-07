@@ -1,0 +1,22 @@
+.VerifyForm {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.VerifyForm_form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: solid 1px grey;
+}
+
+.VerifyForm_urlInputContainer {
+    display: grid;
+}
+
+.VerifyForm_buttonSelectContainer {
+    display: flex;
+    justify-content: space-between;
+}

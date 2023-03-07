@@ -1,9 +1,7 @@
 import FollowedLifters from "../../components/FollowedLifters";
-import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import NavButtons from "../../components/NavButtons";
-import RecentLifts from "../../components/RecentLifts";
-import TopLifts from "../../components/TopLifts";
+import RecentLifts from "../../components/CommunityTable";
 import './styles.css'
 
 const CommunityPage = () => {
@@ -11,11 +9,11 @@ const CommunityPage = () => {
     return (
         <div className={className}>
             <Navbar/>
+            <div className={`${className}_main`}>
+                <FollowedLifters/>
+                <RecentLifts/>
+            </div>
             <NavButtons/>
-            <FollowedLifters/>
-            <TopLifts/>
-            <RecentLifts/>
-            <Footer/>
         </div>
     );
 };

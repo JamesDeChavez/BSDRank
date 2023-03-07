@@ -6,11 +6,9 @@ const FollowedLifters = () => {
     return (
         <div className={className}>
             <h1 className={`${className}_header`}>Lifters You Follow</h1>
-            <LifterItem/>
-            <LifterItem/>
-            <LifterItem/>
-            <LifterItem/>
-            <LifterItem/>
+            {Array(5).fill('').map(user => {
+                return <LifterItem/>
+            })}
         </div>
     )
 }

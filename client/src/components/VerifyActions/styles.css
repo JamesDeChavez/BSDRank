@@ -1,0 +1,15 @@
+.VerifyActions {
+    display: grid;
+    padding: 1rem;
+    gap: 0.5rem;
+}
+
+.VerifyActions_verifyButtonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.VerifyActions_verifyButton {
+    padding: 1rem 0;
+}

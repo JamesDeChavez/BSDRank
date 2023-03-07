@@ -1,22 +1,31 @@
 .UserRank {
     display: grid;
-    grid-template-columns: 1fr;
     place-content: center;
+    gap: 1rem;
 }
 
 .UserRank_header {
     text-align: center;
-    font-size: 1.5rem;
+}
+
+.UserRank_rankContainer {
+    display: grid;
+    text-align: center;
 }
 
 .UserRank_image {
-    width: 30vw;
+    width: 50vw;
     justify-self: center;
 }
 
-.UserRank_liftContainer {
+.UserRank_liftsSection {
     display: flex;
     justify-content: space-between;
+}
+
+.UserRank_liftContainer {
+    display: grid;
+    text-align: center;
 }
 
 /*User Weight Item Styling*/

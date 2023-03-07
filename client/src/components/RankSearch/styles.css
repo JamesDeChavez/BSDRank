@@ -1,15 +1,77 @@
+.RankSearch {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+}
+
 .RankSearch_form {
     display: grid;
-    place-content: center;
+    gap: 0.5rem;
 }
 
 .RankSearch_header {
-    font-size: 1.5rem;
     text-align: center;
 }
 
-.RankSearch_inputContainer {
+.RankSearch_formSectionContainer {
+    display: grid;
+    border-radius: 5px;
+}
+
+.RankSearch_label {
+    font-size: 1rem;
+}
+
+.RankSearch_selectBorder {
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+.RankSearch_numberButton {
+    padding: 0.5rem 2rem;
+    border: none;
+}
+
+.RankSearch_buttonSelectContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.RankSearch_setTextContainer {
+    display: flex;
+}
+
+.RankSearch_numberInput {
+    width: 3rem;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.RankSearch_text {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.RankSearch_inputTextContainer {
+}
+
+.RankSearch_genderButtonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+.RankSearch_genderButton {
+    padding: 0.5rem 0;
+}
+
+.RankSearch_genderSelected {
+    border: solid 3px black
+}
+
+.RankSearch_submitButton {
+    padding: 0.5rem;
 }

@@ -1,8 +1,13 @@
 .LandingPage {
     display: grid;
-    grid-template-rows: repeat(5, auto) 1fr;
-    gap: 1rem;
+    grid-template-rows: auto 1fr auto;
+    gap: 0.5rem;
     min-height: 100vh;
-    padding: .5rem 1rem;
     box-sizing: border-box;
+}
+
+.LandingPage_main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
 }

@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
-body, h1, p {
+body, h1, h2, h3, p {
     margin: 0;
+}
+
+button, input[type=submit] {
+    background-color: transparent;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+button:hover, input[type=submit]:hover {
+    cursor: pointer;
 }

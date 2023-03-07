@@ -1,0 +1,16 @@
+.UserLiftItem {
+    display: grid;
+    border: solid 1px #000000;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.UserLiftItem_verify {
+    color: blue;
+}
+
+.UserLiftItem_verify:hover {
+    cursor: pointer;
+    color: red;
+}

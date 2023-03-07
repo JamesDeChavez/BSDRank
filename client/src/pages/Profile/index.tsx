@@ -1,4 +1,3 @@
-import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import NavButtons from '../../components/NavButtons';
 import UserLifts from '../../components/UserLifts';
@@ -10,10 +9,11 @@ const ProfilePage = () => {
     return (
         <div className={className}>
             <Navbar/>
+            <div className={`${className}_main`}>
+                <UserRank/>
+                <UserLifts/>
+            </div>
             <NavButtons/>
-            <UserRank/>
-            <UserLifts/>
-            <Footer/>
         </div>
     );
 };

@@ -13,14 +13,8 @@ const NonAuthNavButtons = () => {
     const className = 'NonAuthNavButtons'
     return (
         <div className={className}>
-            <div 
-                className={`${className}_navbutton`}
-                onClick={(e) => navClick(e, 1)}
-            >Login</div>
-            <div 
-                className={`${className}_navbutton`}
-                onClick={(e) => navClick(e, 2)}
-            >Register</div>
+            <div className={`${className}_navbutton`} onClick={(e) => navClick(e, 1)} >Login</div>
+            <div className={`${className}_navbutton`} onClick={(e) => navClick(e, 2)} >Register</div>
         </div>
     );
 };

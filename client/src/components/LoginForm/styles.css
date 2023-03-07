@@ -1,15 +1,19 @@
+.LoginForm {
+    padding: 0.5rem;
+}
+
 .LoginForm_form {
     display: grid;
-    grid-template-columns: 1fr;
     place-content: center;
+    gap: 0.5rem;
 }
 
 .LoginForm_header {
-    font-size: 1.5rem;
     text-align: center;
 }
 
 .LoginForm_inputContainer {
     display: flex;
+    gap: 0.5rem;
     justify-content: space-between;
 }
