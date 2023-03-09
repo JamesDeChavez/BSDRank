@@ -13,7 +13,7 @@ const RankSearch = () => {
     const [squatReps, setSquatReps] = useState(5)
     const [deadliftWeight, setDeadliftWeight] = useState(265)
     const [deadliftReps, setDeadliftReps] = useState(5)
-    const [gender, setGender] = useState('')
+    const [sex, setSex] = useState('')
     const weightRef: any = useRef()
     const intervalRef: any = useRef()
     const changeRef: any = useRef()
@@ -21,10 +21,10 @@ const RankSearch = () => {
 
     const submitSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!gender) return;
+        if (!sex) return;
 
         const userLiftingStats = {
-            weight, benchWeight, benchReps, squatWeight, squatReps, deadliftWeight, deadliftReps, gender
+            weight, benchWeight, benchReps, squatWeight, squatReps, deadliftWeight, deadliftReps, sex
         }
 
         const wilksScore = calculateWilksScore(userLiftingStats)
@@ -260,23 +260,23 @@ const RankSearch = () => {
                 </div>
 
                 <div className={`${className}_formSectionContainer`}>
-                    <label htmlFor="gender" className={`${className}_label`}>Gender</label>
-                    <div className={`${className}_genderButtonsContainer`}>
+                    <label htmlFor="sex" className={`${className}_label`}>Sex</label>
+                    <div className={`${className}_sexButtonsContainer`}>
                         <button 
                             className={classNames(
-                                `${className}_genderButton`,
-                                {[`${className}_genderSelected`]: gender === 'MALE' } 
+                                `${className}_sexButton`,
+                                {[`${className}_sexSelected`]: sex === 'MALE' } 
                             )} 
                             onClick={(e) => {
-                                e.preventDefault(); setGender('MALE')
+                                e.preventDefault(); setSex('MALE')
                         }}>Male</button>
                         <button 
                             className={classNames(
-                                `${className}_genderButton`,
-                                {[`${className}_genderSelected`]: gender === 'FEMALE' } 
+                                `${className}_sexButton`,
+                                {[`${className}_sexSelected`]: sex === 'FEMALE' } 
                             )} 
                             onClick={(e) => {
-                                e.preventDefault(); setGender('FEMALE')
+                                e.preventDefault(); setSex('FEMALE')
                         }}>Female</button>
                     </div>
                 </div>

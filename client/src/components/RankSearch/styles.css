@@ -64,17 +64,17 @@
 .RankSearch_inputTextContainer {
 }
 
-.RankSearch_genderButtonsContainer {
+.RankSearch_sexButtonsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
-.RankSearch_genderButton {
+.RankSearch_sexButton {
     padding: 0.5rem 0;
 }
 
-.RankSearch_genderSelected {
+.RankSearch_sexSelected {
     border: solid 3px black
 }
 

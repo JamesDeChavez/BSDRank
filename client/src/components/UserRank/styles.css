@@ -18,6 +18,10 @@
     justify-self: center;
 }
 
+.UserRank_text {
+    text-align: center;
+}
+
 .UserRank_rankBarContainer {
     height: 1rem;
     width: 100%;
@@ -34,6 +38,10 @@
     left: 0;
     height: 1rem;
     background-color: teal;
+}
+
+.UserRank_sex {
+    margin-top: 0.5rem;
 }
 
 .UserRank_liftsSection {

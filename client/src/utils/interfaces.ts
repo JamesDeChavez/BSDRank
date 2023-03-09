@@ -6,7 +6,7 @@ export interface LiftingStats {
     squatReps: number,
     deadliftWeight: number,
     deadliftReps: number,
-    gender: string
+    sex: string
 }
 
 export interface searchResults {

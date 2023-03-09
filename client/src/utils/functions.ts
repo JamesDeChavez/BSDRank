@@ -26,7 +26,7 @@ export const calculateWilksScore = (userLiftingStats: LiftingStats) => {
     const x = userLiftingStats.weight * kgConversion
     let wilksCoef: number  
     
-    if (userLiftingStats.gender === 'MALE') {
+    if (userLiftingStats.sex === 'MALE') {
         wilksCoef = 600 / ( a.male + b.male * x + c.male * Math.pow(x, 2) + d.male * Math.pow(x, 3) + e.male * Math.pow(x, 4) + f.male * Math.pow(x, 5)) 
     } else {
         wilksCoef = 600 / ( a.female + b.female * x + c.female * Math.pow(x, 2) + d.female * Math.pow(x, 3) + e.female * Math.pow(x, 4) + f.female * Math.pow(x, 5)) 

@@ -9,6 +9,11 @@
     font-size: 1.5rem;
 }
 
+.UserLifts_filterContainer {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .UserLifts_liftsContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
