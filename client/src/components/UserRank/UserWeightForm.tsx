@@ -1,13 +1,14 @@
-import { useContext } from 'react'
-import { UserWeightEditActiveContext } from '../../branches/UserWeight'
 import './styles.css'
 
-const UserWeightForm = () => {
-    const setEditActive = useContext(UserWeightEditActiveContext)
+interface Props {
+    setWeightEditActive: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const UserWeightForm: React.FC<Props> = ({ setWeightEditActive }) => {
 
     const cancelEdit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
-        setEditActive(prevState => !prevState)
+        setWeightEditActive(prevState => !prevState)
     }
 
     const className = 'UserWeightForm'

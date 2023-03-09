@@ -1,4 +1,7 @@
 .LifterItem {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 6fr repeat(4, 3fr);
+    border: solid 1px grey;
+    border-radius: 5px;
+    padding: 0.5rem;
 }

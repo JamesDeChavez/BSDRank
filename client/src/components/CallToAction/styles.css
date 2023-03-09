@@ -1,11 +1,22 @@
 .CallToAction {
     display: grid;
     row-gap: 0.5rem;
-    text-align: center;
     margin: 0.5rem;
-    padding: 2rem 0;
+    padding: 1rem 0.5rem;
     border-top: solid 1px grey;
     border-bottom: solid 1px grey;
+}
+
+.CallToAction_header{
+    text-align: center;
+}
+
+.CallToAction_text {
+    text-align: left;
+}
+
+.CallToAction_chart {
+    width: 100%;
 }
 
 .CallToAction_button {

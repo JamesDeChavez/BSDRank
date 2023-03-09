@@ -3,3 +3,16 @@
     padding: 0.5rem;
     text-align: center;
 }
+
+.CommunityTable_table {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.CommunityTable_tableHeaders {
+    display: grid;
+    grid-template-columns:  1fr 6fr repeat(4, 3fr);
+    padding: 0.5rem;
+    border-bottom: solid 1px grey;
+    border-radius: 5px;
+}

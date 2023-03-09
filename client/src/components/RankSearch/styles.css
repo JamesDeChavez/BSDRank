@@ -42,12 +42,18 @@
     display: flex;
 }
 
-.RankSearch_numberInput {
+
+.RankSearch_numberInput,
+.RankSearch_repsInput {
     width: 3rem;
     text-align: center;
     border: none;
     font-size: 1rem;
     background-color: transparent;
+}
+
+.RankSearch_repsInput:focus-visible {
+    outline: none;
 }
 
 .RankSearch_text {

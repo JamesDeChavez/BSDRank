@@ -7,8 +7,8 @@ const UserLifts = () => {
         <div className={className}>
             <h1 className={`${className}_header`}>Your Recent Lifts</h1>
             <div className={`${className}_liftsContainer`}>
-                {Array(10).fill('').map(n => {
-                    return <UserLiftItem/>
+                {Array(10).fill('').map((n, i) => {
+                    return <UserLiftItem key={i} />
                 })}
             </div>
         </div>

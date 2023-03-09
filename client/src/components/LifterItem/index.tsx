@@ -4,11 +4,12 @@ const LifterItem = () => {
     const className = 'LifterItem'
     return (
         <div className={className}>
-            <p>Username</p>
-            <p>Plat Rank</p>
-            <p>225 B</p>
-            <p>275 S</p>
-            <p>315 DL</p>
+            <p>1</p>
+            <p>Jdechavez23</p>
+            <p>Plat</p>
+            <p>225x5</p>
+            <p>275x5</p>
+            <p>315x5</p>
         </div>
     )
 }

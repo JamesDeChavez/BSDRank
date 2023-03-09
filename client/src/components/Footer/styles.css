@@ -1,6 +1,4 @@
 .Footer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    display: grid;
     padding: 0.5rem;
 }
