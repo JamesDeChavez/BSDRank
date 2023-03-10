@@ -37,7 +37,7 @@ export const calculateWilksScore = (userLiftingStats: LiftingStats) => {
     const deadliftWilks = calcOneRepMax(userLiftingStats.deadliftWeight * kgConversion, userLiftingStats.deadliftReps) * wilksCoef
 
     const totalWilks = benchWilks + squatWilks + deadliftWilks
-
+    
     return totalWilks
 }
 
@@ -90,23 +90,23 @@ export const determineUserRank = (wilksScore: number) => {
     }
 
     let userRank: string
-    let nextRank = { rank: '', scoreNeeded: 0}
+    let nextRank = { rank: '', percentageToNext: 0}
 
-    if (wilksScore < BSDRanks.B3) { userRank = 'B3'; nextRank.rank = 'B2'; nextRank.scoreNeeded = BSDRanks.B3 }
-    else if (wilksScore < BSDRanks.B2) { userRank = 'B2'; nextRank.rank = 'B1'; nextRank.scoreNeeded = BSDRanks.B2 }
-    else if (wilksScore < BSDRanks.B1) { userRank = 'B1'; nextRank.rank = 'S3'; nextRank.scoreNeeded = BSDRanks.B1 }
-    else if (wilksScore < BSDRanks.S3) { userRank = 'S3'; nextRank.rank = 'S2'; nextRank.scoreNeeded = BSDRanks.S3 }
-    else if (wilksScore < BSDRanks.S2) { userRank = 'S2'; nextRank.rank = 'S1'; nextRank.scoreNeeded = BSDRanks.S2 }
-    else if (wilksScore < BSDRanks.S1) { userRank = 'S1'; nextRank.rank = 'G3'; nextRank.scoreNeeded = BSDRanks.S1 }
-    else if (wilksScore < BSDRanks.G3) { userRank = 'G3'; nextRank.rank = 'G2'; nextRank.scoreNeeded = BSDRanks.G3 }
-    else if (wilksScore < BSDRanks.G2) { userRank = 'G2'; nextRank.rank = 'G1'; nextRank.scoreNeeded = BSDRanks.G2 }
-    else if (wilksScore < BSDRanks.G1) { userRank = 'G1'; nextRank.rank = 'P3'; nextRank.scoreNeeded = BSDRanks.G1 }
-    else if (wilksScore < BSDRanks.P3) { userRank = 'P3'; nextRank.rank = 'P2'; nextRank.scoreNeeded = BSDRanks.P3 }
-    else if (wilksScore < BSDRanks.P2) { userRank = 'P2'; nextRank.rank = 'P1'; nextRank.scoreNeeded = BSDRanks.P2 }
-    else if (wilksScore < BSDRanks.P1) { userRank = 'P1'; nextRank.rank = 'D3'; nextRank.scoreNeeded = BSDRanks.P1 }
-    else if (wilksScore < BSDRanks.D3) { userRank = 'D3'; nextRank.rank = 'D2'; nextRank.scoreNeeded = BSDRanks.D3 }
-    else if (wilksScore < BSDRanks.D2) { userRank = 'D2'; nextRank.rank = 'D1'; nextRank.scoreNeeded = BSDRanks.D2 }
-    else { userRank = 'D1'; nextRank.rank = 'N/A'; nextRank.scoreNeeded = BSDRanks.D2 }
+    if (wilksScore < BSDRanks.B3) { userRank = 'B3'; nextRank.rank = 'B2'; nextRank.percentageToNext = wilksScore / BSDRanks.B3 }
+    else if (wilksScore < BSDRanks.B2) { userRank = 'B2'; nextRank.rank = 'B1'; nextRank.percentageToNext = (wilksScore - BSDRanks.B3) / (BSDRanks.B2 - BSDRanks.B3 ) }
+    else if (wilksScore < BSDRanks.B1) { userRank = 'B1'; nextRank.rank = 'S3'; nextRank.percentageToNext = (wilksScore - BSDRanks.B2) / (BSDRanks.B3 - BSDRanks.B2 ) }
+    else if (wilksScore < BSDRanks.S3) { userRank = 'S3'; nextRank.rank = 'S2'; nextRank.percentageToNext = (wilksScore - BSDRanks.B1) / (BSDRanks.S3 - BSDRanks.B1 ) }
+    else if (wilksScore < BSDRanks.S2) { userRank = 'S2'; nextRank.rank = 'S1'; nextRank.percentageToNext = (wilksScore - BSDRanks.S3) / (BSDRanks.S2 - BSDRanks.S3 ) }
+    else if (wilksScore < BSDRanks.S1) { userRank = 'S1'; nextRank.rank = 'G3'; nextRank.percentageToNext = (wilksScore - BSDRanks.S2) / (BSDRanks.S1 - BSDRanks.S2 ) }
+    else if (wilksScore < BSDRanks.G3) { userRank = 'G3'; nextRank.rank = 'G2'; nextRank.percentageToNext = (wilksScore - BSDRanks.S1) / (BSDRanks.G3 - BSDRanks.S1 ) }
+    else if (wilksScore < BSDRanks.G2) { userRank = 'G2'; nextRank.rank = 'G1'; nextRank.percentageToNext = (wilksScore - BSDRanks.G3) / (BSDRanks.G2 - BSDRanks.G3 ) }
+    else if (wilksScore < BSDRanks.G1) { userRank = 'G1'; nextRank.rank = 'P3'; nextRank.percentageToNext = (wilksScore - BSDRanks.G2) / (BSDRanks.G1 - BSDRanks.G2 ) }
+    else if (wilksScore < BSDRanks.P3) { userRank = 'P3'; nextRank.rank = 'P2'; nextRank.percentageToNext = (wilksScore - BSDRanks.G1) / (BSDRanks.P3 - BSDRanks.G1 ) }
+    else if (wilksScore < BSDRanks.P2) { userRank = 'P2'; nextRank.rank = 'P1'; nextRank.percentageToNext = (wilksScore - BSDRanks.P3) / (BSDRanks.P2 - BSDRanks.P3 ) }
+    else if (wilksScore < BSDRanks.P1) { userRank = 'P1'; nextRank.rank = 'D3'; nextRank.percentageToNext = (wilksScore - BSDRanks.P2) / (BSDRanks.P1 - BSDRanks.P2 ) }
+    else if (wilksScore < BSDRanks.D3) { userRank = 'D3'; nextRank.rank = 'D2'; nextRank.percentageToNext = (wilksScore - BSDRanks.P1) / (BSDRanks.D3 - BSDRanks.P1 ) }
+    else if (wilksScore < BSDRanks.D2) { userRank = 'D2'; nextRank.rank = 'D1'; nextRank.percentageToNext = (wilksScore - BSDRanks.D3) / (BSDRanks.D2 - BSDRanks.D3 ) }
+    else { userRank = 'D1'; nextRank.rank = 'N/A'; nextRank.percentageToNext = 1 }
 
     return { userRank, nextRank }
 }

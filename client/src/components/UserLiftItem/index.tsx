@@ -20,13 +20,13 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
     const className = 'UserLiftItem'
     return (
         <div className={className} onClick={handleLiftClick} >
-            <p className={`${className}_date`}>{date.toLocaleDateString()}</p>
+            <p className={`${className}_text`}>{date.toLocaleDateString()}</p>
             {{
-                ['Bench']: <BenchSVG />,
-                ['Squat']: <SquatSVG />,
-                ['Deadlift']: <DeadliftSVG />
+                'Bench': <BenchSVG />,
+                'Squat': <SquatSVG />,
+                'Deadlift': <DeadliftSVG />
             }[lift]}
-            <p className={`${className}_weight`}>{`${weight} x ${reps}`}</p>
+            <p className={`${className}_text`}>{`${weight} x ${reps}`}</p>
         </div>
     )
 }

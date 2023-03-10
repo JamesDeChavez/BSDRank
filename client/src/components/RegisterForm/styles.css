@@ -1,10 +1,9 @@
 .RegisterForm {
-    padding: 0 0.5rem;
+    padding: 0 1rem;
 }
 
 .RegisterForm_form {
     display: grid;
-    place-content: center;
     gap: 0.5rem;
 }
 
@@ -13,7 +12,84 @@
 }
 
 .RegisterForm_inputContainer {
+    display: grid;
+}
+
+.RegisterForm_input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+
+.RegisterForm_formSectionContainer {
+    display: grid;
+    border-radius: 5px;
+}
+
+.RegisterForm_label {
+    font-size: 1rem;
+}
+
+.RegisterForm_selectBorder {
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+.RegisterForm_numberButton {
+    padding: 0.5rem 2rem;
+    border: none;
+}
+
+.RegisterForm_buttonSelectContainer {
     display: flex;
     justify-content: space-between;
-    gap: 0.5rem;
+    align-items: center;
+}
+
+.RegisterForm_setTextContainer {
+    display: flex;
+}
+
+
+.RegisterForm_numberInput,
+.RegisterForm_repsInput {
+    width: 3rem;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.RegisterForm:focus-visible {
+    outline: none;
+}
+
+.RegisterForm_repsInput:focus-visible {
+    outline: none;
+}
+
+.RegisterForm_text {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.RegisterForm_inputTextContainer {
+}
+
+.RegisterForm_sexButtonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.RegisterForm_sexButton {
+    padding: 0.5rem 0;
+}
+
+.RegisterForm_sexSelected {
+    border: solid 3px black
+}
+
+.RegisterForm_submitButton {
+    padding: 0.5rem;
 }

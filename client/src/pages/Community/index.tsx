@@ -1,4 +1,3 @@
-import FollowedLifters from "../../components/FollowedLifters";
 import Navbar from "../../components/Navbar";
 import NavButtons from "../../components/NavButtons";
 import RecentLifts from "../../components/CommunityTable";
@@ -10,7 +9,6 @@ const CommunityPage = () => {
         <div className={className}>
             <Navbar/>
             <div className={`${className}_main`}>
-                <FollowedLifters/>
                 <RecentLifts/>
             </div>
             <NavButtons/>

@@ -1,7 +1,12 @@
 import { useContext } from 'react'
 import { AuthRenderContext } from '../../branches/Auth'
+import { ReactComponent as HouseSVG } from '../../assets/house-solid.svg'
+import { ReactComponent as PlusSVG } from '../../assets/plus-solid.svg'
+import { ReactComponent as CheckSVG } from '../../assets/check-solid.svg'
+import { ReactComponent as PeopleSVG } from '../../assets/people-group-solid.svg'
 import classNames from 'classnames'
 import './styles.css'
+
 
 const NavButtons = () => {
     const [RENDERS, setRender, render] = useContext(AuthRenderContext)
@@ -9,7 +14,6 @@ const NavButtons = () => {
     const navButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, n: number) => {
         e.preventDefault()
         setRender(RENDERS[n])
-        console.log(render)
     }
 
     const className = 'NavButtons'
@@ -20,7 +24,7 @@ const NavButtons = () => {
                 {[`${className}_active`]: render === RENDERS[0]}
                 )} onClick={(e) => navButtonClick(e, 0)}
             >
-                <div>[  ]</div>
+                <HouseSVG className={`${className}_icon`} />
                 <p>Home</p>
             </button>
             <button className={classNames(
@@ -28,7 +32,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[1]}
                 )} onClick={(e) => navButtonClick(e, 1)}
             >
-                <div>[  ]</div>
+                <PlusSVG className={`${className}_icon`} />
                 <p>New Lift</p>
             </button>
             <button className={classNames(
@@ -36,7 +40,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[2]}
                 )} onClick={(e) => navButtonClick(e, 2)}
             >
-                <div>[  ]</div>
+                <CheckSVG className={`${className}_icon`} />
                 <p>Verify Rank</p>
             </button>
             <button className={classNames(
@@ -44,7 +48,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[3]}
                 )} onClick={(e) => navButtonClick(e, 3)}
             >
-                <div>[  ]</div>
+                <PeopleSVG className={`${className}_icon`} />
                 <p>Community</p>
             </button>
         </div>

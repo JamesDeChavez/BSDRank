@@ -5,24 +5,19 @@ import { ReactComponent as DeadliftSVG } from '../../assets/deadliftSVG.svg'
 import { ReactComponent as BenchSVG } from '../../assets/benchSVG.svg'
 import { ReactComponent as SquatSVG } from '../../assets/squatSVG.svg'
 import UserWeightItem from './UserWeightItem'
+import { LiftingStats } from '../../utils/interfaces'
 import './styles.css'
 
-const cache = {
-    weight: 145,
-    benchWeight: 225,
-    benchReps: 5,
-    squatWeight: 315,
-    squatReps: 5,
-    deadliftWeight: 365,
-    deadliftReps: 5,
-    sex: 'MALE',
+interface Props {
+    liftingData?: LiftingStats,
+    bestLiftsData?: LiftingStats
 }
 
-const UserRank = () => {
+const UserRank: React.FC<Props> = ({ liftingData, bestLiftsData }) => {
     let { searchResults, setResultsVisible } = useContext(RankSearchContext)
     const [rank, setRank] = useState('b3')
     const [rankString, setRankString] = useState('')
-    const [verified, setVerified] = useState(false)
+    const [verified, setVerified] = useState('Unverified')
     const [progress, setProgress] = useState(0)
     const [benchWeight, setBenchWeight] = useState(0)
     const [benchReps, setBenchReps] = useState(0)
@@ -35,27 +30,27 @@ const UserRank = () => {
     const rankImage = require(`../../assets/${rank?.toLowerCase()}.png`)
     
     useEffect(() => {
-        if (!searchResults) {
-            const wilksScore = calculateWilksScore(cache)
+        if (!searchResults && liftingData) {
+            const wilksScore = calculateWilksScore(liftingData)
             const { userRank, nextRank } = determineUserRank(wilksScore)
             setRank(userRank)
             setRankString(convertRankToString(userRank))
-            setVerified(true)
-            setProgress(Math.floor((wilksScore / nextRank.scoreNeeded )*100))
-            setBenchWeight(cache.benchWeight)
-            setBenchReps(cache.benchReps)
-            setSquatWeight(cache.squatWeight)
-            setSquatReps(cache.squatReps)
-            setDeadliftWeight(cache.deadliftWeight)
-            setDeadliftReps(cache.deadliftReps)
-            setWeight(cache.weight)
-            setSex(cache.sex)
+            setVerified('Unverified')
+            setProgress(Math.floor(nextRank.percentageToNext*100))
+            setBenchWeight(liftingData.benchWeight)
+            setBenchReps(liftingData.benchReps)
+            setSquatWeight(liftingData.squatWeight)
+            setSquatReps(liftingData.squatReps)
+            setDeadliftWeight(liftingData.deadliftWeight)
+            setDeadliftReps(liftingData.deadliftReps)
+            setWeight(liftingData.weight)
+            setSex(liftingData.sex)
         }
-        else{
+        if (searchResults) {
             setRank(searchResults.userRank.rank)
             setRankString(convertRankToString(searchResults.userRank.rank))
-            setVerified(false)
-            setProgress(Math.floor((searchResults.userRank.score / searchResults.nextRank.scoreNeeded)*100))
+            setVerified('Unverified')
+            setProgress(Math.floor(searchResults.nextRank.percentageToNext*100))
             setBenchWeight(searchResults.userLiftingStats.benchWeight)
             setBenchReps(searchResults.userLiftingStats.benchReps)
             setSquatWeight(searchResults.userLiftingStats.squatWeight)
@@ -65,12 +60,58 @@ const UserRank = () => {
             setWeight(searchResults.userLiftingStats.weight)
             setSex(searchResults.userLiftingStats.sex)
         }
-    }, [searchResults])
+    }, [searchResults, liftingData])
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         setResultsVisible(false)
     }
+
+    const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        e.preventDefault()
+        const selection = e.target.value
+        setVerified(selection)
+    }
+
+    useEffect(() => {
+        switch (verified) {
+            case 'Unverified':
+                if (liftingData) {
+                    const wilksScore = calculateWilksScore(liftingData)
+                    const { userRank, nextRank } = determineUserRank(wilksScore)
+                    setRank(userRank)
+                    setRankString(convertRankToString(userRank))
+                    setProgress(Math.floor(nextRank.percentageToNext*100))
+                    setBenchWeight(liftingData.benchWeight)
+                    setBenchReps(liftingData.benchReps)
+                    setSquatWeight(liftingData.squatWeight)
+                    setSquatReps(liftingData.squatReps)
+                    setDeadliftWeight(liftingData.deadliftWeight)
+                    setDeadliftReps(liftingData.deadliftReps)
+                    setWeight(liftingData.weight)
+                    setSex(liftingData.sex) 
+                }
+                break
+            case 'Verified':
+                if (bestLiftsData) {
+                    const wilksScore = calculateWilksScore(bestLiftsData)
+                    const { userRank, nextRank } = determineUserRank(wilksScore)
+                    setRank(userRank)
+                    setRankString(convertRankToString(userRank))
+                    setProgress(Math.floor(nextRank.percentageToNext*100))
+                    setBenchWeight(bestLiftsData.benchWeight)
+                    setBenchReps(bestLiftsData.benchReps)
+                    setSquatWeight(bestLiftsData.squatWeight)
+                    setSquatReps(bestLiftsData.squatReps)
+                    setDeadliftWeight(bestLiftsData.deadliftWeight)
+                    setDeadliftReps(bestLiftsData.deadliftReps)
+                    setWeight(bestLiftsData.weight)
+                    setSex(bestLiftsData.sex) 
+                }
+                break
+            default: break
+        }
+    }, [verified, bestLiftsData, liftingData])
 
 
     const className = 'UserRank'
@@ -79,7 +120,18 @@ const UserRank = () => {
             <h1 className={`${className}_header`}>Your BSD Rank</h1>
             <div className={`${className}_rankContainer`}>
                 <img className={`${className}_image`} src={rankImage} alt="rank icon" />
-                <p className={`${className}_text`}>{`${rankString}: ${verified ? 'Verfified' : 'Unverfied'}`}</p>
+                <div className={`${className}_rankTextContainer`}>
+                    <p className={`${className}_text`}>{`${rankString}: `}</p>
+                    {searchResults ?
+                        <p className={`${className}_text`}>Unverified</p>    
+                    :
+                        <select className={`${className}_select`} name="verified" id="verified" onChange={handleSelect} value={verified}>
+                            <option value="Unverified" >Unverified</option>
+                            <option value="Verified" >Verified</option>
+                        </select>
+                    }    
+                
+                </div>
                 <div className={`${className}_rankProgressContainer`}>
                     <div className={`${className}_rankBarContainer`}>
                         <div className={`${className}_rankBar`} style={{width: `${progress}%`}} ></div>

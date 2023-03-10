@@ -52,6 +52,10 @@
     background-color: transparent;
 }
 
+.RankSearch:focus-visible {
+    outline: none;
+}
+
 .RankSearch_repsInput:focus-visible {
     outline: none;
 }

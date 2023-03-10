@@ -6,15 +6,16 @@ import './styles.css'
 
 const VerifySection = () => {
     const [formVisible, setFormVisible] = useState(false)
+    const [actionSelected, setActionSelected] = useState('')
 
     const className = 'VerifySection'
     return (
         <div className={className}>            
             <LastVerifiedStats/>
             {formVisible ?
-                <VerifyForm setFormVisible={setFormVisible} />
+                <VerifyForm setFormVisible={setFormVisible} actionSelected={actionSelected} />
             :
-                <VerifyActions setFormVisible={setFormVisible} />
+                <VerifyActions setFormVisible={setFormVisible} setActionSelected={setActionSelected} />
             }         
         </div>
     )

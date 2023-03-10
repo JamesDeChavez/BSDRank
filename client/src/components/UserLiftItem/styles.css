@@ -6,11 +6,6 @@
     border-radius: 5px;
 }
 
-.UserLiftItem_verify {
-    color: blue;
-}
-
-.UserLiftItem_verify:hover {
-    cursor: pointer;
-    color: red;
+.UserLiftItem_text {
+    font-size: 0.8rem;
 }

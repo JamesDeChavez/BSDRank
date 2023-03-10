@@ -9,14 +9,84 @@ export interface LiftingStats {
     sex: string
 }
 
-export interface searchResults {
+export interface SearchResults {
     userRank: {
         rank: string,
         score: number
     },
     nextRank: {
         rank: string,
-        scoreNeeded: number
+        percentageToNext: number
     },
     userLiftingStats: LiftingStats
+}
+
+export interface LiftSubmission {
+    date: Date, lift: string, weight: number, reps: number
+}
+
+export interface UserData {
+    _id: string,
+    username: string,
+    email: string,
+    password: string,
+    sex: string,
+    weight: number,
+    bestLifts: {
+        bench: {
+            weight: number,
+            reps: number
+        },
+        squat: {
+            weight: number,
+            reps: number
+        },
+        deadlift: {
+            weight: number,
+            reps: number
+        }
+    },
+    lifts: LiftSubmission[],
+    verified: {
+        weight: {
+            amount: number,
+            videoURL: string,
+        },
+        bench: {
+            amount: number,
+            reps: number,
+            videoURL: string
+        },
+        squat: {
+            amount: number,
+            reps: number,
+            videoUrl: string
+        },
+        deadlift: {
+            amount: number,
+            reps: number,
+            videoUrl: string
+        }
+    },
+    pendingVerified: {
+        weight: {
+            amount: number,
+            videoURL: string,
+        },
+        bench: {
+            amount: number,
+            reps: number,
+            videoURL: string
+        },
+        squat: {
+            amount: number,
+            reps: number,
+            videoUrl: string
+        },
+        deadlift: {
+            amount: number,
+            reps: number,
+            videoUrl: string
+        }
+    }
 }

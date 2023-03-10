@@ -16,8 +16,8 @@
 
 
 .SubmitLiftForm_liftOptionsContainer {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
@@ -30,16 +30,32 @@
     background-color: blue;
 }
 
-.SubmitLiftForm_weightSelectionContainer,
-.SubmitLiftForm_repsSelectionContainer,
-.SubmitLiftForm_setsSelectionContainer {
+.SubmitLiftForm_selectionContainer {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    background-color: grey;
+    padding: 1rem 0;
+    border: solid 1px grey;
+    border-radius: 5px;
 }
 
-.SubmitLiftForm_buttonsContainer {
-    display: flex;
-    place-content: center;
+.SubmitLiftForm_numberButton {
+    padding: 0.5rem 2rem;
+    border: none;
+}
+
+.SubmitLiftForm_weightInput,
+.SubmitLiftForm_repsInput {
+    background-color: transparent;
+    border: none;
+    width: 3rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.SubmitLiftForm_repsInput:focus-visible {
+    outline: none;
+}
+
+.SubmitLiftForm_submitButton {
+    padding: 1rem;
 }

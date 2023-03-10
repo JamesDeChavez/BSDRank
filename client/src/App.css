@@ -4,8 +4,9 @@
     box-sizing: border-box;
 }
 
-body, h1, h2, h3, p {
+body, h1, h2, h3, p, select {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 button, input[type=submit] {

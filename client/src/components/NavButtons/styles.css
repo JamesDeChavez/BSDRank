@@ -9,15 +9,20 @@
 
 .NavButtons_button {
     padding: 1rem 0;
+    color: #FFFFFF;
 }
 
 .NavButtons_button:hover {
     cursor: pointer;
     background-color: blue;
-    color: #FFFFFF;
 }
 
 .NavButtons_active {
     background-color: blue;
-    color: #FFFFFF;
+}
+
+.NavButtons_icon {
+    width: 1.5rem;
+    fill: #FFFFFF;
+    height: auto;
 }

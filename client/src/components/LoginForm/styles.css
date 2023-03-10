@@ -1,10 +1,9 @@
 .LoginForm {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .LoginForm_form {
     display: grid;
-    place-content: center;
     gap: 0.5rem;
 }
 
@@ -13,7 +12,16 @@
 }
 
 .LoginForm_inputContainer {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: space-between;
+    display: grid;
+}
+
+.LoginForm_input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+
+.LoginForm_submitButton {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
 }

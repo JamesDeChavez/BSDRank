@@ -1,7 +1,7 @@
-import classNames from 'classnames'
 import { useState, useContext, useRef } from 'react'
 import { RankSearchContext } from '../../branches/RankSearch'
 import { calculateWilksScore, determineUserRank } from '../../utils/functions'
+import classNames from 'classnames'
 import './styles.css'
 
 const RankSearch = () => {
@@ -117,42 +117,41 @@ const RankSearch = () => {
             if(countRef.current === 30) changeRef.current = 10            
             switch (name) {
                 case 'weight':
-                    if(direction === 'decrease' && weightRef.current > 1) {
+                    if(direction === 'decrease' && weightRef.current > 10) {
                         setWeight(weightRef.current - changeRef.current)
                         weightRef.current = weightRef.current - changeRef.current
                     }
-                    if(direction === 'increase' && weightRef.current < 999) {
-                        console.log(countRef.current, changeRef.current)
+                    if(direction === 'increase' && weightRef.current < 990) {
                         setWeight(weightRef.current + changeRef.current)
                         weightRef.current = weightRef.current + changeRef.current
                     }
                     break
                 case 'benchWeight':
-                    if(direction === 'decrease' && weightRef.current > 1) {
+                    if(direction === 'decrease' && weightRef.current > 10) {
                         setBenchWeight(weightRef.current - changeRef.current)
                         weightRef.current = weightRef.current - changeRef.current
                     }
-                    if(direction === 'increase' && weightRef.current < 999) {
+                    if(direction === 'increase' && weightRef.current < 990) {
                         setBenchWeight(weightRef.current + changeRef.current)
                         weightRef.current = weightRef.current + changeRef.current
                     }
                     break
                 case 'squatWeight':
-                    if(direction === 'decrease' && weightRef.current > 1) {
+                    if(direction === 'decrease' && weightRef.current > 10) {
                         setSquatWeight(weightRef.current - changeRef.current)
                         weightRef.current = weightRef.current - changeRef.current
                     }
-                    if(direction === 'increase' && weightRef.current < 999) {
+                    if(direction === 'increase' && weightRef.current < 990) {
                         setSquatWeight(weightRef.current + changeRef.current)
                         weightRef.current = weightRef.current + changeRef.current
                     }
                     break
                 case 'deadliftWeight':
-                    if(direction === 'decrease' && weightRef.current > 1) {
+                    if(direction === 'decrease' && weightRef.current > 10) {
                         setDeadliftWeight(weightRef.current - changeRef.current)
                         weightRef.current = weightRef.current - changeRef.current
                     }
-                    if(direction === 'increase' && weightRef.current < 999) {
+                    if(direction === 'increase' && weightRef.current < 990) {
                         setDeadliftWeight(weightRef.current + changeRef.current)
                         weightRef.current = weightRef.current + changeRef.current
                     }
@@ -180,10 +179,10 @@ const RankSearch = () => {
                     <div className={`${className}_selectBorder`}>
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'weight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'weight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'weight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
-                                <div className={`${className}_inputTextContainer`}>
-                                    <input type="text" pattern="[0-9]*" name="weight" id="weight" value={weight.toString()} className={`${className}_numberInput`} onChange={handleInputChange}/>
-                                    <span className={`${className}_text`}>{'lbs'}</span>
-                                </div>
+                            <div className={`${className}_inputTextContainer`}>
+                                <input type="text" pattern="[0-9]*" name="weight" id="weight" value={weight} className={`${className}_numberInput`} onChange={handleInputChange}/>
+                                <span className={`${className}_text`}>{'lbs'}</span>
+                            </div>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'weight', 'increase')} onMouseDown={e => handleWeightMouseDown(e, 'weight', 'increase')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'weight', 'increase')} onTouchEnd={handleWeightMouseUp}>{'>'}</button>
                         </div>
                     </div>
@@ -196,7 +195,7 @@ const RankSearch = () => {
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'benchWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'benchWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'benchWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
                                 <div className={`${className}_inputTextContainer`}>
-                                    <input type="text" pattern="[0-9]*" name="benchWeight" id="benchWeight" value={benchWeight.toString()}  className={`${className}_numberInput`} onChange={handleInputChange} />
+                                    <input type="text" pattern="[0-9]*" name="benchWeight" id="benchWeight" value={benchWeight}  className={`${className}_numberInput`} onChange={handleInputChange} />
                                     <span className={`${className}_text`}>{'lbs'}</span>
                                 </div>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'benchWeight', 'increase')} onMouseDown={e => handleWeightMouseDown(e, 'benchWeight', 'increase')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'benchWeight', 'increase')} onTouchEnd={handleWeightMouseUp}>{'>'}</button>
@@ -219,7 +218,7 @@ const RankSearch = () => {
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'squatWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'squatWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'squatWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
                                 <div className={`${className}_inputTextContainer`}>
-                                    <input type="text" pattern="[0-9]*" name="squatWeight" id="squatWeight" value={squatWeight.toString()}  className={`${className}_numberInput`} onChange={handleInputChange} />
+                                    <input type="text" pattern="[0-9]*" name="squatWeight" id="squatWeight" value={squatWeight}  className={`${className}_numberInput`} onChange={handleInputChange} />
                                     <span className={`${className}_text`}>{'lbs'}</span>
                                 </div>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'squatWeight', 'increase')} onMouseDown={e => handleWeightMouseDown(e, 'squatWeight', 'increase')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'squatWeight', 'increase')} onTouchEnd={handleWeightMouseUp}>{'>'}</button>
@@ -242,7 +241,7 @@ const RankSearch = () => {
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'deadliftWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'deadliftWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'deadliftWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
                                 <div className={`${className}_inputTextContainer`}>
-                                    <input type="text" pattern="[0-9]*" name="deadliftWeight" id="deadliftWeight" value={deadliftWeight.toString()}  className={`${className}_numberInput`} onChange={handleInputChange}/>
+                                    <input type="text" pattern="[0-9]*" name="deadliftWeight" id="deadliftWeight" value={deadliftWeight}  className={`${className}_numberInput`} onChange={handleInputChange}/>
                                     <span className={`${className}_text`}>{'lbs'}</span>
                                 </div>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'deadliftWeight', 'increase')} onMouseDown={e => handleWeightMouseDown(e, 'deadliftWeight', 'increase')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'deadliftWeight', 'increase')} onTouchEnd={handleWeightMouseUp}>{'>'}</button>

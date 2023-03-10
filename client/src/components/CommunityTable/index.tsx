@@ -1,7 +1,9 @@
+import cache from '../../utils/cache'
 import LifterItem from '../LifterItem'
 import './styles.css'
 
 const CommunityTable = () => {
+
     const className = 'CommunityTable'
     return (
         <div className={className}>
@@ -11,12 +13,12 @@ const CommunityTable = () => {
                     <p>#</p>
                     <p>User</p>
                     <p>Rank</p>
-                    <p>Bench</p>
-                    <p>Squat</p>
-                    <p>Deadlift</p>
+                    <p>B</p>
+                    <p>S</p>
+                    <p>D</p>
                 </div>
-                {Array(10).fill('').map((user, i) => {
-                    return <LifterItem key={i}/>
+                {cache.leaderboard.map((user, i) => {
+                    return <LifterItem key={i} user={user} index={i} />
                 })}
             </div>
         </div>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import RankSearch from '../../components/RankSearch'
 import UserRank from '../../components/UserRank';
-import { searchResults } from '../../utils/interfaces';
+import { SearchResults } from '../../utils/interfaces';
 
 export const RankSearchContext = React.createContext<{
     setResultsVisible: React.Dispatch<React.SetStateAction<boolean>>,
-    searchResults: searchResults | undefined,
-    setSearchResults: React.Dispatch<React.SetStateAction<searchResults | undefined>>
+    searchResults: SearchResults | undefined,
+    setSearchResults: React.Dispatch<React.SetStateAction<SearchResults | undefined>>
 }>({
     setResultsVisible: () => {},
     searchResults: undefined,
@@ -15,7 +15,8 @@ export const RankSearchContext = React.createContext<{
 
 const RankSearchBranch = () => {
     const [resultsVisible, setResultsVisible] = useState(false)
-    const [searchResults, setSearchResults] = useState<searchResults>()
+    const [searchResults, setSearchResults] = useState<SearchResults>()
+
     return (    
         <RankSearchContext.Provider value={{setResultsVisible, searchResults, setSearchResults}}>
         {resultsVisible ? 
