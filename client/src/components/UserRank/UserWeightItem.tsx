@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useMutation } from '@apollo/client'
+import { useState, useContext } from 'react'
+import { UserLoggedInContext } from '../../App'
 import { ReactComponent as ScaleSVG } from '../../assets/scaleSVG.svg'
+import { UPDATE_WEIGHT } from '../../graphql/mutations'
 import './styles.css'
 
 interface Props {
@@ -9,16 +12,25 @@ interface Props {
 }
 
 const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
+    const { userId } = useContext(UserLoggedInContext)
+    const [editWeight] = useMutation(UPDATE_WEIGHT)
+
     const [editActive, setEditActive] = useState(false)
 
-    const editWeight = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleEditClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
         setEditActive(prevState => !prevState)
     }
 
-    const submitWeight = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault()
-        console.log(weight)
+        const newWeight = await editWeight({ variables: {
+            userId: userId, weight: weight
+        }})
+        if (newWeight.data.updateWeight) {
+            setEditActive(false)
+        }
+
     }
 
     const className = 'UserWeightItem'
@@ -33,8 +45,8 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
                 }
             </div>
             <div className={`${className}_buttonContainer`} style={{display: isSearch ? 'none' : 'flex'}}>
-                <div className={`${className}_button`} onClick={submitWeight} style={{display: editActive ? 'block' : 'none'}}>Submit</div>
-                <div className={`${className}_button`} onClick={editWeight}>{ editActive ?'Cancel' : 'Edit Weight' }</div>
+                <div className={`${className}_button`} onClick={handleSubmit} style={{display: editActive ? 'block' : 'none'}}>Submit</div>
+                <div className={`${className}_button`} onClick={handleEditClick}>{ editActive ?'Cancel' : 'Edit Weight' }</div>
             </div>
         </div>
     )

@@ -6,7 +6,7 @@ import NonAuthNavButtons from './NonAuthNav';
 import './styles.css'
 
 const Navbar = () => {
-    const [userLoggedIn, _] = useContext(UserLoggedInContext)
+    const {userLoggedIn} = useContext(UserLoggedInContext)
 
     const className = 'Navbar'
     return (

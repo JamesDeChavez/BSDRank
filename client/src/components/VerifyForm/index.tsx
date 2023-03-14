@@ -1,6 +1,11 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
+import { client } from '../../index'
+import { UserLoggedInContext } from '../../App'
 import cache from '../../utils/cache'
 import './styles.css'
+import { PendingVerifiedFragment } from '../../graphql/fragments'
+import { useMutation } from '@apollo/client'
+import { CREATE_VERIFY_REQUEST, UPDATE_PENDING_VERIFIED } from '../../graphql/mutations'
 
 interface Props {
     setFormVisible: React.Dispatch<React.SetStateAction<boolean>>,
@@ -8,9 +13,14 @@ interface Props {
 }
 
 const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
+    const { userId } = useContext(UserLoggedInContext)
+    const pendingVerifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment })
+    const [updatePendingVerified] = useMutation(UPDATE_PENDING_VERIFIED)
+    const [createVerifyRequest] = useMutation(CREATE_VERIFY_REQUEST)
+
     const [unverifiedWeight, setUnverifiedWeight] = useState(0)
     const [unverifiedReps, setUnverifiedReps] = useState(0)
-    const [videoUrl, setVideoUrl] = useState('')
+    const [videoURL, setVideoURL] = useState('')
     const [weight, setWeight] = useState(0)
     const [reps, setReps] = useState(0)
     const weightRef: any = useRef()
@@ -92,14 +102,50 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
         clearInterval(intervalRef.current)
     }
 
-    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const verifyData = {
-            videoUrl, weight, reps,
-            lift: actionSelected
+        const liftName = actionSelected.toLowerCase()
+        let newPendingVerified = {
+            weight: {
+                amount: pendingVerifiedLifts.pendingVerified.weight.amount,
+                videoURL: pendingVerifiedLifts.pendingVerified.weight.videoURL
+            },
+            bench: {
+                videoURL: pendingVerifiedLifts.pendingVerified.bench.videoURL,
+                weight: pendingVerifiedLifts.pendingVerified.bench.weight,
+                reps: pendingVerifiedLifts.pendingVerified.bench.reps
+            } ,
+            squat: {
+                videoURL: pendingVerifiedLifts.pendingVerified.squat.videoURL,
+                weight: pendingVerifiedLifts.pendingVerified.squat.weight,
+                reps: pendingVerifiedLifts.pendingVerified.squat.reps
+            } ,
+            deadlift: {
+                videoURL: pendingVerifiedLifts.pendingVerified.deadlift.videoURL,
+                weight: pendingVerifiedLifts.pendingVerified.deadlift.weight,
+                reps: pendingVerifiedLifts.pendingVerified.deadlift.reps
+            } ,
         }
-        console.log(verifyData)
-        setFormVisible(false)
+        if (actionSelected === 'Weight') newPendingVerified['weight'] = { amount: weight, videoURL: videoURL}
+        else {
+            newPendingVerified = { ...newPendingVerified, [liftName]: { videoURL, weight, reps }}
+        }
+
+        console.log(userId, videoURL, weight, reps, actionSelected)
+        console.log(newPendingVerified)
+
+        try {
+            const newVerifyRequest = await createVerifyRequest({ variables: {
+                userId: userId, videoUrl: videoURL, weight: weight, reps: reps, lift: actionSelected
+            }})
+            const updatedUser = await updatePendingVerified({ variables: {
+                userId, pendingVerified: newPendingVerified
+            }})
+            if (newVerifyRequest && updatedUser) setFormVisible(false)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const className = 'VerifyForm'
@@ -116,8 +162,10 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
             <form className={`${className}_form`} onSubmit={handleFormSubmit}>
                 <div className={`${className}_urlInputContainer`}>
                     <label htmlFor="verifyURL">Video URL</label>
-                    <input type="url" name="verifyURL" id="verifyURL" value={videoUrl}  onChange={e => setVideoUrl(e.target.value)} className={`${className}_urlInput`} />
+                    <input type="url" name="verifyURL" id="verifyURL" value={videoURL}  onChange={e => setVideoURL(e.target.value)} className={`${className}_urlInput`} />
                 </div>
+                <a href={videoURL} target="_blank" rel="noreferrer" style={{ display: videoURL ? 'block' : 'none' }} >Verify Video Link</a>
+
                 <label htmlFor="weight">Confirm Weight</label>
                 <div className={`${className}_buttonSelectContainer`}>
                     <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'weight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>

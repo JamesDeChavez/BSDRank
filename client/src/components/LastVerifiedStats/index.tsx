@@ -1,8 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { UserLoggedInContext } from '../../App'
+import { VerifiedLiftsFragment } from '../../graphql/fragments'
+import { client } from '../../index'
 import cache from '../../utils/cache'
 import './styles.css'
 
 const LastVerifiedStats = () => {
+    const { userId } = useContext(UserLoggedInContext)
+    const verifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: VerifiedLiftsFragment })
+
     const [weight, setWeight] = useState(0)
     const [benchWeight, setBenchWeight] = useState(0)
     const [benchReps, setBenchReps] = useState(0)
@@ -12,14 +18,14 @@ const LastVerifiedStats = () => {
     const [deadliftReps, setDeadliftReps] = useState(0)
 
     useEffect(() => {
-        setWeight(cache.user.verified.weight.amount)
-        setBenchWeight(cache.user.verified.bench.amount)
-        setBenchReps(cache.user.verified.bench.reps)
-        setSquatWeight(cache.user.verified.squat.amount)
-        setSquatReps(cache.user.verified.squat.reps)
-        setDeadliftWeight(cache.user.verified.deadlift.amount)
-        setDeadliftReps(cache.user.verified.deadlift.reps)
-    }, [])
+        setWeight(verifiedLifts.verified.weight.amount)
+        setBenchWeight(verifiedLifts.verified.bench.weight)
+        setBenchReps(verifiedLifts.verified.bench.reps)
+        setSquatWeight(verifiedLifts.verified.squat.weight)
+        setSquatReps(verifiedLifts.verified.squat.reps)
+        setDeadliftWeight(verifiedLifts.verified.deadlift.weight)
+        setDeadliftReps(verifiedLifts.verified.deadlift.reps)
+    }, [verifiedLifts])
 
     const className = 'LastVerifiedStats'
     return (

@@ -21,8 +21,8 @@ const cache = {
             }
         },
         lifts: [
-            { date: new Date(), lift: 'Bench', weight: 155, reps: 5 },
-            { date: new Date(), lift: 'Deadlift', weight: 245, reps: 5 }
+            { date: '3/13/2023', lift: 'Bench', weight: 155, reps: 5 },
+            { date: '3/13/2023', lift: 'Deadlift', weight: 245, reps: 5 }
 
         ],
         verified: {
@@ -38,12 +38,12 @@ const cache = {
             squat: {
                 amount: 205,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 225,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         },
         pendingVerified: {
@@ -59,12 +59,12 @@ const cache = {
             squat: {
                 amount: 315,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 365,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         }
     },
@@ -90,8 +90,8 @@ const cache = {
             }
         },
         lifts: [
-            { date: new Date(), lift: 'Bench', weight: 265, reps: 5 },
-            { date: new Date(), lift: 'Deadlift', weight: 365, reps: 5 }
+            { date: '3/13/2023', lift: 'Bench', weight: 155, reps: 5 },
+            { date: '3/13/2023', lift: 'Deadlift', weight: 245, reps: 5 }
 
         ],
         verified: {
@@ -107,12 +107,12 @@ const cache = {
             squat: {
                 amount: 325,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 365,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         },
         pendingVerified: {
@@ -128,12 +128,12 @@ const cache = {
             squat: {
                 amount: 330,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 370,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         }
     },
@@ -159,8 +159,8 @@ const cache = {
             }
         },
         lifts: [
-            { date: new Date(), lift: 'Bench', weight: 155, reps: 5 },
-            { date: new Date(), lift: 'Deadlift', weight: 245, reps: 5 }
+            { date: '3/13/2023', lift: 'Bench', weight: 155, reps: 5 },
+            { date: '3/13/2023', lift: 'Deadlift', weight: 245, reps: 5 }
 
         ],
         verified: {
@@ -176,12 +176,12 @@ const cache = {
             squat: {
                 amount: 225,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 265,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         },
         pendingVerified: {
@@ -197,12 +197,12 @@ const cache = {
             squat: {
                 amount: 315,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             },
             deadlift: {
                 amount: 365,
                 reps: 5,
-                videoUrl: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
+                videoURL: "https://www.instagram.com/p/CCYkwUJp7tO/?hl=en"
             }
         }
     }]

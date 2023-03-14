@@ -1,17 +1,31 @@
+import { useLazyQuery } from '@apollo/client'
 import { useContext, useState } from 'react'
 import { UserLoggedInContext } from '../../App'
+import { LOGIN_USER } from '../../graphql/query'
 import './styles.css'
 
 const LoginForm = () => {
-    const [_, setUserLoggedIn] = useContext(UserLoggedInContext);
+    const [login] = useLazyQuery(LOGIN_USER)
+    const {setUserLoggedIn, setUserId} = useContext(UserLoggedInContext);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if (!username || !password) return
+
         const loginData = { username, password }
-        setUserLoggedIn(prevState => !prevState)
-        console.log(loginData)
+        try {
+            const user = await login({ variables: loginData })
+            if (user.data && user.data.login) {
+                const token = user.data.login.token
+                localStorage.setItem('bsdToken', `Bearer ${token}`)
+                setUserId(user.data.login._id)
+                setUserLoggedIn(true)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const className = 'LoginForm'

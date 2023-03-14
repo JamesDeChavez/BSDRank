@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LastVerifiedStats from '../LastVerifiedStats'
+import PendingVerified from '../PendingVerified'
 import VerifyActions from '../VerifyActions'
 import VerifyForm from '../VerifyForm'
 import './styles.css'
@@ -12,6 +13,7 @@ const VerifySection = () => {
     return (
         <div className={className}>            
             <LastVerifiedStats/>
+            <PendingVerified/>
             {formVisible ?
                 <VerifyForm setFormVisible={setFormVisible} actionSelected={actionSelected} />
             :

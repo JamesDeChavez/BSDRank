@@ -5,7 +5,7 @@ import { ReactComponent as DeadliftSVG } from '../../assets/deadliftSVG.svg'
 import './styles.css'
 
 interface Props {
-    date: Date
+    date: string
     lift: string,
     weight: number,
     reps: number
@@ -20,7 +20,7 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
     const className = 'UserLiftItem'
     return (
         <div className={className} onClick={handleLiftClick} >
-            <p className={`${className}_text`}>{date.toLocaleDateString()}</p>
+            <p className={`${className}_text`}>{date}</p>
             {{
                 'Bench': <BenchSVG />,
                 'Squat': <SquatSVG />,

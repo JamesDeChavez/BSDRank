@@ -1,20 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
 import { RankSearchContext } from '../../branches/RankSearch'
 import { convertRankToString, calculateWilksScore, determineUserRank } from '../../utils/functions'
+import { UnverifiedLiftsFragment, VerifiedLiftsFragment } from '../../graphql/fragments'
+import { client } from '../../index'
+import { UserLoggedInContext } from '../../App'
 import { ReactComponent as DeadliftSVG } from '../../assets/deadliftSVG.svg'
 import { ReactComponent as BenchSVG } from '../../assets/benchSVG.svg'
 import { ReactComponent as SquatSVG } from '../../assets/squatSVG.svg'
 import UserWeightItem from './UserWeightItem'
-import { LiftingStats } from '../../utils/interfaces'
 import './styles.css'
 
-interface Props {
-    liftingData?: LiftingStats,
-    bestLiftsData?: LiftingStats
-}
+const UserRank = () => {
+    const { searchResults, setResultsVisible } = useContext(RankSearchContext)
+    const { userId } = useContext(UserLoggedInContext)
+    const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment })
+    const verifiedLifts = client.readFragment({ id:`User:${userId}`, fragment: VerifiedLiftsFragment})
 
-const UserRank: React.FC<Props> = ({ liftingData, bestLiftsData }) => {
-    let { searchResults, setResultsVisible } = useContext(RankSearchContext)
     const [rank, setRank] = useState('b3')
     const [rankString, setRankString] = useState('')
     const [verified, setVerified] = useState('Unverified')
@@ -30,21 +31,31 @@ const UserRank: React.FC<Props> = ({ liftingData, bestLiftsData }) => {
     const rankImage = require(`../../assets/${rank?.toLowerCase()}.png`)
     
     useEffect(() => {
-        if (!searchResults && liftingData) {
-            const wilksScore = calculateWilksScore(liftingData)
+        if (!searchResults && unverifiedLifts) {
+            const liftingStats = {
+                weight: unverifiedLifts.weight,
+                sex: unverifiedLifts.sex,
+                benchWeight: unverifiedLifts.bestLifts.bench.weight,
+                benchReps: unverifiedLifts.bestLifts.bench.reps,
+                squatWeight: unverifiedLifts.bestLifts.squat.weight,
+                squatReps: unverifiedLifts.bestLifts.squat.reps,
+                deadliftWeight: unverifiedLifts.bestLifts.deadlift.weight,
+                deadliftReps: unverifiedLifts.bestLifts.deadlift.reps,
+            }
+            const wilksScore = calculateWilksScore(liftingStats)
             const { userRank, nextRank } = determineUserRank(wilksScore)
             setRank(userRank)
             setRankString(convertRankToString(userRank))
             setVerified('Unverified')
             setProgress(Math.floor(nextRank.percentageToNext*100))
-            setBenchWeight(liftingData.benchWeight)
-            setBenchReps(liftingData.benchReps)
-            setSquatWeight(liftingData.squatWeight)
-            setSquatReps(liftingData.squatReps)
-            setDeadliftWeight(liftingData.deadliftWeight)
-            setDeadliftReps(liftingData.deadliftReps)
-            setWeight(liftingData.weight)
-            setSex(liftingData.sex)
+            setBenchWeight(unverifiedLifts.bestLifts.bench.weight)
+            setBenchReps(unverifiedLifts.bestLifts.bench.reps)
+            setSquatWeight(unverifiedLifts.bestLifts.squat.weight)
+            setSquatReps(unverifiedLifts.bestLifts.squat.reps)
+            setDeadliftWeight(unverifiedLifts.bestLifts.deadlift.weight)
+            setDeadliftReps(unverifiedLifts.bestLifts.deadlift.reps)
+            setWeight(unverifiedLifts.weight)
+            setSex(unverifiedLifts.sex)
         }
         if (searchResults) {
             setRank(searchResults.userRank.rank)
@@ -60,7 +71,7 @@ const UserRank: React.FC<Props> = ({ liftingData, bestLiftsData }) => {
             setWeight(searchResults.userLiftingStats.weight)
             setSex(searchResults.userLiftingStats.sex)
         }
-    }, [searchResults, liftingData])
+    }, [searchResults, unverifiedLifts])
 
     const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -76,42 +87,78 @@ const UserRank: React.FC<Props> = ({ liftingData, bestLiftsData }) => {
     useEffect(() => {
         switch (verified) {
             case 'Unverified':
-                if (liftingData) {
-                    const wilksScore = calculateWilksScore(liftingData)
+                if (unverifiedLifts) {
+                    const liftingStats = {
+                        weight: unverifiedLifts.weight,
+                        sex: unverifiedLifts.sex,
+                        benchWeight: unverifiedLifts.bestLifts.bench.weight,
+                        benchReps: unverifiedLifts.bestLifts.bench.reps,
+                        squatWeight: unverifiedLifts.bestLifts.squat.weight,
+                        squatReps: unverifiedLifts.bestLifts.squat.reps,
+                        deadliftWeight: unverifiedLifts.bestLifts.deadlift.weight,
+                        deadliftReps: unverifiedLifts.bestLifts.deadlift.reps,
+                    }
+                    const wilksScore = calculateWilksScore(liftingStats)
                     const { userRank, nextRank } = determineUserRank(wilksScore)
                     setRank(userRank)
                     setRankString(convertRankToString(userRank))
                     setProgress(Math.floor(nextRank.percentageToNext*100))
-                    setBenchWeight(liftingData.benchWeight)
-                    setBenchReps(liftingData.benchReps)
-                    setSquatWeight(liftingData.squatWeight)
-                    setSquatReps(liftingData.squatReps)
-                    setDeadliftWeight(liftingData.deadliftWeight)
-                    setDeadliftReps(liftingData.deadliftReps)
-                    setWeight(liftingData.weight)
-                    setSex(liftingData.sex) 
+                    setBenchWeight(unverifiedLifts.bestLifts.bench.weight)
+                    setBenchReps(unverifiedLifts.bestLifts.bench.reps)
+                    setSquatWeight(unverifiedLifts.bestLifts.squat.weight)
+                    setSquatReps(unverifiedLifts.bestLifts.squat.reps)
+                    setDeadliftWeight(unverifiedLifts.bestLifts.deadlift.weight)
+                    setDeadliftReps(unverifiedLifts.bestLifts.deadlift.reps)
+                    setWeight(unverifiedLifts.weight)
+                    setSex(unverifiedLifts.sex)
                 }
                 break
             case 'Verified':
-                if (bestLiftsData) {
-                    const wilksScore = calculateWilksScore(bestLiftsData)
-                    const { userRank, nextRank } = determineUserRank(wilksScore)
-                    setRank(userRank)
-                    setRankString(convertRankToString(userRank))
-                    setProgress(Math.floor(nextRank.percentageToNext*100))
-                    setBenchWeight(bestLiftsData.benchWeight)
-                    setBenchReps(bestLiftsData.benchReps)
-                    setSquatWeight(bestLiftsData.squatWeight)
-                    setSquatReps(bestLiftsData.squatReps)
-                    setDeadliftWeight(bestLiftsData.deadliftWeight)
-                    setDeadliftReps(bestLiftsData.deadliftReps)
-                    setWeight(bestLiftsData.weight)
-                    setSex(bestLiftsData.sex) 
+                if (verifiedLifts) {
+                    const liftingStats = {
+                        weight: verifiedLifts.verified.weight.amount,
+                        sex: verifiedLifts.sex,
+                        benchWeight: verifiedLifts.verified.bench.weight,
+                        benchReps: verifiedLifts.verified.bench.reps,
+                        squatWeight: verifiedLifts.verified.squat.weight,
+                        squatReps: verifiedLifts.verified.squat.reps,
+                        deadliftWeight: verifiedLifts.verified.deadlift.weight,
+                        deadliftReps: verifiedLifts.verified.deadlift.reps,
+                    }
+
+                    if (liftingStats.weight === 0 || liftingStats.benchWeight === 0 || liftingStats.squatWeight === 0 || liftingStats.deadliftWeight === 0) {
+                        setRankString('N/A - Need Full Verification')
+                        setRank('b3')
+                        setProgress(0)
+                        setBenchWeight(verifiedLifts.verified.bench.weight)
+                        setBenchReps(verifiedLifts.verified.bench.reps)
+                        setSquatWeight(verifiedLifts.verified.squat.weight)
+                        setSquatReps(verifiedLifts.verified.squat.reps)
+                        setDeadliftWeight(verifiedLifts.verified.deadlift.weight)
+                        setDeadliftReps(verifiedLifts.verified.deadlift.reps)
+                        setWeight(verifiedLifts.verified.weight.amount)
+                        setSex(verifiedLifts.sex)
+                    }
+                    else {
+                        const wilksScore = calculateWilksScore(liftingStats)
+                        const { userRank, nextRank } = determineUserRank(wilksScore)
+                        setRank(userRank)
+                        setRankString(convertRankToString(userRank))
+                        setProgress(Math.floor(nextRank.percentageToNext*100))
+                        setBenchWeight(verifiedLifts.verified.bench.weight)
+                        setBenchReps(verifiedLifts.verified.bench.reps)
+                        setSquatWeight(verifiedLifts.verified.squat.weight)
+                        setSquatReps(verifiedLifts.verified.squat.reps)
+                        setDeadliftWeight(verifiedLifts.verified.deadlift.weight)
+                        setDeadliftReps(verifiedLifts.verified.deadlift.reps)
+                        setWeight(verifiedLifts.verified.weight.amount)
+                        setSex(verifiedLifts.sex) 
+                    }
                 }
                 break
             default: break
         }
-    }, [verified, bestLiftsData, liftingData])
+    }, [verified, verifiedLifts, unverifiedLifts])
 
 
     const className = 'UserRank'

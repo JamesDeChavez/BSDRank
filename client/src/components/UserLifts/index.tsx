@@ -1,9 +1,17 @@
-import { useState } from 'react'
-import cache from '../../utils/cache'
+import { useContext, useState } from 'react'
+import { UserLoggedInContext } from '../../App'
+import { UserLiftsFragment } from '../../graphql/fragments'
+import { client } from '../../index'
+import { LiftSubmission } from '../../utils/interfaces'
 import UserLiftItem from '../UserLiftItem'
 import './styles.css'
 
 const UserLifts = () => {
+    const { userId } = useContext(UserLoggedInContext)
+    const userLifts: { lifts: LiftSubmission[] } | null = client.readFragment({
+        id: `User:${userId}`,
+        fragment: UserLiftsFragment
+    })
     const [filter, setFilter] = useState('')
 
     const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, name: string) => {
@@ -36,11 +44,11 @@ const UserLifts = () => {
                 <button className={`${className}_filter`} onClick={e => handleFilterClick(e, 'Deadlift')}>Deadlift</button>
             </div>
             <div className={`${className}_liftsContainer`}>
-                {cache.user.lifts.filter((lift) => {
+                {userLifts && userLifts.lifts.filter((lift) => {
                     if (filter === '') return lift
                     else return lift.lift === filter
                 }).length ?
-                    cache.user.lifts.filter((lift) => {
+                    userLifts.lifts.filter((lift) => {
                         if (filter === '') return lift
                         else return lift.lift === filter
                     }).map((lift, i) => {

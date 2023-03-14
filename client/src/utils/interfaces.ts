@@ -22,7 +22,7 @@ export interface SearchResults {
 }
 
 export interface LiftSubmission {
-    date: Date, lift: string, weight: number, reps: number
+    date: string, lift: string, weight: number, reps: number
 }
 
 export interface UserData {
@@ -60,12 +60,12 @@ export interface UserData {
         squat: {
             amount: number,
             reps: number,
-            videoUrl: string
+            videoURL: string
         },
         deadlift: {
             amount: number,
             reps: number,
-            videoUrl: string
+            videoURL: string
         }
     },
     pendingVerified: {
@@ -81,12 +81,12 @@ export interface UserData {
         squat: {
             amount: number,
             reps: number,
-            videoUrl: string
+            videoURL: string
         },
         deadlift: {
             amount: number,
             reps: number,
-            videoUrl: string
+            videoURL: string
         }
     }
 }

@@ -1,9 +1,26 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useContext, useEffect } from 'react'
+import { useMutation } from '@apollo/client'
 import classNames from 'classnames'
+import { CREATE_LIFT } from '../../graphql/mutations'
+import { UserLoggedInContext } from '../../App'
+import { client } from '../../index'
+import { UserLiftsFragment, BestLiftsFragment } from '../../graphql/fragments'
+import { AuthRenderContext } from '../../branches/Auth'
+import { calcOneRepMax } from '../../utils/functions'
 import './styles.css'
 
 const SubmitLiftForm = () => {
-    const LIFT_OPTIONS = ['BENCH', 'SQUAT', 'DEADLIFT']
+    const { userId } = useContext(UserLoggedInContext)
+    const [ RENDERS, setRender ] = useContext(AuthRenderContext)
+    const userLifts = client.readFragment({ id: `User:${userId}`, fragment: UserLiftsFragment })
+    const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment })
+    const [createLift] = useMutation(CREATE_LIFT)
+
+    useEffect(() => {
+        console.log(bestLifts)
+    })
+
+    const LIFT_OPTIONS = ['Bench', 'Squat', 'Deadlift']
     const [lift, setLift] = useState('')
     const [weight, setWeight] = useState(225)
     const [reps, setReps] = useState(1)
@@ -63,12 +80,52 @@ const SubmitLiftForm = () => {
         clearInterval(intervalRef.current)
     }
 
-    const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const liftData = {
-            lift, weight, reps, date: new Date()
+        const date = new Date()
+        const newLiftsData = [{
+            lift, weight, reps, date: date.toLocaleDateString()
+        }]
+        let newBestLifts = {
+            bench: {
+                weight: bestLifts.bestLifts.bench.weight,
+                reps: bestLifts.bestLifts.bench.reps
+            } ,
+            squat: {
+                weight: bestLifts.bestLifts.squat.weight,
+                reps: bestLifts.bestLifts.squat.reps
+            } ,
+            deadlift: {
+                weight: bestLifts.bestLifts.deadlift.weight,
+                reps: bestLifts.bestLifts.deadlift.reps
+            } ,
         }
-        console.log(liftData)
+        
+        const liftName = lift.toLowerCase()
+        const currentBestWeight = bestLifts.bestLifts[liftName].weight
+        const currentBestReps = bestLifts.bestLifts[liftName].reps
+        const newBestLiftCheck = calcOneRepMax(weight, reps) > calcOneRepMax(currentBestWeight, currentBestReps)
+
+        if (newBestLiftCheck) newBestLifts = { ...newBestLifts, [liftName]: { weight, reps } }
+
+        userLifts.lifts.forEach((lift: any) => {
+            newLiftsData.push({
+                date: lift.date,
+                lift: lift.lift,
+                weight: lift.weight,
+                reps: lift.reps
+            })
+        })
+
+        try {
+            const newLifts = await createLift({ variables: {
+                userId: userId, lifts: newLiftsData, bestLifts: newBestLifts
+            }})
+            if (newLifts) setRender(RENDERS[0])
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     const className = 'SubmitLiftForm'
@@ -81,15 +138,15 @@ const SubmitLiftForm = () => {
                    <div className={`${className}_liftOptionsContainer`}>
                         <button className={classNames(
                             `${className}_liftOption`,
-                            {[`${className}_liftSelected`]: lift === 'BENCH' }  
+                            {[`${className}_liftSelected`]: lift === 'Bench' }  
                         )} onClick={(e) => handleLiftClick(e, 0)}>Bench</button>
                         <button className={classNames(
                             `${className}_liftOption`,
-                            {[`${className}_liftSelected`]: lift === 'SQUAT' }  
+                            {[`${className}_liftSelected`]: lift === 'Squat' }  
                         )} onClick={(e) => handleLiftClick(e, 1)}>Squat</button>
                         <button className={classNames(
                             `${className}_liftOption`,
-                            {[`${className}_liftSelected`]: lift === 'DEADLIFT' }  
+                            {[`${className}_liftSelected`]: lift === 'Deadlift' }  
                         )} onClick={(e) => handleLiftClick(e, 2)}>Deadlift</button>
                    </div>
                 </div>

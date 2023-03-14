@@ -41,7 +41,7 @@ export const calculateWilksScore = (userLiftingStats: LiftingStats) => {
     return totalWilks
 }
 
-const calcOneRepMax = (weight: number, sets: number) => {
+export const calcOneRepMax = (weight: number, reps: number) => {
     const NSCALoadChart = {
         1: 1,
         2: .95,
@@ -59,7 +59,7 @@ const calcOneRepMax = (weight: number, sets: number) => {
 
     let oneRepMaxAdjuster: number
 
-    switch (sets) {
+    switch (reps) {
         case 1: oneRepMaxAdjuster = NSCALoadChart[1]; break
         case 2: oneRepMaxAdjuster = NSCALoadChart[2]; break
         case 3: oneRepMaxAdjuster = NSCALoadChart[3]; break

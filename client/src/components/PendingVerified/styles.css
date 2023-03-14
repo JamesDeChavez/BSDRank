@@ -1,0 +1,26 @@
+.PendingVerified {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    gap: 0.5rem;
+    border-bottom: solid 1px grey;
+}
+
+.PendingVerified_sectionHeader {
+    text-align: center;
+    grid-column: 1/3;
+    font-size: 1.2rem;
+}
+
+.PendingVerified_verifyItem {
+    border: solid 1px grey;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.PendingVerified_textContainer {
+    display: flex;
+    justify-content: space-between;
+}

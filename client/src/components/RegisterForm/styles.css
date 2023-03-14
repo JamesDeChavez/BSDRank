@@ -73,9 +73,6 @@
     font-size: 1rem;
 }
 
-.RegisterForm_inputTextContainer {
-}
-
 .RegisterForm_sexButtonsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,4 +89,8 @@
 
 .RegisterForm_submitButton {
     padding: 0.5rem;
+}
+
+.RegisterForm_error {
+    color: red;
 }

@@ -1,13 +1,17 @@
+import { useApolloClient } from '@apollo/client';
 import { useContext } from 'react'
 import { UserLoggedInContext } from '../../App';
 import './styles.css'
 
 const AuthNavButtons = () => {
-    const [_, setUserLoggedIn] = useContext(UserLoggedInContext)
+    const {setUserLoggedIn} = useContext(UserLoggedInContext)
+    const client = useApolloClient()
 
     const navClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        e.preventDefault();
-        setUserLoggedIn(prevState => !prevState)
+        e.preventDefault()
+        client.clearStore()
+        localStorage.clear()
+        setUserLoggedIn(false)
     };
 
     const className = 'NonAuthNavButtons'

@@ -1,10 +1,13 @@
-import classNames from 'classnames'
-import { useContext, useState, useRef } from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
+import { useMutation } from '@apollo/client'
 import { UserLoggedInContext } from '../../App'
+import { CREATE_USER } from '../../graphql/mutations'
+import classNames from 'classnames'
 import './styles.css'
 
 const RegisterForm = () => {
-    const [, setUserLoggedIn] = useContext(UserLoggedInContext)
+    const [createUser, { error }] = useMutation(CREATE_USER)
+    const { setUserLoggedIn, setUserId } = useContext(UserLoggedInContext)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,6 +20,7 @@ const RegisterForm = () => {
     const [squatReps, setSquatReps] = useState(5)
     const [deadliftWeight, setDeadliftWeight] = useState(265)
     const [deadliftReps, setDeadliftReps] = useState(5)
+    const [errorMessage, setErrorMessage] = useState<string | undefined>()
     const weightRef: any = useRef()
     const intervalRef: any = useRef()
     const changeRef: any = useRef()
@@ -148,18 +152,37 @@ const RegisterForm = () => {
         clearInterval(intervalRef.current)
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const registerData = {
-            username, email, password, repeatPW, sex, weight, 
-            benchWeight, benchReps, squatWeight, squatReps, deadliftWeight,
-            deadliftReps
-        }
-        console.log(registerData)
         if (!username || !email || !password || !repeatPW || !sex) return
 
-        setUserLoggedIn(prevState => !prevState)
+        const registerData = {
+            username, email, password, sex, weight, bestLifts: {
+                bench: { weight: benchWeight, reps: benchReps},
+                squat: { weight: squatWeight, reps: squatReps},
+                deadlift: { weight: deadliftWeight, reps: deadliftReps},
+            }
+        }
+        try {
+            const newUser = await createUser({variables: registerData})
+            if (newUser.data.createUser) {
+                const token = newUser.data.createUser.token
+                localStorage.setItem('bsdToken', `Bearer ${token}`)
+                setUserId(newUser.data.createUser._id)
+                setUserLoggedIn(true)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
+
+    useEffect(() => {
+        if (error) setErrorMessage(error.message)
+    }, [error])
+
+    useEffect(() => {
+        setErrorMessage(undefined)
+    }, [username, email, password, repeatPW, sex, weight, benchWeight, benchReps, squatWeight, squatReps, deadliftWeight, deadliftReps])
 
     const className = 'RegisterForm'
     return (
@@ -288,9 +311,8 @@ const RegisterForm = () => {
                         }}>Female</button>
                     </div>
                 </div>
-
-
                 <input className={`${className}_submitButton`} type="submit" value='Create Account' />
+                <p className={`${className}_error`}>{errorMessage}</p>
             </form>
         </div>
     )

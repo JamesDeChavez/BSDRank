@@ -4,6 +4,11 @@
     gap: 0.5rem;
 }
 
+.VerifyActions_sectionHeader{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
 .VerifyActions_verifyButtonsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
