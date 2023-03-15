@@ -37,7 +37,7 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
     return (
         <div className={className}>
             <div className={`${className}_weightContainer`}>
-                <ScaleSVG className={`${className}_svgIcon`}/>
+                <p>Weight: </p>
                 {editActive ?
                     <input type="number" className={`${className}_input`} pattern="[0-9]*" name="weight" id="weight" value={weight.toString()} onChange={e => setWeight(prevState => e.target.validity.valid ? Number(e.target.value) : prevState)} />
                 :

@@ -4,17 +4,23 @@
     box-sizing: border-box;
 }
 
-body, h1, h2, h3, p, select {
+body, h1, h2, h3, p, select, input {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
 }
 
-button, input[type=submit] {
+button {
     background-color: transparent;
     border: solid 1px grey;
     border-radius: 5px;
+    color: #FFFFFF;
 }
 
 button:hover, input[type=submit]:hover {
     cursor: pointer;
+}
+
+a {
+    color: #00a8e8
 }

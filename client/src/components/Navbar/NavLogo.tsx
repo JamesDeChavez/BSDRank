@@ -20,7 +20,7 @@ const NavLogo: React.FC<Props> = ({userLoggedIn}) => {
 
     const className = 'NavLogo'
     return (
-        <div className='logoPlaceholder' onClick={logoClick}>LOGO</div>
+        <div className={className} onClick={logoClick}>BSD Rank</div>
     )
 }
 

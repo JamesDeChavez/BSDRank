@@ -2,9 +2,9 @@
     display: grid;
     row-gap: 0.5rem;
     margin: 0.5rem;
-    padding: 1rem 0.5rem;
-    border-top: solid 1px grey;
-    border-bottom: solid 1px grey;
+    padding: 2rem 0.5rem;
+    border-top: solid 1px #FFFFFF;
+    border-bottom: solid 1px #FFFFFF;
 }
 
 .CallToAction_header{
@@ -17,8 +17,13 @@
 
 .CallToAction_chart {
     width: 100%;
+    border: solid 1px #FFFFFF;
 }
 
 .CallToAction_button {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
+    background-color: #00a8e8;
+    border-radius: 5px;
+    border: solid 1px #00171f;
+    font-size: 1rem;
 }

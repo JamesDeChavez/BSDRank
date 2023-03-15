@@ -16,15 +16,21 @@
 }
 
 .VerifyActions_verifyButton {
-    padding:0;
+    border: solid 1px #FFFFFF;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .VerifyActions_svg {
     width: 7rem;
-    fill: black;
+}
+
+.VerifyActions_svg > path {
+    fill: #FFFFFF
 }
 
 .VerifyActions_scale > path {
-    stroke: black;
+    stroke: #FFFFFF;
     stroke-width: 1;
 }

@@ -2,9 +2,10 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
+    align-items: center;
 }
 
-.logoPlaceholder:hover {
+.NavLogo:hover {
     cursor: pointer;
 }
 

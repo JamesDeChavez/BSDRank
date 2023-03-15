@@ -22,8 +22,11 @@
 }
 
 .SubmitLiftForm_liftOption {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: solid 1px #FFFFFF;
+    font-size: 1rem;
 }
 
 .SubmitLiftForm_liftSelected {
@@ -34,8 +37,10 @@
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
-    border: solid 1px grey;
+    border: solid 1px #FFFFFF;
     border-radius: 5px;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .SubmitLiftForm_numberButton {
@@ -58,4 +63,9 @@
 
 .SubmitLiftForm_submitButton {
     padding: 1rem;
+    background-color: #00a8e8;
+    border-radius: 5px;
+    border: solid 1px #00171f;
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }

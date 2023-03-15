@@ -18,10 +18,18 @@
 .LoginForm_input {
     padding: 0.5rem;
     border-radius: 5px;
-    border: solid 1px grey;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: solid 1px #FFFFFF;
+    font-size: 1rem;
+    color:#FFFFFF;
 }
 
 .LoginForm_submitButton {
     padding: 0.5rem;
+    background-color: #00a8e8;
+    border-radius: 5px;
+    border: solid 1px #00171f;
+    font-size: 1rem;
     margin-top: 0.5rem;
 }

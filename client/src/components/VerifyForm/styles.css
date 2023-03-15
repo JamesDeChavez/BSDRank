@@ -1,5 +1,6 @@
 .VerifyForm {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
     padding-bottom: 6rem;
@@ -18,15 +19,21 @@
 .VerifyForm_urlInput {
     padding: 0.5rem;
     border-radius: 5px;
-    border: solid 1px grey;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: solid 1px #FFFFFF;
+    font-size: 1rem;
+    color:#FFFFFF;
 }
 
 .VerifyForm_buttonSelectContainer {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0;
-    border: solid 1px grey;
+    border: solid 1px #FFFFFF;
     border-radius: 5px;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
 }
 
 .VerifyForm_numberButton {
@@ -57,4 +64,9 @@
 .VerifyForm_submitButton,
 .VerifyForm_cancelButton {
     padding: 0.5rem;
+    background-color: #00a8e8;
+    border-radius: 5px;
+    border: solid 1px #00171f;
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }

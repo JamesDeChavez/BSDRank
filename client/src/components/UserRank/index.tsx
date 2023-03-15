@@ -186,8 +186,11 @@ const UserRank = () => {
                     <p className={`${className}_text`}>{`${progress}% to next rank`}</p>
                 </div>
             </div>
-            <p className={`${className}_text ${className}_sex`}>{`Sex: ${sex}`}</p>
-            <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>       
+            <div className={`${className}_sexWeightContainer`}>
+                <p className={`${className}_text ${className}_sex`}>{`Sex: ${sex}`}</p>
+                <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>
+            </div>
+            <p>Best Lifts</p>     
             <div className={`${className}_liftsSection`}>
                 <div className={`${className}_liftContainer`}>
                     <BenchSVG className={`${className}_svgIcon`} />

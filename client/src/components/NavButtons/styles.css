@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: grey;
+    background-color: #00171f;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -10,15 +10,23 @@
 .NavButtons_button {
     padding: 0.5rem 0;
     color: #FFFFFF;
+    border: none;
 }
 
 .NavButtons_button:hover {
     cursor: pointer;
-    background-color: blue;
 }
 
-.NavButtons_active {
-    background-color: blue;
+.NavButtons_button:hover > .NavButtons_icon,
+.NavButtons_button:hover > p {
+    fill: #00a8e8;
+    color: #00a8e8;
+}
+
+.NavButtons_active > .NavButtons_icon,
+.NavButtons_active > p {
+    fill: #00a8e8;
+    color: #00a8e8;
 }
 
 .NavButtons_icon {

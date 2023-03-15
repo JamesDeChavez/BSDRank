@@ -16,8 +16,11 @@
 
 .PendingVerified_verifyItem {
     border: solid 1px grey;
-    padding: 0.5rem;
+    border: solid 1px #FFFFFF;
     border-radius: 5px;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem;
 }
 
 .PendingVerified_textContainer {

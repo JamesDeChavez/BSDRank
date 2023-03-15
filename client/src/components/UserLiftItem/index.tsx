@@ -22,9 +22,9 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
         <div className={className} onClick={handleLiftClick} >
             <p className={`${className}_text`}>{date}</p>
             {{
-                'Bench': <BenchSVG />,
-                'Squat': <SquatSVG />,
-                'Deadlift': <DeadliftSVG />
+                'Bench': <BenchSVG className={`${className}_svgIcon`} />,
+                'Squat': <SquatSVG className={`${className}_svgIcon`} />,
+                'Deadlift': <DeadliftSVG className={`${className}_svgIcon`} />
             }[lift]}
             <p className={`${className}_text`}>{`${weight} x ${reps}`}</p>
         </div>

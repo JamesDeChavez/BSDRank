@@ -222,7 +222,7 @@ const RegisterForm = () => {
                 </div>
 
                 <div className={`${className}_formSectionContainer`}>
-                    <label htmlFor="benchWeight" className={`${className}_label`}>Bench</label>
+                    <label htmlFor="benchWeight" className={`${className}_label`}>Bench PR</label>
                     <div className={`${className}_selectBorder`}>
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'benchWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'benchWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'benchWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
@@ -245,7 +245,7 @@ const RegisterForm = () => {
                 </div>
 
                 <div className={`${className}_formSectionContainer`}>
-                    <label htmlFor="squatWeight" className={`${className}_label`}>Squat</label>
+                    <label htmlFor="squatWeight" className={`${className}_label`}>Squat PR</label>
                     <div className={`${className}_selectBorder`}>
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'squatWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'squatWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'squatWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>
@@ -268,7 +268,7 @@ const RegisterForm = () => {
                 </div>
 
                 <div className={`${className}_formSectionContainer`}>
-                    <label htmlFor="deadliftWeight" className={`${className}_label`}>Deadlift</label>
+                    <label htmlFor="deadliftWeight" className={`${className}_label`}>Deadlift PR</label>
                     <div className={`${className}_selectBorder`}>
                         <div className={`${className}_buttonSelectContainer`}>
                             <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'deadliftWeight', 'decrease')} onMouseDown={e => handleWeightMouseDown(e, 'deadliftWeight', 'decrease')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'deadliftWeight', 'decrease')} onTouchEnd={handleWeightMouseUp}>{'<'}</button>

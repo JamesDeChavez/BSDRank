@@ -1,8 +1,10 @@
 .LifterItem {
     display: grid;
     grid-template-columns: 1fr 6fr repeat(4, 3fr);
-    border: solid 1px grey;
+    border: solid 1px #FFFFFF;
     border-radius: 5px;
+    background-color: rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
     padding: 0.5rem;
 }
 

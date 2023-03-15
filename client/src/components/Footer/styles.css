@@ -2,3 +2,7 @@
     display: grid;
     padding: 0.5rem;
 }
+
+.Footer_text {
+    font-size: 0.8rem;
+}
