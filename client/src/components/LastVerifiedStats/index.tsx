@@ -30,8 +30,8 @@ const LastVerifiedStats = () => {
     const className = 'LastVerifiedStats'
     return (
         <div className={className}>
-            <h2 className={`${className}_sectionHeader`}>Your Current Verified Stats</h2>
             <div className={`${className}_verifyTextContainer`}>
+                <h2 className={`${className}_sectionHeader`}>Your Current Verified Stats</h2>
                 <p className={`${className}_verifyText`}>
                     <span>Weight</span> <span>{weight}</span> 
                 </p>

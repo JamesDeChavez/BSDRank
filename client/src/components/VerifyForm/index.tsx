@@ -151,15 +151,13 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
     const className = 'VerifyForm'
     return (
         <div className={className}>
-            <h2>{`${actionSelected} Verification`}</h2>
-
-            {actionSelected === 'Weight' ?
-                <p>{`Your Current Unverified Weight: ${unverifiedWeight}`}</p>
-            :
-                <p>{`Your Last Unverified Lift: ${unverifiedWeight} x ${unverifiedReps}`}</p>
-            }
-
             <form className={`${className}_form`} onSubmit={handleFormSubmit}>
+                <h2>{`${actionSelected} Verification`}</h2>
+                {actionSelected === 'Weight' ?
+                    <p>{`Your Current Unverified Weight: ${unverifiedWeight}`}</p>
+                :
+                    <p>{`Your Last Unverified Lift: ${unverifiedWeight} x ${unverifiedReps}`}</p>
+                }
                 <div className={`${className}_urlInputContainer`}>
                     <label htmlFor="verifyURL">Video URL</label>
                     <input type="url" name="verifyURL" id="verifyURL" value={videoURL}  onChange={e => setVideoURL(e.target.value)} className={`${className}_urlInput`} />

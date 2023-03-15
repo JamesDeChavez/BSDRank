@@ -5,6 +5,11 @@
 .RegisterForm_form {
     display: grid;
     gap: 0.5rem;
+    border: solid 1px #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: rgb(0, 126, 167, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .RegisterForm_header {
@@ -18,9 +23,9 @@
 .RegisterForm_input {
     padding: 0.5rem;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(0, 126, 167, 0.6);
     backdrop-filter: blur(10px);
-    border: solid 1px #FFFFFF;
+    border: none;
     font-size: 1rem;
     color:#FFFFFF;
 }
@@ -35,9 +40,8 @@
 }
 
 .RegisterForm_selectBorder {
-    border: solid 1px #FFFFFF;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(0, 126, 167, 0.6);
     backdrop-filter: blur(10px);
 }
 
@@ -87,19 +91,21 @@
 
 .RegisterForm_sexButton {
     padding: 0.5rem 0;
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: rgb(0, 126, 167, 0.6);
     backdrop-filter: blur(10px);
-    border: solid 1px #FFFFFF;
+    border: solid 1px transparent;
     font-size: 1rem;
 }
 
 .RegisterForm_sexSelected {
-    background-color: rgb(0, 168, 232, 0.3);
+    border: solid 1px #00a8e8;
+    color: #00a8e8;
+    background-color: #003459;
 }
 
 .RegisterForm_submitButton {
     padding: 0.5rem;
-    background-color: #00a8e8;
+    background-color: #00171f;
     border-radius: 5px;
     border: solid 1px #00171f;
     font-size: 1rem;

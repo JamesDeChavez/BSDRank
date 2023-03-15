@@ -171,8 +171,8 @@ const RankSearch = () => {
     const className = 'RankSearch'
     return (
         <div className={className}>
-            <h2 className={`${className}_header`}>BSD Rank</h2>
             <form className={`${className}_form`} onSubmit={submitSearch}>
+                <h2 className={`${className}_header`}>BSD Rank Calculator</h2>
                 
                 <div className={`${className}_formSectionContainer`}>
                     <label htmlFor="weight" className={`${className}_label`}>Body Weight</label>

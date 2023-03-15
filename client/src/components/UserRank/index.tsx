@@ -164,31 +164,35 @@ const UserRank = () => {
     const className = 'UserRank'
     return (
         <div className={className}>
-            <h1 className={`${className}_header`}>Your BSD Rank</h1>
-            <div className={`${className}_rankContainer`}>
-                <img className={`${className}_image`} src={rankImage} alt="rank icon" />
-                <div className={`${className}_rankTextContainer`}>
-                    <p className={`${className}_text`}>{`${rankString}: `}</p>
-                    {searchResults ?
-                        <p className={`${className}_text`}>Unverified</p>    
-                    :
-                        <select className={`${className}_select`} name="verified" id="verified" onChange={handleSelect} value={verified}>
-                            <option value="Unverified" >Unverified</option>
-                            <option value="Verified" >Verified</option>
-                        </select>
-                    }    
+            <div className={`${className}_topRankSection`}>
+                <h1 className={`${className}_header`}>Your BSD Rank</h1>
+                <div className={`${className}_rankContainer`}>
+                    <img className={`${className}_image`} src={rankImage} alt="rank icon" />
+                    <div className={`${className}_rankTextContainer`}>
+                        <p className={`${className}_text`}>{`${rankString}: `}</p>
+                        {searchResults ?
+                            <p className={`${className}_text`}>Unverified</p>
+                        :
+                            <select className={`${className}_select`} name="verified" id="verified" onChange={handleSelect} value={verified}>
+                                <option value="Unverified" >Unverified</option>
+                                <option value="Verified" >Verified</option>
+                            </select>
+                        }
                 
-                </div>
-                <div className={`${className}_rankProgressContainer`}>
-                    <div className={`${className}_rankBarContainer`}>
-                        <div className={`${className}_rankBar`} style={{width: `${progress}%`}} ></div>
                     </div>
-                    <p className={`${className}_text`}>{`${progress}% to next rank`}</p>
+                    <div className={`${className}_rankProgressContainer`}>
+                        <div className={`${className}_rankBarContainer`}>
+                            <div className={`${className}_rankBar`} style={{width: `${progress}%`}} ></div>
+                        </div>
+                        <p className={`${className}_text`}>{`${progress}% to next rank`}</p>
+                    </div>
                 </div>
-            </div>
-            <div className={`${className}_sexWeightContainer`}>
-                <p className={`${className}_text ${className}_sex`}>{`Sex: ${sex}`}</p>
-                <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>
+                <div className={`${className}_sexWeightContainer`}>
+                    <p className={`${className}_text ${className}_sex`}>
+                        <span>Sex:</span> <span>{sex}</span>
+                    </p>
+                    <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>
+                </div>
             </div>
             <p>Best Lifts</p>     
             <div className={`${className}_liftsSection`}>
