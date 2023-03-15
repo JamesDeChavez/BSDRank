@@ -39,6 +39,7 @@ const resolvers = {
                         lifts: user.lifts,
                         verified: user.verified,
                         pendingVerified: user.pendingVerified,
+                        role: user.role,
                         token: token 
                      }
                      return userWithToken
@@ -56,6 +57,14 @@ const resolvers = {
                 console.log(error)
             }
         },
+        verifyRequests: async () => {
+            try {
+                const requests = await controllers.VerifyRequest.findAll()
+                return requests
+            } catch (error) {
+                console.log(error)
+            }
+        }
     },
     Mutation: {
         createUser: async (_: any, args: any) => {
@@ -86,6 +95,7 @@ const resolvers = {
                            lifts: user.lifts,
                            verified: user.verified,
                            pendingVerified: user.pendingVerified,
+                           role: user.role,
                            token: token 
                         }
                         return userWithToken
@@ -127,6 +137,24 @@ const resolvers = {
             try {
                 const verifyRequest = await controllers.VerifyRequest.create(args)
                 return verifyRequest
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        updateVerifyRequest: async (_: any, args: any) => {
+            try {
+                const updatedRequest = await controllers.VerifyRequest.update(args)
+                return updatedRequest
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        updateUserForVerifyRequest: async (_: any, args: any) => {
+            try {
+                const updatedUser = await controllers.User.updateForVerifyRequest(args)
+                return updatedUser
             } catch (error) {
                 console.log(error)
                 return error

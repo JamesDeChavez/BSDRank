@@ -8,6 +8,7 @@ export const GET_RETURNING_USER = gql`
       email
       sex
       weight
+      role
       bestLifts {
         bench {
           weight
@@ -83,6 +84,7 @@ export const LOGIN_USER = gql`
       email
       sex
       weight
+      role
       token
       bestLifts {
         bench {
@@ -159,6 +161,7 @@ export const GET_USER = gql`
         email
         sex
         weight
+        role
         bestLifts {
           bench {
             weight
@@ -224,4 +227,18 @@ export const GET_USER = gql`
         }
       }
     }
-`  
+` 
+
+export const GET_VERIFY_REQUESTS = gql`
+  query VerifyRequests {
+    verifyRequests {
+      _id
+      userId
+      lift
+      videoURL
+      weight
+      reps
+      status
+    }
+  }
+`

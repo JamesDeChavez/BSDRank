@@ -172,8 +172,8 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
                     <input type="text" pattern="[0-9]*" name="weight" id="weight" value={weight} className={`${className}_weightInput`} onChange={handleWeightChange} />
                     <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'weight', 'increase')} onMouseDown={e => handleWeightMouseDown(e, 'increase')} onMouseUp={handleWeightMouseUp} onTouchStart={e => handleWeightMouseDown(e, 'increase')} onTouchEnd={handleWeightMouseUp}>{'>'}</button>
                 </div>
-                <label htmlFor="reps">Confirm Reps</label>
-                <div className={`${className}_buttonSelectContainer`}>
+                <label htmlFor="reps" style={{ display: actionSelected === 'Weight' ? 'none' : 'block'}}>Confirm Reps</label>
+                <div className={`${className}_buttonSelectContainer`} style={{ display: actionSelected === 'Weight' ? 'none' : 'flex'}}>
                     <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'reps', 'decrease')}>{'<'}</button>
                     <input type="text" pattern="[0-9]*" name="reps" id="reps" value={reps} className={`${className}_repsInput`} readOnly={true} />
                     <button className={`${className}_numberButton`} onClick={e => handleNumberInputButtonClick(e, 'reps', 'increase')}>{'>'}</button>

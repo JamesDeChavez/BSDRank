@@ -67,6 +67,7 @@ const userSchema = new Schema ({
     lifts: {type: Array, default: [] },
     verified: { type: Verified, default: defaultVerified },
     pendingVerified: { type: Verified, default: defaultVerified },
+    role: { type: String, default: 'normal'}
 }, {
     collection: "User"
 });

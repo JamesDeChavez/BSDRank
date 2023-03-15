@@ -33,13 +33,13 @@ export default {
             console.log(error);
         }
     },
-    update: async (req: any) => {
+    updateForVerifyRequest: async (req: any) => {
         try {
             const request = await db.User.findOneAndUpdate({
                 _id: req.id
             }, {
-                username: req.username,
-                email: req.email
+                pendingVerified: req.pendingVerified,
+                verified: req.verified,
             }, {
                 new: true
             });

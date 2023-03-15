@@ -54,6 +54,12 @@ export const UserLiftsFragment = gql`
     }
 `
 
+export const UserRoleFragment = gql`
+    fragment UserRole on User {
+        role
+    }
+`
+
 export const BestLiftsFragment = gql`
     fragment BestLifts on User {
         bestLifts {

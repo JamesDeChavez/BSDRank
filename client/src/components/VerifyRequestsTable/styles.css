@@ -1,0 +1,41 @@
+.VerifyRequestsTable {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.VerifyRequestsTable_header {
+    font-size: 1.2rem;
+}
+
+.VerifyRequestsTable_buttonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.VerifyRequestsTable_button {
+    padding: 0.5rem;
+}
+
+.VerifyRequestsTable_flexRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.VerifyRequestsTable_request {
+    display: grid;
+    padding: 0.5rem;
+    border: solid 1px grey;
+    border-radius: 5px;
+}
+
+.VerifyRequestsTable_selected {
+    border: solid 3px blue;
+}
+
+.VerifyRequestsTable_textContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}

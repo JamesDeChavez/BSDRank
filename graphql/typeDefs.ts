@@ -11,6 +11,7 @@ const typeDefs = `#graphql
         verified: Verified!
         pendingVerified: Verified!
         token: String
+        role: String
     }
 
     type BestLifts {
@@ -99,14 +100,17 @@ const typeDefs = `#graphql
         returningUser: User
         login(username: String!, password: String!): User
         user(id: ID): User
+        verifyRequests: [VerifyRequest]
     }
 
     type Mutation {
         createUser(username: String!, email: String!, password: String!, sex: String!, weight: Int!, bestLifts: BestLiftsInput!): User
+        updateUserForVerifyRequest(id: ID!, verified: VerifiedInput!, pendingVerified: VerifiedInput!): User
         createLift(userId: ID!, lifts: [WorkoutInput]!, bestLifts: BestLiftsInput!): User
         updateWeight(userId: ID!, weight: Int!): User
         updatePendingVerified(userId: ID!, pendingVerified: VerifiedInput!): User
         createVerifyRequest(userId: ID!, lift: String!, videoURL: String!, weight: Int!, reps: Int!): VerifyRequest
+        updateVerifyRequest(id: ID!, status: String!): VerifyRequest
     }
 
 `

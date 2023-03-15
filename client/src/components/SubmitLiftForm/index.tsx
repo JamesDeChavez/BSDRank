@@ -16,10 +16,6 @@ const SubmitLiftForm = () => {
     const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment })
     const [createLift] = useMutation(CREATE_LIFT)
 
-    useEffect(() => {
-        console.log(bestLifts)
-    })
-
     const LIFT_OPTIONS = ['Bench', 'Squat', 'Deadlift']
     const [lift, setLift] = useState('')
     const [weight, setWeight] = useState(225)

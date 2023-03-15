@@ -8,6 +8,7 @@ export const CREATE_USER = gql`
             email
             sex
             weight
+            role
             token
             bestLifts {
                 bench {
@@ -152,6 +153,96 @@ export const CREATE_VERIFY_REQUEST = gql`
             weight
             reps
             status
+        }
+    }
+`
+
+export const UPDATE_VERIFY_REQUEST = gql`
+    mutation UpdateVerifyRequest($updateVerifyRequestId: ID!, $status: String!) {
+        updateVerifyRequest(id: $updateVerifyRequestId, status: $status) {
+            _id
+            userId
+            lift
+            videoURL
+            weight
+            reps
+            status
+        }
+    }
+`
+
+export const UPDATE_USER_FOR_VERIFY_REQUEST = gql`
+    mutation UpdateUserForVerifyRequest($updateUserForVerifyRequestId: ID!, $verified: VerifiedInput!, $pendingVerified: VerifiedInput!) {
+        updateUserForVerifyRequest(id: $updateUserForVerifyRequestId, verified: $verified, pendingVerified: $pendingVerified) {
+            _id
+            username
+            bestLifts {
+                bench {
+                    weight
+                    reps
+                }
+                squat {
+                    weight
+                    reps
+                }
+                deadlift {
+                    weight
+                    reps
+                }
+            }
+            lifts {
+                date
+                lift
+                weight
+                reps
+            }
+            verified {
+                weight {
+                    amount
+                    videoURL
+                }
+                bench {
+                    weight
+                    reps
+                    videoURL
+                }
+                squat {
+                    weight
+                    reps
+                    videoURL
+                }
+                deadlift {
+                    weight
+                    reps
+                    videoURL
+                }
+            }
+            pendingVerified {
+                weight {
+                    amount
+                    videoURL
+                }
+                bench {
+                    weight
+                    reps
+                    videoURL
+                }
+                squat {
+                    weight
+                    reps
+                    videoURL
+                }
+                deadlift {
+                    weight
+                    reps
+                    videoURL
+                }
+            }
+            token
+            role
+            weight
+            sex
+            email
         }
     }
 `
