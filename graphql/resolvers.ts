@@ -64,6 +64,14 @@ const resolvers = {
             } catch (error) {
                 console.log(error)
             }
+        },
+        leaderboard: async () => {
+            try {
+                const request = await controllers.Leaderboard.findAll()
+                return request
+            } catch (error) {
+                console.log(error)
+            }
         }
     },
     Mutation: {
@@ -155,6 +163,15 @@ const resolvers = {
             try {
                 const updatedUser = await controllers.User.updateForVerifyRequest(args)
                 return updatedUser
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        updateLeaderboard: async (_: any, args: any) => {
+            try {
+                const updatedLeaderboard = await controllers.Leaderboard.update(args)
+                return updatedLeaderboard
             } catch (error) {
                 console.log(error)
                 return error

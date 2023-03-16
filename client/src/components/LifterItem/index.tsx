@@ -1,41 +1,44 @@
+import { useQuery } from '@apollo/client'
 import { useState, useEffect } from 'react'
-import { calculateWilksScore, determineUserRank } from '../../utils/functions'
-import { UserData } from '../../utils/interfaces' 
+import { GET_USER } from '../../graphql/query'
+import { determineUserRank } from '../../utils/functions'
 import './styles.css'
 
 interface Props {
-    user: UserData,
+    leader: {
+        userId: number,
+        wilksScore: number
+    },
     index: number
 }
 
-const LifterItem: React.FC<Props> = ({ user, index }) => {
+const LifterItem: React.FC<Props> = ({ leader, index }) => {
+    const { data } = useQuery(GET_USER, { variables: { userId: leader.userId }})
+
     const [rank, setRank] = useState('')
 
     useEffect(() => {
-        const wilksScore = calculateWilksScore({
-            weight: user.verified.weight.amount,
-            benchWeight: user.verified.bench.amount,
-            benchReps: user.verified.bench.reps,
-            squatWeight: user.verified.squat.amount,
-            squatReps: user.verified.squat.reps,
-            deadliftWeight: user.verified.deadlift.amount,
-            deadliftReps: user.verified.deadlift.reps,
-            sex: user.sex
-        })
-        const rankId = determineUserRank(wilksScore)
+        const rankId = determineUserRank(leader.wilksScore)
         setRank(rankId.userRank)
 
-    }, [user])
+    }, [leader])
 
     const className = 'LifterItem'
     return (
         <div className={className}>
-            <p className={`${className}_text`}>{index + 1}</p>
-            <p className={`${className}_text`}>{user.username}</p>
-            <p className={`${className}_text`}>{rank}</p>
-            <p className={`${className}_text`}>{`${user.verified.bench.amount} x ${user.verified.bench.reps}`}</p>
-            <p className={`${className}_text`}>{`${user.verified.squat.amount} x ${user.verified.squat.reps}`}</p>
-            <p className={`${className}_text`}>{`${user.verified.deadlift.amount} x ${user.verified.deadlift.reps}`}</p>
+            {data ?
+            <>
+                <p className={`${className}_text`}>{index + 1}</p>
+                <p className={`${className}_text`}>{data.user.username}</p>
+                <p className={`${className}_text`}>{rank}</p>
+                <p className={`${className}_text`}>{`${data.user.verified.bench.weight} x ${data.user.verified.bench.reps}`}</p>
+                <p className={`${className}_text`}>{`${data.user.verified.squat.weight} x ${data.user.verified.squat.reps}`}</p>
+                <p className={`${className}_text`}>{`${data.user.verified.deadlift.weight} x ${data.user.verified.deadlift.reps}`}</p>
+            </>
+            :
+
+                <p>No Fully Verified Users</p>
+            }            
         </div>
     )
 }

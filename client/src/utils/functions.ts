@@ -134,3 +134,57 @@ export const convertRankToString = (rank: string) => {
 
     return rankString
 }
+
+export const checkIfNewLeaderboard = (oldLeaderboard: { userId: string, wilksScore: number }[], newUser: { userId: string, wilksScore: number }) => {
+    const leaderboardSize = oldLeaderboard.length
+    let indexToInsert = leaderboardSize
+    let duplicateUserCheck = false
+
+    console.log('old size', leaderboardSize)
+
+    for (let i = 0; i < oldLeaderboard.length; i++) {
+        if (oldLeaderboard[i].userId === newUser.userId) duplicateUserCheck = true
+    }
+
+    console.log('duplicateCheck', duplicateUserCheck)
+
+    for (let i = leaderboardSize - 1; i >= 0; i--) {
+        let currentLeaderScore = oldLeaderboard[i].wilksScore
+        if (newUser.wilksScore > currentLeaderScore) indexToInsert = i
+    }
+
+    console.log('index', indexToInsert)
+
+    const newLeaderboard = [...oldLeaderboard]
+
+    console.log('oldLeadboard', newLeaderboard)
+
+    if (indexToInsert <= leaderboardSize) {
+        newLeaderboard.splice(indexToInsert, 0, newUser)
+    } else if (indexToInsert < 10) {
+        newLeaderboard.push(newUser)
+    } else {
+        // do nothing
+    }
+
+    console.log('addBoard', newLeaderboard)
+
+    if (duplicateUserCheck) {
+        let indexToDelete: number | undefined = undefined
+        for (let i = newLeaderboard.length - 1; i >= 0; i--) {
+            if (newLeaderboard[i].userId === newUser.userId) {
+                indexToDelete = i
+                break
+            }
+        }
+        if (indexToDelete) newLeaderboard.splice(indexToDelete, 1)
+    }
+
+    console.log('after duplicate', newLeaderboard)
+
+    if (newLeaderboard.length > 10) newLeaderboard.pop()
+
+    console.log('popped', newLeaderboard)
+
+    return newLeaderboard
+}

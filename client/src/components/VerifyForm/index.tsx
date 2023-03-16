@@ -131,9 +131,6 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
             newPendingVerified = { ...newPendingVerified, [liftName]: { videoURL, weight, reps }}
         }
 
-        console.log(userId, videoURL, weight, reps, actionSelected)
-        console.log(newPendingVerified)
-
         try {
             const newVerifyRequest = await createVerifyRequest({ variables: {
                 userId: userId, videoUrl: videoURL, weight: weight, reps: reps, lift: actionSelected

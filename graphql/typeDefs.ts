@@ -60,6 +60,16 @@ const typeDefs = `#graphql
         status: String!
     }
 
+    type Leaderboard {
+        _id: ID!
+        leaderboard: [Leader]!
+    }
+
+    type Leader {
+        userId: ID!
+        wilksScore: Int!
+    }
+
     input BestLiftsInput {
         bench: LiftInput!
         squat: LiftInput!
@@ -96,11 +106,21 @@ const typeDefs = `#graphql
         reps: Int!
     }
 
+    input LeaderboardInput {
+        leaderboard: [LeaderInput]!
+    }
+
+    input LeaderInput {
+        userId: ID!
+        wilksScore: Int!
+    }
+
     type Query {
         returningUser: User
         login(username: String!, password: String!): User
         user(id: ID): User
         verifyRequests: [VerifyRequest]
+        leaderboard: Leaderboard
     }
 
     type Mutation {
@@ -111,6 +131,7 @@ const typeDefs = `#graphql
         updatePendingVerified(userId: ID!, pendingVerified: VerifiedInput!): User
         createVerifyRequest(userId: ID!, lift: String!, videoURL: String!, weight: Int!, reps: Int!): VerifyRequest
         updateVerifyRequest(id: ID!, status: String!): VerifyRequest
+        updateLeaderboard(id: ID!, leaderboard: LeaderboardInput): Leaderboard
     }
 
 `

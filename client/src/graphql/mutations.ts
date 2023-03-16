@@ -246,3 +246,15 @@ export const UPDATE_USER_FOR_VERIFY_REQUEST = gql`
         }
     }
 `
+
+export const UPDATE_LEADERBOARD = gql`
+    mutation UpdateLeaderboard($leaderboard: LeaderboardInput, $updateLeaderboardId: ID!) {
+        updateLeaderboard(leaderboard: $leaderboard, id: $updateLeaderboardId) {
+            _id
+            leaderboard {
+                userId
+                wilksScore
+            }
+        }
+    }
+`

@@ -1,8 +1,12 @@
+import { useQuery } from '@apollo/client'
+import { useEffect } from 'react'
+import { GET_LEADERBOARD } from '../../graphql/query'
 import cache from '../../utils/cache'
 import LifterItem from '../LifterItem'
 import './styles.css'
 
 const CommunityTable = () => {
+    const { data } = useQuery(GET_LEADERBOARD)
 
     const className = 'CommunityTable'
     return (
@@ -17,8 +21,8 @@ const CommunityTable = () => {
                     <p>S</p>
                     <p>D</p>
                 </div>
-                {cache.leaderboard.map((user, i) => {
-                    return <LifterItem key={i} user={user} index={i} />
+                {data && data.leaderboard.leaderboard.map((leader: {userId: number, wilksScore: number}, i: number) => {
+                    return <LifterItem key={i} leader={leader} index={i} />
                 })}
             </div>
         </div>

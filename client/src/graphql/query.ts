@@ -242,3 +242,15 @@ export const GET_VERIFY_REQUESTS = gql`
     }
   }
 `
+
+export const GET_LEADERBOARD = gql`
+  query Leaderboard {
+    leaderboard {
+      _id
+      leaderboard {
+        userId
+        wilksScore
+      }
+    }
+  }
+`
