@@ -7,7 +7,9 @@
 }
 
 .NavLogo {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fcdb2d
 }
 
 .NavLogo:hover {
@@ -30,4 +32,10 @@
 
 .NonAuthNavButtons_navbutton:hover {
     cursor: pointer;
+}
+
+@media screen and (min-width: 850px) {
+    .NavLogo { 
+        font-size: 2rem;
+    } 
 }

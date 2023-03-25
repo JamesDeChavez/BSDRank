@@ -1,14 +1,22 @@
 .CallToAction {
     display: grid;
-    row-gap: 0.5rem;
+    place-content: center;
     margin: 0.5rem;
+    border-top: solid 1px #FFFFFF30;
+    border-bottom: solid 1px #FFFFFF30;
+}
+
+.CallToAction_container {
+    display: grid;
+    row-gap: 0.5rem;
     padding: 2rem 0.5rem;
-    border-top: solid 1px #FFFFFF;
-    border-bottom: solid 1px #FFFFFF;
+    max-width: 1000px;
 }
 
 .CallToAction_header{
-    text-align: center;
+    text-align: left;
+    color: #fcdb2d;
+    font-weight: 400;
 }
 
 .CallToAction_text {
@@ -17,13 +25,24 @@
 
 .CallToAction_chart {
     width: 100%;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
+    border-radius: 5px;
+    background-color: #26426460;
 }
 
 .CallToAction_button {
     padding: 0.5rem;
-    background-color: #00a8e8;
+    background-color: #118190;
     border-radius: 5px;
-    border: solid 1px #00171f;
+    border: solid 1px #FFFFFF30;
     font-size: 1rem;
+}
+
+@media screen and (min-width: 850px) {
+    
+.CallToAction {
+    padding: 2rem 10%;
+    margin: 0 5%;
+}
+
 }

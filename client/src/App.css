@@ -22,5 +22,10 @@ button:hover, input[type=submit]:hover {
 }
 
 a {
-    color: #00a8e8
+    color: #118190;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

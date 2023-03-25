@@ -1,7 +1,20 @@
 .CommunityTable {
     display: grid;
     padding: 0.5rem;
-    text-align: center;
+    width: 100%;
+}
+
+.CommunityTable_container {
+    display: grid;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.CommunityTable_header {
+    text-align: left;
+    color: #fcdb2d;
+    font-weight: 400;
 }
 
 .CommunityTable_table {
@@ -13,6 +26,12 @@
     display: grid;
     grid-template-columns:  1fr 6fr repeat(4, 3fr);
     padding: 0.5rem;
-    border-bottom: solid 1px grey;
-    border-radius: 5px;
+}
+
+@media screen and (min-width: 850px) {
+    
+    .CommunityTable {
+        padding: 2rem 10%;
+    }
+    
 }
