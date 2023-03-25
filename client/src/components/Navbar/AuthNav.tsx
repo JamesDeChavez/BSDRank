@@ -1,10 +1,9 @@
 import { useContext } from 'react'
 import { client } from '../../index';
 import { UserLoggedInContext } from '../../App';
-import './styles.css'
 import { AuthRenderContext } from '../../branches/Auth';
-import { gql } from '@apollo/client';
 import { UserRoleFragment } from '../../graphql/fragments';
+import './styles.css'
 
 const AuthNavButtons = () => {
     const {setUserLoggedIn, userId} = useContext(UserLoggedInContext)

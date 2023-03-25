@@ -3,8 +3,7 @@
     grid-template-rows: auto 1fr auto;
     gap: 0.5rem;
     min-height: 100vh;
-    background: rgb(0,52,89);
-    background: radial-gradient(circle, rgba(0,52,89,1) 0%, rgba(0,23,31,1) 100%);
+    background: radial-gradient(circle, #181f1f 0%, #050607 100%);
     position: relative;
 }
 

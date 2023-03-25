@@ -6,15 +6,15 @@
 .RankSearch_form {
     display: grid;
     gap: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     padding: 1rem 2rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color: #26426460;
     backdrop-filter: blur(10px);
 }
 
 .RankSearch_header {
-    text-align: center;
+    font-weight: 400;
 }
 
 .RankSearch_formSectionContainer {
@@ -28,8 +28,7 @@
 
 .RankSearch_selectBorder {
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.6);
-    backdrop-filter: blur(10px);
+    background-color: #264264;
 }
 
 .RankSearch_numberButton {
@@ -78,22 +77,52 @@
 
 .RankSearch_sexButton {
     padding: 0.5rem 0;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
     border: solid 1px transparent;
     font-size: 1rem;
 }
 
+
+.RankSearch_submitButton:hover,
+.RankSearch_sexButton:hover {
+    border: solid 1px #FFFFFF;
+}
+
 .RankSearch_sexSelected {
-    border: solid 1px #00a8e8;
-    color: #00a8e8;
-    background-color: #003459;
+    border: solid 1px #FFFFFF;
 }
 
 .RankSearch_submitButton {
     padding: 0.5rem;
-    background-color: #00171f;
+    background-color: #118190;
     border-radius: 5px;
-    border: solid 1px #00171f;
+    border: solid 1px #FFFFFF30;
     font-size: 1rem;
+}
+
+@media screen and (min-width: 850px) {
+
+.RankSearch_form {    
+    width: 110%;
+    transform: translateX(10%);
+    padding: 1.5rem 2rem;
+}
+
+}
+
+@media screen and (min-width: 1250px) {
+
+    .RankSearch_form {
+        padding: 2rem 4rem;
+        gap: 1rem;
+    }
+    
+}
+
+@media screen and (min-width: 1400px) {
+    .RankSearch_form {
+        width: 100%;
+        transform: translateX(15%);
+    }
 }

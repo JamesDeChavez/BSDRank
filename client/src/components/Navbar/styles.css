@@ -6,6 +6,10 @@
     z-index: 2;
 }
 
+.NavLogo {
+    font-size: 2rem;
+}
+
 .NavLogo:hover {
     cursor: pointer;
 }
@@ -14,6 +18,14 @@
     list-style-type: none;
     display: flex;
     column-gap: 1rem;
+}
+
+.NonAuthNavButtons_navbutton {
+    padding: 0 1rem;
+    background-color: #118190;
+    border-radius: 5px;
+    border: solid 1px #FFFFFF30;
+    font-size: 1rem;
 }
 
 .NonAuthNavButtons_navbutton:hover {
