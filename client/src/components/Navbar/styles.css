@@ -14,6 +14,7 @@
 
 .NavLogo:hover {
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .NonAuthNavButtons {
@@ -32,6 +33,7 @@
 
 .NonAuthNavButtons_navbutton:hover {
     cursor: pointer;
+    border: solid 1px #FFFFFF;
 }
 
 @media screen and (min-width: 850px) {

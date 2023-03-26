@@ -1,8 +1,17 @@
 .Footer {
     display: grid;
     padding: 0.5rem;
+    align-items: flex-end;
+    margin: 0 0.5rem;
 }
 
 .Footer_text {
     font-size: 0.8rem;
+}
+
+@media screen and (min-width: 600px) {
+    .Footer {
+        display: flex;
+        justify-content: space-between;
+    }
 }

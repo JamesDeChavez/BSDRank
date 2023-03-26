@@ -1,14 +1,16 @@
 import { useContext } from 'react'
-import { NonAuthRenderContext } from '../../branches/NonAuth'
 import rankChart from '../../assets/BSDRankDistribution.png'
+import { LandingPageContext } from '../../pages/Landing'
 import './styles.css'
 
 const CallToAction = () => {
-    const [RENDERS, setRender] = useContext(NonAuthRenderContext)
+    const {setResultsVisible, setLoginVisible, setRegisterVisible} = useContext(LandingPageContext)
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        setRender(RENDERS[2])
+        setResultsVisible(false)
+        setLoginVisible(false)
+        setRegisterVisible(true)
     }
 
     const className = 'CallToAction'

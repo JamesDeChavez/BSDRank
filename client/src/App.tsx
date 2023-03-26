@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client'
 import AuthBranch from './branches/Auth';
-import NonAuthBranch from './branches/NonAuth';
 import { GET_RETURNING_USER } from './graphql/query';
+import LandingPage from './pages/Landing';
 import './App.css';
 
 export const UserLoggedInContext = React.createContext<{
@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <UserLoggedInContext.Provider value={{userLoggedIn, setUserLoggedIn, userId, setUserId}}>
       {!userLoggedIn ?
-        <NonAuthBranch/>
+        <LandingPage/>
       :
         <AuthBranch/>
       }

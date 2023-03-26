@@ -1,6 +1,6 @@
 .CommunityTable {
     display: grid;
-    padding: 0.5rem;
+    padding: 0 1rem 2rem 1rem;
     width: 100%;
 }
 

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { RankSearchContext } from '../../branches/RankSearch'
+import { HeroBranchContext } from '../../branches/Hero'
 import { convertRankToString, calculateWilksScore, determineUserRank } from '../../utils/functions'
 import { UnverifiedLiftsFragment, VerifiedLiftsFragment } from '../../graphql/fragments'
 import { client } from '../../index'
@@ -8,10 +8,12 @@ import { ReactComponent as DeadliftSVG } from '../../assets/deadliftSVG.svg'
 import { ReactComponent as BenchSVG } from '../../assets/benchSVG.svg'
 import { ReactComponent as SquatSVG } from '../../assets/squatSVG.svg'
 import UserWeightItem from './UserWeightItem'
+import { LandingPageContext } from '../../pages/Landing'
 import './styles.css'
 
 const UserRank = () => {
-    const { searchResults, setResultsVisible } = useContext(RankSearchContext)
+    const { searchResults } = useContext(HeroBranchContext)
+    const { setResultsVisible } = useContext(LandingPageContext)
     const { userId } = useContext(UserLoggedInContext)
     const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment })
     const verifiedLifts = client.readFragment({ id:`User:${userId}`, fragment: VerifiedLiftsFragment})
@@ -167,7 +169,9 @@ const UserRank = () => {
             <div className={`${className}_topRankSection`}>
                 <h1 className={`${className}_header`}>Your BSD Rank</h1>
                 <div className={`${className}_rankContainer`}>
-                    <img className={`${className}_image`} src={rankImage} alt="rank icon" />
+                    <div className={`${className}_imageContainer`}>
+                        <img className={`${className}_image`} src={rankImage} alt="rank icon" />
+                    </div>
                     <div className={`${className}_rankTextContainer`}>
                         <p className={`${className}_text`}>{`${rankString}: `}</p>
                         {searchResults ?
@@ -193,8 +197,7 @@ const UserRank = () => {
                     </p>
                     <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>
                 </div>
-            </div>
-            <p>Best Lifts</p>     
+            </div>    
             <div className={`${className}_liftsSection`}>
                 <div className={`${className}_liftContainer`}>
                     <BenchSVG className={`${className}_svgIcon`} />

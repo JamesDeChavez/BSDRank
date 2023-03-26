@@ -1,11 +1,13 @@
 import { useState, useContext, useRef } from 'react'
-import { RankSearchContext } from '../../branches/RankSearch'
 import { calculateWilksScore, determineUserRank } from '../../utils/functions'
 import classNames from 'classnames'
 import './styles.css'
+import { HeroBranchContext } from '../../branches/Hero'
+import { LandingPageContext } from '../../pages/Landing'
 
 const RankSearch = () => {
-    const {setResultsVisible, setSearchResults} = useContext(RankSearchContext)
+    const { setSearchResults } = useContext(HeroBranchContext)
+    const { setResultsVisible } = useContext(LandingPageContext)
     const [weight, setWeight] = useState(150)
     const [benchWeight, setBenchWeight] = useState(155)
     const [benchReps, setBenchReps] = useState(5)

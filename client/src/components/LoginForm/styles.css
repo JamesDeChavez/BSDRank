@@ -5,10 +5,10 @@
 .LoginForm_form {
     display: grid;
     gap: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     padding: 1rem 2rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color: #26426460;
     backdrop-filter: blur(10px);
 }
 
@@ -23,7 +23,7 @@
 .LoginForm_input {
     padding: 0.5rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
     border: none;
     font-size: 1rem;
@@ -32,9 +32,13 @@
 
 .LoginForm_submitButton {
     padding: 0.5rem;
-    background-color: #00171f;
+    background-color: #118190;
     border-radius: 5px;
-    border: solid 1px #00171f;
+    border: solid 1px #FFFFFF30;
     font-size: 1rem;
-    margin-top: 0.5rem;
+}
+
+.LoginForm_submitButton:hover {
+    cursor: pointer;
+    border: solid 1px #FFFFFF;
 }

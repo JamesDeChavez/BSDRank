@@ -38,6 +38,10 @@
     font-size: 1rem;
 }
 
+.CallToAction_button:hover {
+    border: solid 1px #FFFFFF;
+}
+
 @media screen and (min-width: 850px) {
     
 .CallToAction {
