@@ -15,6 +15,7 @@ const AuthNavButtons = () => {
         client.clearStore()
         localStorage.clear()
         setUserLoggedIn(false)
+        
     };
 
     const handleAdminClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

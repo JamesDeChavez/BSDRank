@@ -1,7 +1,11 @@
 import { useContext } from 'react'
+import gsap, { Power1 } from 'gsap'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
 import rankChart from '../../assets/BSDRankDistribution.png'
 import { LandingPageContext } from '../../pages/Landing'
 import './styles.css'
+
+gsap.registerPlugin(ScrollToPlugin)
 
 const CallToAction = () => {
     const {setResultsVisible, setLoginVisible, setRegisterVisible} = useContext(LandingPageContext)
@@ -11,6 +15,7 @@ const CallToAction = () => {
         setResultsVisible(false)
         setLoginVisible(false)
         setRegisterVisible(true)
+        gsap.to(window, { scrollTo: ".Navbar", duration: 1, ease: Power1.easeOut })
     }
 
     const className = 'CallToAction'

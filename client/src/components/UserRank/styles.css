@@ -1,7 +1,6 @@
 .UserRank {
     display: flex;
     flex-direction: column;
-    place-content: center;
     gap: 0.5rem;
     padding: 0 1rem;
 }
@@ -139,6 +138,7 @@
     align-items: center;
     place-self: center;
     gap: 1rem;
+    position: relative;
 }
 
 .UserWeightItem_buttonContainer {
@@ -149,30 +149,36 @@
 .UserWeightItem_button {
     height: auto;
     font-size: 0.9rem;    
-    background-color: rgb(255, 255, 255, 0.3);
+    background-color: #118190;
     backdrop-filter: blur(10px);
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     border-radius: 5px;
     padding: 0.2rem;
+}
+
+.UserWeightItem_button:hover {
+    border: solid 1px #FFFFFF;
 }
 
 .UserWeightItem_input {
     width: 3rem;
     text-align: center;
     place-self: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-bottom: solid 1px #FFFFFF;
     background-color: transparent;
 }
 
 .UserWeightItem_button:hover {
     cursor: pointer;
-    background-color: blue;
     color: #FFFFFF;
 }
 
 .UserWeightItem_weightContainer {
     display: grid;
     font-size: 0.9rem;
+    text-align: center;
 }
 
 .UserWeightItem_svgIcon {
@@ -185,10 +191,21 @@
     stroke-width: 2;
 }
 
-@media screen and (min-width: 600px) {
-    .UserRank_topRankSection {
-        width: 50%;
-    }
+.UserWeightItem_weightDropDown{
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    border: none;
+}
+
+.UserWeightItem_weightDropDown:hover > span{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.UserWeightItem_scrollTriangle {
+    width: 0.5rem;
+    fill: #FFFFFF;
 }
 
 @media screen and (min-width: 850px) {

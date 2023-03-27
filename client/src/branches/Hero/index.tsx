@@ -8,6 +8,7 @@ import LoginForm from '../../components/LoginForm';
 import RegisterForm from '../../components/RegisterForm';
 import './styles.css'
 import { LandingPageContext } from '../../pages/Landing';
+import { UserLoggedInContext } from '../../App';
 
 export const HeroBranchContext = React.createContext<{
     searchResults: SearchResults | undefined,
@@ -19,27 +20,20 @@ export const HeroBranchContext = React.createContext<{
 
 const HeroBranch = () => {
     const { resultsVisible, loginVisible, registerVisible } = useContext(LandingPageContext)
+    const { userLoggedIn } = useContext(UserLoggedInContext)
     const [searchResults, setSearchResults] = useState<SearchResults>()
     const root = useRef(null)
 
-
     useLayoutEffect(() => {
         const gsapContext = gsap.context(() => {
-            gsap.set(`.${className}_rankSearchContainer`, { clearProps: true })
-            gsap.from(`.${className}_rankSearchContainer`, { duration: 0.5, x: '-100%' })
-
-            gsap.set(`.${className}_userRankContainer`, { clearProps: true })  
-            gsap.from(`.${className}_userRankContainer`, { duration: 0.5, x: '-100%' })
-            
-            gsap.set(`.${className}_loginContainer`, { clearProps: true })  
-            gsap.from(`.${className}_loginContainer`, { duration: 0.5, x: '-100%' })
-            
-            gsap.set(`.${className}_registerContainer`, { clearProps: true })  
-            gsap.from(`.${className}_registerContainer`, { duration: 0.5, x: '-100%' })
+            gsap.fromTo(`.${className}_rankSearchContainer`, {x: -1000}, { duration: 1, x: 0 })
+            gsap.fromTo(`.${className}_userRankContainer`, {x: -1000}, { duration: 1, x: 0 })
+            gsap.fromTo(`.${className}_loginContainer`, {x: -1000}, { duration: 1, x: 0 })
+            gsap.fromTo(`.${className}_registerContainer`, {x: -1000}, { duration: 1, x: 0 })
             
             return () => gsapContext.revert()
         }, root)
-    }, [resultsVisible, loginVisible, registerVisible])
+    }, [resultsVisible, loginVisible, registerVisible, userLoggedIn])
 
     const className = 'HeroBranch'
     return (    

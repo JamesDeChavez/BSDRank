@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #00171f;
+    background-color: #264264;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -19,14 +19,14 @@
 
 .NavButtons_button:hover > .NavButtons_icon,
 .NavButtons_button:hover > p {
-    fill: #00a8e8;
-    color: #00a8e8;
+    fill:  #fcdb2d;
+    color:  #fcdb2d;
 }
 
 .NavButtons_active > .NavButtons_icon,
 .NavButtons_active > p {
-    fill: #00a8e8;
-    color: #00a8e8;
+    fill:  #fcdb2d;
+    color:  #fcdb2d;
 }
 
 .NavButtons_icon {

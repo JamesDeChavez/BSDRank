@@ -1,5 +1,6 @@
 .UserLifts {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     row-gap: 0.5rem;
     padding: 0 0.5rem;
     padding-bottom: 3rem;
@@ -7,6 +8,14 @@
 
 .UserLifts_header {
     font-size: 1.3rem;
+}
+
+.UserLifts_filter:hover {
+    background-color: #118190;
+}
+
+.UserLifts_active {
+    background-color: #118190;
 }
 
 .UserLifts_filterContainer {
@@ -19,4 +28,10 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
     text-align: center;
+}
+
+@media screen and (min-width: 850px) {
+    .UserLifts_liftsContainer {
+        grid-template-columns: repeat(7, 1fr);
+    }
 }

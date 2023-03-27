@@ -1,15 +1,18 @@
 .SubmitLiftForm {
     gap: 0.5rem;
     padding: 0 1rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .SubmitLiftForm_form {
     display: grid;
     gap: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     padding: 1rem 2rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color: #26426460;
     backdrop-filter: blur(10px);
 }
 
@@ -32,30 +35,35 @@
 
 .SubmitLiftForm_liftOption {
     padding: 0.5rem 0;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
     border: solid 1px transparent;
     font-size: 1rem;
 }
 
+.SubmitLiftForm_liftOption:hover {
+    border: solid 1px #FFFFFF;
+}
+
 .SubmitLiftForm_liftSelected {
-    border: solid 1px #00a8e8;
-    color: #00a8e8;
-    background-color: #003459;
+    border: solid 1px #FFFFFF;
 }
 
 .SubmitLiftForm_selectionContainer {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
 }
 
 .SubmitLiftForm_numberButton {
     padding: 0.5rem 2rem;
     border: none;
+}
+
+.SubmitLiftForm_numberButton:hover {
+    background-color: #FFFFFF30;
 }
 
 .SubmitLiftForm_weightInput,
@@ -73,9 +81,12 @@
 
 .SubmitLiftForm_submitButton {
     padding: 0.5rem;
-    background-color: #00171f;
+    background-color: #118190;
     border-radius: 5px;
-    border: solid 1px #00171f;
+    border: solid 1px #FFFFFF30;
     font-size: 1rem;
-    margin-top: 0.5rem;
+}
+
+.SubmitLiftForm_submitButton:hover {
+    border: solid 1px #FFFFFF
 }

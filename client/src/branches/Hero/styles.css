@@ -4,32 +4,33 @@
 
 
 @media screen and (min-width: 850px) {
-
-    .HeroBranch_registerContainer,
-    .HeroBranch_rankSearchContainer {
-        width: 110%;
-        transform: translateX(10%);
-    }
-
-    .HeroBranch_userRankContainer {
-        display: grid;
-        transform: translateX(30%);
-    }
-
-    .HeroBranch_loginContainer {
-        transform: translateX(20%);
-    }
     
     .HeroBranch_heroContainer {
+        position: relative;
         display: grid;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        min-height: 70vh;
         align-items: center;
-        justify-self: center;
+        justify-items: flex-end;
+        place-self: center;
         max-width: 1400px;
+        overflow: hidden;
     }
+
+    .HeroBranch_registerContainer,
+    .HeroBranch_rankSearchContainer,
+    .HeroBranch_loginContainer,
+    .HeroBranch_userRankContainer {
+        width: 100%;
+        z-index: 2;
+    }    
     
     .HeroBranch_imageContainer {
+        position: absolute;
         display: flex;
+        right: 0;
+        width: 60%;
         place-content: center;
     }
 
@@ -42,26 +43,9 @@
 }
 
 
-@media screen and (min-width: 1400px) {
-
-    .HeroBranch_registerContainer,
-    .HeroBranch_rankSearchContainer {
-        width: 100%;
-        transform: translateX(15%);
-    }
-
-    .HeroBranch_loginContainer {
-        display: grid;
-        width: 80%;
-        transform: translateX(40%);    
-    }
-
-    .HeroBranch_userRankContainer {
-        transform: translateX(27%)
-    }
-
-    .HeroBranch_heroContainer {
-        grid-template-columns: 1fr 1fr;
-        place-self: center;
+@media screen and (min-width: 850px) {
+    .HeroBranch_imageContainer {
+        width: 50%;
+        transform: translateX(-10%);
     }
 }

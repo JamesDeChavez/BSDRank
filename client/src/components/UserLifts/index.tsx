@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import { useContext, useState } from 'react'
 import { UserLoggedInContext } from '../../App'
 import { UserLiftsFragment } from '../../graphql/fragments'
@@ -39,9 +40,18 @@ const UserLifts = () => {
             <h1 className={`${className}_header`}>Your Recent Lifts</h1>
             <div className={`${className}_filterContainer`}>
                 <p>Filter:</p>
-                <button className={`${className}_filter`} onClick={e => handleFilterClick(e, 'Bench')}>Bench</button>
-                <button className={`${className}_filter`} onClick={e => handleFilterClick(e, 'Squat')}>Squat</button>
-                <button className={`${className}_filter`} onClick={e => handleFilterClick(e, 'Deadlift')}>Deadlift</button>
+                <button className={classNames(
+                    `${className}_filter`,
+                    {[`${className}_active`]: filter === 'Bench'}
+                )} onClick={e => handleFilterClick(e, 'Bench')}>Bench</button>
+                <button className={classNames(
+                    `${className}_filter`,
+                    {[`${className}_active`]: filter === 'Squat'}
+                )} onClick={e => handleFilterClick(e, 'Squat')}>Squat</button>
+                <button className={classNames(
+                    `${className}_filter`,
+                    {[`${className}_active`]: filter === 'Deadlift'}
+                )} onClick={e => handleFilterClick(e, 'Deadlift')}>Deadlift</button>
             </div>
             <div className={`${className}_liftsContainer`}>
                 {userLifts && userLifts.lifts.filter((lift) => {

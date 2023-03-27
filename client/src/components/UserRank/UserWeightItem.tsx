@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client'
 import { useState, useContext } from 'react'
 import { UserLoggedInContext } from '../../App'
-import { ReactComponent as ScaleSVG } from '../../assets/scaleSVG.svg'
 import { UPDATE_WEIGHT } from '../../graphql/mutations'
 import './styles.css'
 
@@ -17,7 +16,7 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
 
     const [editActive, setEditActive] = useState(false)
 
-    const handleEditClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const handleWeightClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         setEditActive(prevState => !prevState)
     }
@@ -37,16 +36,32 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
     return (
         <div className={className}>
             <div className={`${className}_weightContainer`}>
-                <p>Weight: </p>
+                {!isSearch ?
+                    <button className={`${className}_weightDropDown`} onClick={handleWeightClick}>
+                        <span>Weight:</span>
+                        <svg className={`${className}_scrollTriangle`} viewBox="0 0 100 50">
+                            <polygon points='5,5 95,5 45,50'/>
+                        </svg>
+                    </button>
+                :
+                    <p>Weight: </p>
+                }
                 {editActive ?
-                    <input type="number" className={`${className}_input`} pattern="[0-9]*" name="weight" id="weight" value={weight.toString()} onChange={e => setWeight(prevState => e.target.validity.valid ? Number(e.target.value) : prevState)} />
+                    <input 
+                        type="number" 
+                        className={`${className}_input`} 
+                        pattern="[0-9]*" 
+                        name="weight" id="weight" 
+                        value={weight.toString()} 
+                        autoComplete="off"
+                        onChange={e => setWeight(prevState => e.target.validity.valid ? Number(e.target.value) : prevState)} 
+                    />
                 :
                     <p>{`${weight} lbs`}</p>
                 }
             </div>
-            <div className={`${className}_buttonContainer`} style={{display: isSearch ? 'none' : 'flex'}}>
+            <div className={`${className}_buttonContainer`} style={{display: !editActive ? 'none' : 'flex'}}>
                 <div className={`${className}_button`} onClick={handleSubmit} style={{display: editActive ? 'block' : 'none'}}>Submit</div>
-                <div className={`${className}_button`} onClick={handleEditClick}>{ editActive ?'Cancel' : 'Edit Weight' }</div>
             </div>
         </div>
     )
