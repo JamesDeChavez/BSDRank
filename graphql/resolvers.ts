@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import { GraphQLError } from 'graphql'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import controllers from "../controllers"
-import { Context, LeaderboardInputs, LiftInputs, LoginInputs, PendingVerifiedInputs, RegisterInputs, UpdateVerifyInputs, VerifyRequestInputs, WeightInputs } from '../utils/interfaces'
+import { Context, LeaderboardInputs, LiftInputs, LoginInputs, PendingVerifiedInputs, RegisterInputs, UpdateUserForVerifyRequestInputs, UpdateVerifyInputs, VerifyRequestInputs, WeightInputs } from '../utils/interfaces'
 
 const resolvers = {
     Query: {
@@ -160,7 +160,7 @@ const resolvers = {
                 return error
             }
         },
-        updateUserForVerifyRequest: async (_: any, args: UpdateVerifyInputs) => {
+        updateUserForVerifyRequest: async (_: any, args: UpdateUserForVerifyRequestInputs) => {
             try {
                 const updatedUser = await controllers.User.updateForVerifyRequest(args)
                 return updatedUser

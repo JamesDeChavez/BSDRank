@@ -1,4 +1,5 @@
 import db from '../models';
+import { UpdateVerifyInputs, VerifyRequestInputs } from '../utils/interfaces';
 
 export default {
     findAll: async () => {
@@ -9,7 +10,7 @@ export default {
             console.log(error)
         }
     },
-    update: async (req: any) => {
+    update: async (req: UpdateVerifyInputs) => {
         try {
             const request = await db.VerifyRequests.findOneAndUpdate({
                 _id: req.id
@@ -23,7 +24,7 @@ export default {
             console.log(error)
         }
     },
-    create: async (req: any) => {
+    create: async (req: VerifyRequestInputs) => {
         try {
             const request = await db.VerifyRequests.create(req)
             return request

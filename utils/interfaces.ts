@@ -99,6 +99,52 @@ export interface UpdateVerifyInputs {
     status: string
 }
 
+export interface UpdateUserForVerifyRequestInputs {
+    id: string,
+    pendingVerified: {
+        weight: {
+            videoURL: string,
+            amount: number
+        },
+        bench: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        },
+        squat: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        },
+        deadlift: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        }
+    },
+    verified: {
+        weight: {
+            videoURL: string,
+            amount: number
+        },
+        bench: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        },
+        squat: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        },
+        deadlift: {
+            videoURL: string,
+            weight: number,
+            reps: number
+        }
+    }
+}
+
 export interface LeaderboardInputs {
     id: string,
     leaderboard: LeaderInput[]

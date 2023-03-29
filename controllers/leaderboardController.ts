@@ -1,4 +1,5 @@
 import db from '../models';
+import { LeaderboardInputs } from '../utils/interfaces';
 
 export default {
     findAll: async () => {
@@ -12,7 +13,7 @@ export default {
             console.log(error)
         }
     },
-    update: async (req: any) => {
+    update: async (req: LeaderboardInputs) => {
         try {
             const request = await db.Leaderboard.findOneAndUpdate({
                 _id: req.id
