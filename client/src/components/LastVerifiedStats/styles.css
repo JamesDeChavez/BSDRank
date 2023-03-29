@@ -18,10 +18,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     padding: 1rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color: #26426460;
     backdrop-filter: blur(10px);
 }
 
@@ -29,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color: #264264;
     backdrop-filter: blur(10px);
     padding: 0.5rem;
 }

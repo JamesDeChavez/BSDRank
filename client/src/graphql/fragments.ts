@@ -1,5 +1,12 @@
 import { gql } from "@apollo/client";
 
+export const UserProfile = gql`
+    fragment UserProfile on User {
+        username
+        email
+    }
+`
+
 export const UnverifiedLiftsFragment = gql`
     fragment UnverifiedLifts on User {
         sex

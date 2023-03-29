@@ -6,6 +6,38 @@
     border-radius: 5px;
     background-color:  #26426460;
     backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.UserLiftItem:hover {
+    cursor: pointer;
+    border: solid 1px #FFFFFF;
+}
+
+.UserLiftItem_overlayContainer {
+    flex-direction: column;
+    place-content: center;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color:  #264264;
+    padding: 0.5rem;
+}
+
+.UserLiftItem_button {
+    padding: 0.2rem;
+    background-color: #118190;
+}
+
+.UserLiftItem_button:first-child {
+    background-color: #d73240;
+}
+
+.UserLiftItem_button:hover {
+    cursor: pointer;
+    border: solid 1px #FFFFFF;
 }
 
 .UserLiftItem_svgIcon > path {

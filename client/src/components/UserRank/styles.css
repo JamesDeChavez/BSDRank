@@ -40,6 +40,20 @@
     display: flex;
     place-content: center;
     gap: 0.2rem;
+    position: relative;
+}
+
+.UserRank_unverified {
+    cursor: pointer;
+}
+
+.UserRank_popupContainer {
+    position: absolute;
+    top: -300%;
+    background-color: #118190;
+    padding: 0.5rem;
+    border: solid 1px #FFFFFF;
+    border-radius: 5px;
 }
 
 .UserRank_select {
@@ -220,10 +234,8 @@
     .UserWeightItem_weightContainer {
         font-size: 1rem;
     }
-}
 
-@media screen and (min-width: 1400px) {
-    .UserRank_topRankSection {
-        width: 70%;
+    .UserRank_popupContainer {
+        top: -200%;
     }
 }

@@ -176,6 +176,24 @@ const resolvers = {
                 console.log(error)
                 return error
             }
+        },
+        deleteLift: async (_: any, args: any) => {
+            try {
+                const updatedUser = await controllers.User.deleteLift(args)
+                return updatedUser
+            } catch (error) {
+                console.log(error)
+                return error
+            }
+        },
+        deleteUser: async(_: any, args: any) => {
+            try {
+                const deletedUser = await controllers.User.delete(args)
+                return deletedUser
+            } catch (error) {
+                console.log(error)
+                return error
+            }
         }
     }
 }

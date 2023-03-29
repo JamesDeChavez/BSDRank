@@ -258,3 +258,39 @@ export const UPDATE_LEADERBOARD = gql`
         }
     }
 `
+
+export const DELETE_LIFT = gql`
+    mutation DeleteLift($userId: ID!, $lifts: [WorkoutInput]! $bestLifts: BestLiftsInput!) {
+        deleteLift(userId: $userId, lifts: $lifts, bestLifts: $bestLifts) {
+            _id
+            lifts {
+                date
+                lift
+                weight
+                reps
+            }
+            bestLifts {
+                bench {
+                    weight
+                    reps
+                }
+                squat {
+                    weight
+                    reps
+                }
+                deadlift {
+                    weight
+                    reps
+                }
+            }
+        }
+    }
+`
+
+export const DELETE_USER = gql`
+    mutation DeleteUser($userId: ID!) {
+        deleteUser(userId: $userId) {
+            _id
+        }
+    }
+`

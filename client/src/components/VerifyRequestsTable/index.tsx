@@ -123,8 +123,6 @@ const VerifyRequestsTable = () => {
             newLeaderboard = checkIfNewLeaderboard(oldLeaderboard, { userId: selectedRequest.userId, wilksScore: Math.floor(newUserWilksScore) })
         }
 
-        console.log('leaderBoard component', newLeaderboard)
-
         try {     
             await updateVerifyRequest({ variables: { 
                 updateVerifyRequestId: selectedRequest._id, 

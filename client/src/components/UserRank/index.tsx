@@ -30,6 +30,7 @@ const UserRank = () => {
     const [deadliftReps, setDeadliftReps] = useState(0)
     const [weight, setWeight] = useState(0)
     const [sex, setSex] = useState('MALE')
+    const [popupVisible, setPopupVisible] = useState(false)
     const rankImage = require(`../../assets/${rank?.toLowerCase()}.png`)
     
     useEffect(() => {
@@ -175,14 +176,22 @@ const UserRank = () => {
                     <div className={`${className}_rankTextContainer`}>
                         <p className={`${className}_text`}>{`${rankString}: `}</p>
                         {searchResults ?
-                            <p className={`${className}_text`}>Unverified</p>
+                            <p 
+                                className={`${className}_text ${className}_unverified`} 
+                                onMouseEnter={e => setPopupVisible(true)} onMouseLeave={e => setPopupVisible(false)} 
+                                onTouchStart={e => setPopupVisible(true)} onTouchEnd={e => setPopupVisible(false)} 
+                            >
+                                    Unverified
+                            </p>
                         :
                             <select className={`${className}_select`} name="verified" id="verified" onChange={handleSelect} value={verified}>
                                 <option value="Unverified" >Unverified</option>
                                 <option value="Verified" >Verified</option>
                             </select>
                         }
-                
+                        <div className={`${className}_popupContainer`} style={{display: popupVisible ? 'flex' : 'none'}}>
+                            <p className={`${className}_text`}>Create an account to get your verified rank</p>
+                        </div>
                     </div>
                     <div className={`${className}_rankProgressContainer`}>
                         <div className={`${className}_rankBarContainer`}>

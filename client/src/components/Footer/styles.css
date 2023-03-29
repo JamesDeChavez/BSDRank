@@ -1,8 +1,9 @@
 .Footer {
     display: grid;
-    padding: 0.5rem;
-    align-items: flex-end;
     margin: 0 0.5rem;
+    padding: 0.5rem 0;
+    align-items: flex-end;
+    border-top: solid 1px #FFFFFF30;
 }
 
 .Footer_text {
@@ -13,5 +14,6 @@
     .Footer {
         display: flex;
         justify-content: space-between;
+        padding: 0.5rem;
     }
 }

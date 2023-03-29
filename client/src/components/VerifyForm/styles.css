@@ -9,10 +9,10 @@
 .VerifyForm_form {
     display: grid;
     gap: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
     padding: 1rem 2rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.3);
+    background-color:#26426460;
     backdrop-filter: blur(10px);
 }
 
@@ -23,7 +23,7 @@
 .VerifyForm_urlInput {
     padding: 0.5rem;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
     border: none;
     font-size: 1rem;
@@ -34,14 +34,18 @@
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
-    background-color: rgb(0, 126, 167, 0.6);
+    background-color: #264264;
     backdrop-filter: blur(10px);
-    padding: 1rem;
 }
 
 .VerifyForm_numberButton {
     padding: 0.5rem 2rem;
     border: none;
+}
+
+.VerifyForm_numberButton:hover {
+    cursor: pointer;
+    background-color: #FFFFFF30;
 }
 
 .VerifyForm_weightInput,
@@ -67,9 +71,14 @@
 .VerifyForm_submitButton,
 .VerifyForm_cancelButton {
     padding: 0.5rem;
-    background-color: #00171f;
+    background-color: #118190;
     border-radius: 5px;
-    border: solid 1px #00171f;
+    border: solid 1px #FFFFFF30;
     font-size: 1rem;
-    margin-top: 0.5rem;
+}
+
+.VerifyForm_submitButton:hover,
+.VerifyForm_cancelButton:hover {
+    cursor: pointer;
+    border: solid 1px #FFFFFF;
 }

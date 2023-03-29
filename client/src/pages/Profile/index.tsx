@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar';
 import NavButtons from '../../components/NavButtons';
+import Profile from '../../components/Profile';
 import UserLifts from '../../components/UserLifts';
 import UserRank from '../../components/UserRank';
 import './styles.css'
@@ -13,6 +14,7 @@ const ProfilePage = () => {
             <div className={`${className}_main`}>
                 <UserRank />
                 <UserLifts/>
+                <Profile />
             </div>
             <NavButtons/>
         </div>

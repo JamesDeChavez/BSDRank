@@ -1,4 +1,4 @@
-import { LiftingStats } from "./interfaces"
+import { LiftingStats, LiftSubmission } from "./interfaces"
 
 export const calculateWilksScore = (userLiftingStats: LiftingStats) => {
     /*
@@ -187,4 +187,18 @@ export const checkIfNewLeaderboard = (oldLeaderboard: { userId: string, wilksSco
     console.log('popped', newLeaderboard)
 
     return newLeaderboard
+}
+
+export const findNewBest = (lifts: LiftSubmission[], lift: string) => {
+    const relevantLifts = lifts.filter(lft => lft.lift === lift)
+    const newBest = { weight: 0, reps: 0 }
+    relevantLifts.forEach(lft => {
+        const liftCheck = calcOneRepMax(lft.weight, lft.reps) > calcOneRepMax(newBest.weight, newBest.reps)
+        if (liftCheck) {
+            newBest.weight = lft.weight
+            newBest.reps = lft.reps
+        }
+    })
+    return newBest
+
 }

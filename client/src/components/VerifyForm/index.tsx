@@ -153,13 +153,13 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
                 {actionSelected === 'Weight' ?
                     <p>{`Your Current Unverified Weight: ${unverifiedWeight}`}</p>
                 :
-                    <p>{`Your Last Unverified Lift: ${unverifiedWeight} x ${unverifiedReps}`}</p>
+                    <p>{`Your Best Unverified Lift: ${unverifiedWeight} x ${unverifiedReps}`}</p>
                 }
                 <div className={`${className}_urlInputContainer`}>
                     <label htmlFor="verifyURL">Video URL</label>
-                    <input type="url" name="verifyURL" id="verifyURL" value={videoURL}  onChange={e => setVideoURL(e.target.value)} className={`${className}_urlInput`} />
+                    <input type="url" name="verifyURL" id="verifyURL" value={videoURL}  onChange={e => setVideoURL(e.target.value)} className={`${className}_urlInput`} autoComplete="off" />
                 </div>
-                <a href={videoURL} target="_blank" rel="noreferrer" style={{ display: videoURL ? 'block' : 'none' }} >Verify Video Link</a>
+                <a href={videoURL} target="_blank" rel="noreferrer" style={{ display: videoURL ? 'block' : 'none' }} className={`${className}_verifyLink`} >Verify Video Link</a>
 
                 <label htmlFor="weight">Confirm Weight</label>
                 <div className={`${className}_buttonSelectContainer`}>

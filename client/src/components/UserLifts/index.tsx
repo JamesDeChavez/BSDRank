@@ -37,7 +37,7 @@ const UserLifts = () => {
     const className = 'UserLifts'
     return (
         <div className={className}>
-            <h1 className={`${className}_header`}>Your Recent Lifts</h1>
+            <h2 className={`${className}_header`}>Your Recent Lifts</h2>
             <div className={`${className}_filterContainer`}>
                 <p>Filter:</p>
                 <button className={classNames(

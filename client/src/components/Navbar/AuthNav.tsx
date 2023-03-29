@@ -23,7 +23,7 @@ const AuthNavButtons = () => {
         if (role === 'admin') setRender(RENDERS[4])
     }
 
-    const className = 'NonAuthNavButtons'
+    const className = 'AuthNavButtons'
     return (
         <div className={className}>
             <button className={`${className}_navbutton`} onClick={handleAdminClick} style={{ display: role === 'admin' ? 'block' : 'none'}}>Admin</button>

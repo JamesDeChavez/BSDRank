@@ -11,6 +11,8 @@
     row-gap: 0.5rem;
     padding: 2rem 0.5rem;
     max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0.5rem;
 }
 
 .CallToAction_header{
@@ -43,10 +45,7 @@
 }
 
 @media screen and (min-width: 850px) {
-    
-.CallToAction {
-    padding: 2rem 10%;
-    margin: 0 5%;
-}
-
+    .CallToAction_container {
+        padding: 2rem;
+    }
 }

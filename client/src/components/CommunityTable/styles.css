@@ -1,7 +1,9 @@
 .CommunityTable {
     display: grid;
-    padding: 0 1rem 2rem 1rem;
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0.5rem;
 }
 
 .CommunityTable_container {
@@ -29,9 +31,7 @@
 }
 
 @media screen and (min-width: 850px) {
-    
     .CommunityTable {
-        padding: 2rem 10%;
+        padding: 2rem;
     }
-    
 }

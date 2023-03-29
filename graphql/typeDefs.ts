@@ -132,6 +132,8 @@ const typeDefs = `#graphql
         createVerifyRequest(userId: ID!, lift: String!, videoURL: String!, weight: Int!, reps: Int!): VerifyRequest
         updateVerifyRequest(id: ID!, status: String!): VerifyRequest
         updateLeaderboard(id: ID!, leaderboard: LeaderboardInput): Leaderboard
+        deleteLift(userId: ID!, lifts: [WorkoutInput]!, bestLifts: BestLiftsInput!): User
+        deleteUser(userId: ID!): User
     }
 
 `

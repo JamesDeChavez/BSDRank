@@ -5,6 +5,7 @@
     background-color: #264264;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    border-top: solid 1px #FFFFFF30;
 }
 
 .NavButtons_button {

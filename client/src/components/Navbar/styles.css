@@ -17,20 +17,25 @@
     opacity: 0.5;
 }
 
+
+.AuthNavButtons,
 .NonAuthNavButtons {
     list-style-type: none;
     display: flex;
     column-gap: 1rem;
 }
 
+.AuthNavButtons_navbutton,
 .NonAuthNavButtons_navbutton {
-    padding: 0 1rem;
+    padding: 0.2rem 1rem;
     background-color: #118190;
     border-radius: 5px;
     border: solid 1px #FFFFFF30;
     font-size: 1rem;
 }
 
+
+.AuthNavButtons_navbutton:hover,
 .NonAuthNavButtons_navbutton:hover {
     cursor: pointer;
     border: solid 1px #FFFFFF;

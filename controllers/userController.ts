@@ -63,6 +63,21 @@ export default {
             console.log(error);
         }
     },
+    deleteLift: async (req: any) => {
+        try {
+            const request = await db.User.findOneAndUpdate({
+                _id: req.userId
+            }, {
+                lifts: req.lifts,
+                bestLifts: req.bestLifts
+            }, {
+                new: true
+            });
+            return request;
+        } catch (error) {
+            console.log(error);
+        }
+    },
     updateWeight: async (req: any) => {
         try {
             const request = await db.User.findOneAndUpdate({
@@ -93,7 +108,7 @@ export default {
     },
     delete: async (req: any) => {
         try {
-            const request = await db.User.findOneAndDelete({ _id: req.id });
+            const request = await db.User.findOneAndDelete({ _id: req.userId });
             return request;
         } catch (error) {
             console.log(error);
