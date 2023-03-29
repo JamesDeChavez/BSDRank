@@ -18,8 +18,8 @@ const SubmitLiftForm = () => {
 
     const LIFT_OPTIONS = ['Bench', 'Squat', 'Deadlift']
     const [lift, setLift] = useState('')
-    const [weight, setWeight] = useState(225)
-    const [reps, setReps] = useState(1)
+    const [weight, setWeight] = useState<number>(bestLifts.bestLifts.squat.weight)
+    const [reps, setReps] = useState<number>(bestLifts.bestLifts.squat.reps)
     const weightRef: any = useRef()
     const countRef: any = useRef()
     const changeRef: any = useRef()
@@ -27,6 +27,19 @@ const SubmitLiftForm = () => {
 
     const handleLiftClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, n: number) => {
         e.preventDefault()
+        if (n === 0) {
+            if (lift === 'Bench') return
+            setWeight(bestLifts.bestLifts.bench.weight)
+            setReps(bestLifts.bestLifts.bench.reps)
+        } else if (n === 1) {
+            if (lift === 'Squat') return
+            setWeight(bestLifts.bestLifts.squat.weight)
+            setReps(bestLifts.bestLifts.squat.reps)
+        } else if (n === 2) {
+            if (lift === 'Deadlift') return
+            setWeight(bestLifts.bestLifts.deadlift.weight)
+            setReps(bestLifts.bestLifts.deadlift.reps)        }
+
         setLift(LIFT_OPTIONS[n])
     }
 

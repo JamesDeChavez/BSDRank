@@ -1,5 +1,5 @@
 export interface Context {
-    authScope: string
+    authScope: string | undefined
 }
 
 export interface LoginInputs {
