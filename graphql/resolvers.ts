@@ -1,15 +1,16 @@
 import bcrypt from 'bcrypt'
 import { GraphQLError } from 'graphql'
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import controllers from "../controllers"
+import { Context, LeaderboardInputs, LiftInputs, LoginInputs, PendingVerifiedInputs, RegisterInputs, UpdateVerifyInputs, VerifyRequestInputs, WeightInputs } from '../utils/interfaces'
 
 const resolvers = {
     Query: {
-        returningUser: async (_: any, __: any, context: any ) => {
+        returningUser: async (_: any, __: any, context: Context ) => {
             if (!context.authScope) return
             const token = context.authScope.split(' ')[1]
-            const decoded: any = token ? jwt.verify(token, 'JWT_SECRET') : null
-            const userId = decoded.userId ? decoded.userId : null
+            const decoded: JwtPayload | null | string = token ? jwt.verify(token, 'JWT_SECRET') : null
+            const userId = (decoded && typeof decoded !== 'string') ? decoded.userId : null
             try {
                 const user = await controllers.User.findById({id: userId})
                 return user
@@ -17,7 +18,7 @@ const resolvers = {
                 console.log(error)
             }            
         },
-        login: async (_: any, args: any) => {
+        login: async (_: any, args: LoginInputs) => {
             try {
                 const user = await controllers.User.findByUsername({username: args.username})
                 const passwordMatch = user && await bcrypt.compare(args.password, user.password)
@@ -49,7 +50,7 @@ const resolvers = {
                 console.log(error)
             }
         },
-        user: async (_: any, args: any) => {
+        user: async (_: any, args: {id: string}) => {
             try {
                 const user = await controllers.User.findById(args)
                 return user
@@ -75,7 +76,7 @@ const resolvers = {
         }
     },
     Mutation: {
-        createUser: async (_: any, args: any) => {
+        createUser: async (_: any, args: RegisterInputs) => {
             try {
                 const usernameCheck = await controllers.User.findByUsername({ username: args.username})
                 const emailCheck = await controllers.User.findByEmail({ email: args.email })
@@ -114,7 +115,7 @@ const resolvers = {
                 return error
             }
         },
-        createLift: async (_: any, args: any) => {
+        createLift: async (_: any, args: LiftInputs) => {
             try {
                 const updatedUser = await controllers.User.addLift(args)
                 return updatedUser
@@ -123,7 +124,7 @@ const resolvers = {
                 return error
             }
         },
-        updateWeight: async (_: any, args: any) => {
+        updateWeight: async (_: any, args: WeightInputs) => {
             try {
                 const updatedUser = await controllers.User.updateWeight(args)
                 return updatedUser
@@ -132,7 +133,7 @@ const resolvers = {
                 return error
             }
         },
-        updatePendingVerified: async (_: any, args: any) => {
+        updatePendingVerified: async (_: any, args: PendingVerifiedInputs) => {
             try {
                 const updatedUser = await controllers.User.updatePendingVerified(args)
                 return updatedUser
@@ -141,7 +142,7 @@ const resolvers = {
                 return error
             }
         },
-        createVerifyRequest: async (_: any, args: any) => {
+        createVerifyRequest: async (_: any, args: VerifyRequestInputs) => {
             try {
                 const verifyRequest = await controllers.VerifyRequest.create(args)
                 return verifyRequest
@@ -150,7 +151,7 @@ const resolvers = {
                 return error
             }
         },
-        updateVerifyRequest: async (_: any, args: any) => {
+        updateVerifyRequest: async (_: any, args: UpdateVerifyInputs) => {
             try {
                 const updatedRequest = await controllers.VerifyRequest.update(args)
                 return updatedRequest
@@ -159,7 +160,7 @@ const resolvers = {
                 return error
             }
         },
-        updateUserForVerifyRequest: async (_: any, args: any) => {
+        updateUserForVerifyRequest: async (_: any, args: UpdateVerifyInputs) => {
             try {
                 const updatedUser = await controllers.User.updateForVerifyRequest(args)
                 return updatedUser
@@ -168,7 +169,7 @@ const resolvers = {
                 return error
             }
         },
-        updateLeaderboard: async (_: any, args: any) => {
+        updateLeaderboard: async (_: any, args: LeaderboardInputs) => {
             try {
                 const updatedLeaderboard = await controllers.Leaderboard.update(args)
                 return updatedLeaderboard
@@ -177,7 +178,7 @@ const resolvers = {
                 return error
             }
         },
-        deleteLift: async (_: any, args: any) => {
+        deleteLift: async (_: any, args: LiftInputs) => {
             try {
                 const updatedUser = await controllers.User.deleteLift(args)
                 return updatedUser
@@ -186,7 +187,7 @@ const resolvers = {
                 return error
             }
         },
-        deleteUser: async(_: any, args: any) => {
+        deleteUser: async(_: any, args: {userId: string}) => {
             try {
                 const deletedUser = await controllers.User.delete(args)
                 return deletedUser

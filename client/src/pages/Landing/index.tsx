@@ -21,10 +21,6 @@ const LandingPage = () => {
     const [resultsVisible, setResultsVisible] = useState(false)
     const [loginVisible, setLoginVisible] = useState(false)
     const [registerVisible, setRegisterVisible] = useState(false)
-    
-    useEffect(() => {
-        console.log(resultsVisible, loginVisible, registerVisible)
-    }, [resultsVisible, loginVisible, registerVisible])
 
     const className = 'LandingPage'
     return (
