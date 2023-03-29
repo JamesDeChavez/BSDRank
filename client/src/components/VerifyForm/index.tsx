@@ -1,11 +1,10 @@
 import { useEffect, useState, useRef, useContext } from 'react'
 import { client } from '../../index'
 import { UserLoggedInContext } from '../../App'
-import cache from '../../utils/cache'
-import './styles.css'
-import { PendingVerifiedFragment } from '../../graphql/fragments'
+import { PendingVerifiedFragment, UnverifiedLiftsFragment } from '../../graphql/fragments'
 import { useMutation } from '@apollo/client'
 import { CREATE_VERIFY_REQUEST, UPDATE_PENDING_VERIFIED } from '../../graphql/mutations'
+import './styles.css'
 
 interface Props {
     setFormVisible: React.Dispatch<React.SetStateAction<boolean>>,
@@ -15,6 +14,7 @@ interface Props {
 const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
     const { userId } = useContext(UserLoggedInContext)
     const pendingVerifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment })
+    const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment })
     const [updatePendingVerified] = useMutation(UPDATE_PENDING_VERIFIED)
     const [createVerifyRequest] = useMutation(CREATE_VERIFY_REQUEST)
 
@@ -31,30 +31,30 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
     useEffect(() => {
         switch (actionSelected) {
             case 'Weight':
-                setUnverifiedWeight(cache.user.weight)
-                setWeight(cache.user.weight)
+                setUnverifiedWeight(unverifiedLifts.weight)
+                setWeight(unverifiedLifts.weight)
                 break
             case 'Bench':
-                setUnverifiedWeight(cache.user.bestLifts.bench.weight)
-                setUnverifiedReps(cache.user.bestLifts.bench.reps)
-                setWeight(cache.user.bestLifts.bench.weight)
-                setReps(cache.user.bestLifts.bench.reps)
+                setUnverifiedWeight(unverifiedLifts.bestLifts.bench.weight)
+                setUnverifiedReps(unverifiedLifts.bestLifts.bench.reps)
+                setWeight(unverifiedLifts.bestLifts.bench.weight)
+                setReps(unverifiedLifts.bestLifts.bench.reps)
                 break
             case 'Squat':
-                setUnverifiedWeight(cache.user.bestLifts.squat.weight)
-                setUnverifiedReps(cache.user.bestLifts.squat.reps)
-                setWeight(cache.user.bestLifts.squat.weight)
-                setReps(cache.user.bestLifts.squat.reps)
+                setUnverifiedWeight(unverifiedLifts.bestLifts.squat.weight)
+                setUnverifiedReps(unverifiedLifts.bestLifts.squat.reps)
+                setWeight(unverifiedLifts.bestLifts.squat.weight)
+                setReps(unverifiedLifts.bestLifts.squat.reps)
                 break
             case 'Deadlift':
-                setUnverifiedWeight(cache.user.bestLifts.deadlift.weight)
-                setUnverifiedReps(cache.user.bestLifts.deadlift.reps)
-                setWeight(cache.user.bestLifts.deadlift.weight)
-                setReps(cache.user.bestLifts.deadlift.reps)
+                setUnverifiedWeight(unverifiedLifts.bestLifts.deadlift.weight)
+                setUnverifiedReps(unverifiedLifts.bestLifts.deadlift.reps)
+                setWeight(unverifiedLifts.bestLifts.deadlift.weight)
+                setReps(unverifiedLifts.bestLifts.deadlift.reps)
                 break
             default: break
         }
-    }, [actionSelected])
+    }, [actionSelected, unverifiedLifts])
 
     const handleWeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setWeight(prevState => e.target.validity.valid ? Number(e.target.value) : prevState)
