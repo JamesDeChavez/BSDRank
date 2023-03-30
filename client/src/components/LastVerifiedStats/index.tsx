@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react'
 import { UserLoggedInContext } from '../../App'
 import { VerifiedLiftsFragment } from '../../graphql/fragments'
 import { client } from '../../index'
-import cache from '../../utils/cache'
 import './styles.css'
 
 const LastVerifiedStats = () => {
