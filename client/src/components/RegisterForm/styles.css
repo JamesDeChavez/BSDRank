@@ -120,7 +120,7 @@
 }
 
 .RegisterForm_error {
-    color: red;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width: 500px) {
