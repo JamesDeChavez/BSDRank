@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import App from './App';
 
 export const client = new ApolloClient({
-  uri: "http://localhost:3001/",
+  uri: "https://bsd-rank.onrender.com/",
   cache: new InMemoryCache(),
   headers: {
     authorization: localStorage.getItem('bsdToken') || '' 
