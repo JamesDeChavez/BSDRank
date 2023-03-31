@@ -1,14 +1,24 @@
 import { useLazyQuery } from '@apollo/client'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { UserLoggedInContext } from '../../App'
 import { LOGIN_USER } from '../../graphql/query'
 import './styles.css'
 
 const LoginForm = () => {
-    const [login] = useLazyQuery(LOGIN_USER)
+    const [login, { error }] = useLazyQuery(LOGIN_USER)
     const {setUserLoggedIn, setUserId} = useContext(UserLoggedInContext);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage, setErrorMessage] = useState<string | undefined>()
+    
+    useEffect(() => {
+        console.log(error)
+        if (error) setErrorMessage(error.message)
+    }, [error])
+
+    useEffect(() => {
+        setErrorMessage(undefined)
+    }, [username, password])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -42,6 +52,7 @@ const LoginForm = () => {
                     <input id='password' className={`${className}_input`} type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
                 </div>
                 <input type="submit" value="Submit" className={`${className}_submitButton`} />
+                <p className={`${className}_error`}>{errorMessage}</p> 
             </form>
         </div>
     )

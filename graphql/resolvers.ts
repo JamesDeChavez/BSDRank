@@ -52,6 +52,7 @@ const resolvers = {
 
             } catch (error) {
                 console.log(error)
+                return error
             }
         },
         user: async (_: any, args: {id: string}) => {
