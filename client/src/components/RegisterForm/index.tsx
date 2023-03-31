@@ -154,7 +154,11 @@ const RegisterForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!username || !email || !password || !repeatPW || !sex) return
+        if (!username || !email || !password || !repeatPW) return
+        if (!sex) {
+            setErrorMessage('No sex selected')
+            return
+        }
         if (password !== repeatPW) {
             setErrorMessage('Passwords do not match') 
             return
