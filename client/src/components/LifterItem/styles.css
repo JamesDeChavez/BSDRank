@@ -11,3 +11,7 @@
 .LifterItem_text {
     font-size: 0.8rem;
 }
+
+.LifterItem_none {
+    grid-column: 1/5;
+}

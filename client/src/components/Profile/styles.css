@@ -4,13 +4,32 @@
 }
 
 .Profile_container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     row-gap: 0.5rem;
+}
+
+.Profile_headerContainer {
+    display: flex;
+    gap: 0.5rem
+}
+
+.Profile_headerContainer:hover {
+    cursor: pointer;
+    width: fit-content;
+}
+
+.Profile_headerContainer:hover > * {
+    color: #118190;
+    fill: #118190;
 }
 
 .Profile_header {
     font-size: 1.3rem;
+}
+
+.Profile_headerSvg {
+    width: 1rem;
+    fill: #FFFFFF;
 }
 
 .Profile_rowContainer {

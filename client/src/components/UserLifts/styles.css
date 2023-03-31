@@ -3,7 +3,6 @@
     flex-direction: column;
     row-gap: 0.5rem;
     padding: 0 0.5rem;
-    padding-bottom: 3rem;
 }
 
 .UserLifts_header {
@@ -25,13 +24,13 @@
 
 .UserLifts_liftsContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
     text-align: center;
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 1000px) {
     .UserLifts_liftsContainer {
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 }

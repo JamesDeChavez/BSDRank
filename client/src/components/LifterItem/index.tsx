@@ -37,7 +37,7 @@ const LifterItem: React.FC<Props> = ({ leader, index }) => {
             </>
             :
 
-                <p>No Fully Verified Users</p>
+                <p className={`${className}_text ${className}_none`}>No Fully Verified Users</p>
             }            
         </div>
     )

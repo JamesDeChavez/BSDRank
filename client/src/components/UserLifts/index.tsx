@@ -61,11 +61,11 @@ const UserLifts = () => {
                     userLifts.lifts.filter((lift) => {
                         if (filter === '') return lift
                         else return lift.lift === filter
-                    }).map((lift, i) => {
+                    }).slice(0, 15).map((lift, i) => {
                         return <UserLiftItem key={i} date={lift.date} lift={lift.lift} weight={lift.weight} reps={lift.reps} />
                     })
                 :
-                    <p style={{position: 'absolute'}}>No lifts data</p>
+                    <p style={{position: 'absolute'}}>Your workouts will apear here</p>
                 }
             </div>
         </div>

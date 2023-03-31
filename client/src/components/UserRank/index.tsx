@@ -31,6 +31,7 @@ const UserRank = () => {
     const [weight, setWeight] = useState(0)
     const [sex, setSex] = useState('MALE')
     const [popupVisible, setPopupVisible] = useState(false)
+    const [needVerifyVisible, setNeedVerifyVisible] = useState(false)
     const rankImage = require(`../../assets/${rank?.toLowerCase()}.png`)
     
     useEffect(() => {
@@ -85,6 +86,7 @@ const UserRank = () => {
         e.preventDefault()
         const selection = e.target.value
         setVerified(selection)
+        setNeedVerifyVisible(false)
     }
 
     useEffect(() => {
@@ -130,7 +132,8 @@ const UserRank = () => {
                     }
 
                     if (liftingStats.weight === 0 || liftingStats.benchWeight === 0 || liftingStats.squatWeight === 0 || liftingStats.deadliftWeight === 0) {
-                        setRankString('N/A - Need Full Verification')
+                        setNeedVerifyVisible(true)
+                        setRankString('N/A')
                         setRank('b3')
                         setProgress(0)
                         setBenchWeight(verifiedLifts.verified.bench.weight)
@@ -192,6 +195,9 @@ const UserRank = () => {
                         <div className={`${className}_popupContainer`} style={{display: popupVisible ? 'flex' : 'none'}}>
                             <p className={`${className}_text`}>Create an account to get your verified rank</p>
                         </div>
+                        <div className={`${className}_needVerifyContainer`} style={{display: needVerifyVisible ? 'flex' : 'none'}}>
+                            <p className={`${className}_text`}>Need full verification for rank</p>
+                        </div>
                     </div>
                     <div className={`${className}_rankProgressContainer`}>
                         <div className={`${className}_rankBarContainer`}>
@@ -204,7 +210,7 @@ const UserRank = () => {
                     <p className={`${className}_text ${className}_sex`}>
                         <span>Sex:</span> <span>{sex}</span>
                     </p>
-                    <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight}/>
+                    <UserWeightItem weight={weight} isSearch={searchResults ? true : false} setWeight={setWeight} verified={verified} />
                 </div>
             </div>    
             <div className={`${className}_liftsSection`}>

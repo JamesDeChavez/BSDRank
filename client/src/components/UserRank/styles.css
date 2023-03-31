@@ -50,14 +50,24 @@
 .UserRank_popupContainer {
     position: absolute;
     top: -300%;
-    background-color: #118190;
+    background-color: #264264;
     padding: 0.5rem;
-    border: solid 1px #FFFFFF;
+    border: solid 1px #FFFFFF30;
+    border-radius: 5px;
+}
+
+.UserRank_needVerifyContainer {
+    position: absolute;
+    top: -300%;
+    background-color: #264264;
+    padding: 0.5rem;
+    border: solid 1px #FFFFFF30;
     border-radius: 5px;
 }
 
 .UserRank_select {
     border: none;
+    outline: none;
     font-size: 1rem;
     background-color: transparent;
 }
@@ -191,6 +201,7 @@
 
 .UserWeightItem_weightContainer {
     display: grid;
+    grid-template-rows: 1fr 1fr;
     font-size: 0.9rem;
     text-align: center;
 }

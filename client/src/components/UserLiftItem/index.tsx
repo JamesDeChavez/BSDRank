@@ -69,7 +69,7 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
         const currentBestWeight = bestLifts.bestLifts[liftName].weight
         const currentBestReps = bestLifts.bestLifts[liftName].reps
 
-        if (currentBestWeight === weight && currentBestReps === reps && updatedLifts.filter(lft => lft.lift === lift).length) {
+        if (currentBestWeight === weight && currentBestReps === reps) {
             const newBest = findNewBest(updatedLifts, lift)
             newBestLifts = { 
                 ...newBestLifts, 

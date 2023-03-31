@@ -7,13 +7,13 @@ import './styles.css'
 interface Props {
     weight: number,
     setWeight: React.Dispatch<React.SetStateAction<number>>,
-    isSearch: boolean
+    isSearch: boolean,
+    verified: string
 }
 
-const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
+const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch, verified }) => {
     const { userId } = useContext(UserLoggedInContext)
     const [editWeight] = useMutation(UPDATE_WEIGHT)
-
     const [editActive, setEditActive] = useState(false)
 
     const handleWeightClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -36,15 +36,15 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch }) => {
     return (
         <div className={className}>
             <div className={`${className}_weightContainer`}>
-                {!isSearch ?
+                {isSearch || verified === 'Verified' ?
+                    <p>Weight: </p>
+                :
                     <button className={`${className}_weightDropDown`} onClick={handleWeightClick}>
                         <span>Weight:</span>
                         <svg className={`${className}_scrollTriangle`} viewBox="0 0 100 50">
                             <polygon points='5,5 95,5 45,50'/>
                         </svg>
                     </button>
-                :
-                    <p>Weight: </p>
                 }
                 {editActive ?
                     <input 
