@@ -28,6 +28,7 @@
     border: none;
     font-size: 1rem;
     color:#FFFFFF;
+    max-width: 265px;
 }
 
 .RegisterForm_formSectionContainer {
@@ -120,4 +121,10 @@
 
 .RegisterForm_error {
     color: red;
+}
+
+@media screen and (min-width: 500px) {
+    .RegisterForm_input {
+        max-width: none
+    }
 }

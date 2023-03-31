@@ -28,6 +28,7 @@
     border: none;
     font-size: 1rem;
     color:#FFFFFF;
+    max-width: 262px;
 }
 
 .VerifyForm_buttonSelectContainer {
@@ -81,4 +82,10 @@
 .VerifyForm_cancelButton:hover {
     cursor: pointer;
     border: solid 1px #FFFFFF;
+}
+
+@media screen and (min-width:500px) {
+    .VerifyForm_urlInput {
+        max-width: none;
+    }
 }

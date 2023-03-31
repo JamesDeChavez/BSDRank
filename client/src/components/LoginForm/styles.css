@@ -28,6 +28,7 @@
     border: none;
     font-size: 1rem;
     color:#FFFFFF;
+    max-width: 265px;
 }
 
 .LoginForm_submitButton {
@@ -41,4 +42,10 @@
 .LoginForm_submitButton:hover {
     cursor: pointer;
     border: solid 1px #FFFFFF;
+}
+
+@media screen and (min-width: 500px) {
+    .LoginForm_input {
+        max-width: none
+    }
 }
