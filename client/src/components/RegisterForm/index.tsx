@@ -155,6 +155,10 @@ const RegisterForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!username || !email || !password || !repeatPW || !sex) return
+        if (password !== repeatPW) {
+            setErrorMessage('Passwords do not match') 
+            return
+        }
 
         const registerData = {
             username, email, password, sex, weight, bestLifts: {
