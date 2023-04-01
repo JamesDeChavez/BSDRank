@@ -10,6 +10,7 @@ import { DELETE_LIFT } from '../../graphql/mutations'
 import { LiftSubmission } from '../../utils/interfaces'
 import { findNewBest } from '../../utils/functions'
 import './styles.css'
+import Loading from '../Loading'
 
 interface Props {
     date: string
@@ -22,7 +23,7 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
     const { userId } = useContext(UserLoggedInContext)
     const userLifts = client.readFragment({ id: `User:${userId}`, fragment: UserLiftsFragment })
     const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment })
-    const [deleteLift] = useMutation(DELETE_LIFT)
+    const [deleteLift, {loading}] = useMutation(DELETE_LIFT)
     const [overlayVisible, setOverlayVisible] = useState(false)
 
     const handleLiftClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -101,7 +102,8 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
     return (
         <div className={className} onClick={handleLiftClick} >
             <div className={`${className}_overlayContainer`} style={{display: overlayVisible ? 'flex' : 'none'}}>
-                <button className={`${className}_button`} onClick={handleDeleteClick}>Delete</button>
+                <button className={`${className}_button`} onClick={handleDeleteClick} style={{display: loading ? 'none' : 'block'}}>Delete</button>
+                <Loading loading={loading} />
                 <button className={`${className}_button`} onClick={handleCancelClick}>Cancel</button>
             </div>
             <p className={`${className}_text`}>{date}</p>

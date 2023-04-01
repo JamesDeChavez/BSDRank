@@ -1,10 +1,10 @@
-import { useContext, useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import { UserLoggedInContext } from '../../App'
 import { CREATE_USER } from '../../graphql/mutations'
 import classNames from 'classnames'
-import { gsap } from 'gsap'
 import './styles.css'
+import Loading from '../Loading'
 
 const RegisterForm = () => {
     const [createUser, { error, loading }] = useMutation(CREATE_USER)
@@ -26,16 +26,6 @@ const RegisterForm = () => {
     const intervalRef: any = useRef()
     const changeRef: any = useRef()
     const countRef: any = useRef()
-    const root = useRef(null)
-
-    useLayoutEffect(() => {
-        const gsapContext = gsap.context(() => {
-            gsap.to(`.${className}_circle1`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true})
-            gsap.to(`.${className}_circle2`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true, delay: 0.2})
-            gsap.to(`.${className}_circle3`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true, delay: 0.4})
-            return () => gsapContext.revert()
-        }, root)
-    }, [])
 
     const handleWeightInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name
@@ -340,14 +330,7 @@ const RegisterForm = () => {
                 </div>
                 <input className={`${className}_submitButton`} type="submit" value='Create Account' />
                 <p className={`${className}_error`}>{errorMessage}</p>
-                <div className={`${className}_loadingContainer`} ref={root} style={{display: loading ? 'flex' : 'none'}} > 
-                    <p className={`${className}_loading`}>Loading</p>
-                    <svg viewBox="0 0 100 100" className={`${className}_loadingSvg`} >
-                        <circle fill="#fff" stroke="none" cx="25" cy="50" r="6" className={`${className}_circle1`} />
-                        <circle fill="#fff" stroke="none" cx="50" cy="50" r="6" className={`${className}_circle2`} />
-                        <circle fill="#fff" stroke="none" cx="75" cy="50" r="6" className={`${className}_circle3`} />
-                    </svg>
-                </div> 
+                <Loading loading={loading} />
             </form>
         </div>
     )

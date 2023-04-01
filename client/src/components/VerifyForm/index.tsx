@@ -5,6 +5,7 @@ import { PendingVerifiedFragment, UnverifiedLiftsFragment } from '../../graphql/
 import { useMutation } from '@apollo/client'
 import { CREATE_VERIFY_REQUEST, UPDATE_PENDING_VERIFIED } from '../../graphql/mutations'
 import './styles.css'
+import Loading from '../Loading'
 
 interface Props {
     setFormVisible: React.Dispatch<React.SetStateAction<boolean>>,
@@ -15,8 +16,8 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
     const { userId } = useContext(UserLoggedInContext)
     const pendingVerifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment })
     const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment })
-    const [updatePendingVerified] = useMutation(UPDATE_PENDING_VERIFIED)
-    const [createVerifyRequest] = useMutation(CREATE_VERIFY_REQUEST)
+    const [updatePendingVerified, {loading: loading1}] = useMutation(UPDATE_PENDING_VERIFIED)
+    const [createVerifyRequest, {loading: loading2}] = useMutation(CREATE_VERIFY_REQUEST)
 
     const [unverifiedWeight, setUnverifiedWeight] = useState(0)
     const [unverifiedReps, setUnverifiedReps] = useState(0)
@@ -177,6 +178,7 @@ const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
                     <input type="submit" value="Submit" className={`${className}_submitButton`} />
                     <button onClick={() => setFormVisible(false)} className={`${className}_cancelButton`}>Cancel</button>
                 </div>
+                <Loading loading={loading1 || loading2} />
             </form>            
         </div>
     )

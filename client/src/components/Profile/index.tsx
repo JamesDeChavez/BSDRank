@@ -8,12 +8,13 @@ import { GET_LEADERBOARD } from '../../graphql/query'
 import { ReactComponent as PlusSvg } from '../../assets/plus-solid.svg'
 import { ReactComponent as MinusSvg } from '../../assets/minus-solid.svg'
 import './styles.css'
+import Loading from '../Loading'
 
 const Profile = () => {
     const { userId, setUserLoggedIn } = useContext(UserLoggedInContext)
     const userProfile = client.readFragment({ id: `User:${userId}`, fragment: UserProfile})
     const leaderboardRequest = useQuery(GET_LEADERBOARD)
-    const [deleteUser] = useMutation(DELETE_USER)
+    const [deleteUser, {loading}] = useMutation(DELETE_USER)
     const [updateLeaderboard] = useMutation(UPDATE_LEADERBOARD)
     const [profileVisible, setProfileVisible] = useState(false)
     const [verifyVisible, setVerifyVisible] = useState(false)
@@ -86,7 +87,8 @@ const Profile = () => {
                             <button className={`${className}_button`} onClick={handleDeleteClick}>Cancel</button>
                         </>}
                     </div>
-                    <p className={`${className}_text`} style={{display: verifyVisible ? 'block' : 'none', textAlign: 'center'}}>Are you sure?</p>
+                    <p className={`${className}_text`} style={{display: verifyVisible && !loading ? 'block' : 'none', textAlign: 'center'}}>Are you sure?</p>
+                    <Loading loading={loading} />
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import HeroBranch from "../../branches/Hero"
 import CallToAction from "../../components/CallToAction"
 import Footer from "../../components/Footer"
 import Navbar from "../../components/Navbar"
-import RecentLifts from "../../components/CommunityTable"
+import CommunityTable from "../../components/CommunityTable"
 import './styles.css'
 
 export const LandingPageContext = React.createContext<{
@@ -30,7 +30,7 @@ const LandingPage = () => {
                 <div className={`${className}_main`}>
                     <HeroBranch/>
                     <CallToAction/>
-                    <RecentLifts/>
+                    <CommunityTable/>
                 </div>
                 <Footer/>
             </div>

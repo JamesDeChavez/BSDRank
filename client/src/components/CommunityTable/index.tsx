@@ -2,9 +2,10 @@ import { useQuery } from '@apollo/client'
 import { GET_LEADERBOARD } from '../../graphql/query'
 import LifterItem from '../LifterItem'
 import './styles.css'
+import Loading from '../Loading'
 
 const CommunityTable = () => {
-    const { data } = useQuery(GET_LEADERBOARD)
+    const { data, loading } = useQuery(GET_LEADERBOARD)
 
     const className = 'CommunityTable'
     return (
@@ -19,7 +20,7 @@ const CommunityTable = () => {
                     <p>S</p>
                     <p>D</p>
                 </div>
-                <div className={`${className}_table`}>
+                <div className={`${className}_table`} style={{display: loading ? 'none' : 'block' }}>
                     {data && data.leaderboard.leaderboard.length ? 
                         data.leaderboard.leaderboard.map((leader: {userId: number, wilksScore: number}, i: number) => {
                             return <LifterItem key={i} leader={leader} index={i} />
@@ -28,6 +29,7 @@ const CommunityTable = () => {
                         <p style={{ padding: '0.5rem' }}>No verified users</p>
                     }
                 </div>
+                <Loading loading={loading} />
             </div>
         </div>
     )

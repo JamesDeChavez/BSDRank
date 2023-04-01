@@ -3,6 +3,7 @@ import { useState, useContext } from 'react'
 import { UserLoggedInContext } from '../../App'
 import { UPDATE_WEIGHT } from '../../graphql/mutations'
 import './styles.css'
+import Loading from '../Loading'
 
 interface Props {
     weight: number,
@@ -13,7 +14,7 @@ interface Props {
 
 const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch, verified }) => {
     const { userId } = useContext(UserLoggedInContext)
-    const [editWeight] = useMutation(UPDATE_WEIGHT)
+    const [editWeight, {loading}] = useMutation(UPDATE_WEIGHT)
     const [editActive, setEditActive] = useState(false)
 
     const handleWeightClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -61,7 +62,8 @@ const UserWeightItem: React.FC<Props> = ({ weight, setWeight, isSearch, verified
                 }
             </div>
             <div className={`${className}_buttonContainer`} style={{display: !editActive ? 'none' : 'flex'}}>
-                <div className={`${className}_button`} onClick={handleSubmit} style={{display: editActive ? 'block' : 'none'}}>Submit</div>
+                <div className={`${className}_button`} onClick={handleSubmit} style={{display: editActive && !loading ? 'block' : 'none'}}>Submit</div>
+                <Loading loading={loading} />
             </div>
         </div>
     )

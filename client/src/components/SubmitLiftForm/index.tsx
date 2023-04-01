@@ -1,4 +1,4 @@
-import { useRef, useState, useContext, useEffect } from 'react'
+import { useRef, useState, useContext } from 'react'
 import { useMutation } from '@apollo/client'
 import classNames from 'classnames'
 import { CREATE_LIFT } from '../../graphql/mutations'
@@ -8,13 +8,14 @@ import { UserLiftsFragment, BestLiftsFragment } from '../../graphql/fragments'
 import { AuthRenderContext } from '../../branches/Auth'
 import { calcOneRepMax } from '../../utils/functions'
 import './styles.css'
+import Loading from '../Loading'
 
 const SubmitLiftForm = () => {
     const { userId } = useContext(UserLoggedInContext)
     const [ RENDERS, setRender ] = useContext(AuthRenderContext)
     const userLifts = client.readFragment({ id: `User:${userId}`, fragment: UserLiftsFragment })
     const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment })
-    const [createLift] = useMutation(CREATE_LIFT)
+    const [createLift, {loading}] = useMutation(CREATE_LIFT)
 
     const LIFT_OPTIONS = ['Bench', 'Squat', 'Deadlift']
     const [lift, setLift] = useState('')
@@ -176,6 +177,7 @@ const SubmitLiftForm = () => {
                     </div>
                 </div>
                 <input type="submit" value="Submit Lift" className={`${className}_submitButton`}/>
+                <Loading loading={loading} />
             </form>
         </div>
     )
