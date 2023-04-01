@@ -28,7 +28,7 @@
     border: none;
     font-size: 1rem;
     color:#FFFFFF;
-    max-width: 265px;
+    width: 100%;
 }
 
 .LoginForm_submitButton {
