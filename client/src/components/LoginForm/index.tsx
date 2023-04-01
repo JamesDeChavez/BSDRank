@@ -1,24 +1,34 @@
+import { useContext, useEffect, useState, useLayoutEffect, useRef } from 'react'
 import { useLazyQuery } from '@apollo/client'
-import { useContext, useEffect, useState } from 'react'
 import { UserLoggedInContext } from '../../App'
 import { LOGIN_USER } from '../../graphql/query'
+import { gsap } from 'gsap'
 import './styles.css'
 
 const LoginForm = () => {
-    const [login, { error }] = useLazyQuery(LOGIN_USER)
+    const [login, { error, loading }] = useLazyQuery(LOGIN_USER)
     const {setUserLoggedIn, setUserId} = useContext(UserLoggedInContext);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState<string | undefined>()
-    
+    const root = useRef(null)
+
     useEffect(() => {
-        console.log(error)
         if (error) setErrorMessage(error.message)
     }, [error])
 
     useEffect(() => {
         setErrorMessage(undefined)
     }, [username, password])
+
+    useLayoutEffect(() => {
+        const gsapContext = gsap.context(() => {
+            gsap.to(`.${className}_circle1`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true})
+            gsap.to(`.${className}_circle2`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true, delay: 0.2})
+            gsap.to(`.${className}_circle3`, { duration: 0.6, opacity: 0, repeat: -1, yoyo: true, delay: 0.4})
+            return () => gsapContext.revert()
+        }, root)
+    }, [])
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -52,7 +62,15 @@ const LoginForm = () => {
                     <input id='password' className={`${className}_input`} type="password" value={password} onChange={e => setPassword(e.target.value)} required/>
                 </div>
                 <input type="submit" value="Submit" className={`${className}_submitButton`} />
-                <p className={`${className}_error`}>{errorMessage}</p> 
+                <p className={`${className}_error`}>{errorMessage}</p>
+                <div className={`${className}_loadingContainer`} ref={root} style={{display: loading ? 'flex' : 'none'}} > 
+                    <p className={`${className}_loading`}>Loading</p>
+                    <svg viewBox="0 0 100 100" className={`${className}_loadingSvg`} >
+                        <circle fill="#fff" stroke="none" cx="25" cy="50" r="6" className={`${className}_circle1`} />
+                        <circle fill="#fff" stroke="none" cx="50" cy="50" r="6" className={`${className}_circle2`} />
+                        <circle fill="#fff" stroke="none" cx="75" cy="50" r="6" className={`${className}_circle3`} />
+                    </svg>
+                </div> 
             </form>
         </div>
     )

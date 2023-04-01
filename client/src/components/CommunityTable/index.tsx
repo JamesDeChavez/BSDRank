@@ -20,9 +20,13 @@ const CommunityTable = () => {
                     <p>D</p>
                 </div>
                 <div className={`${className}_table`}>
-                    {data && data.leaderboard.leaderboard.map((leader: {userId: number, wilksScore: number}, i: number) => {
-                        return <LifterItem key={i} leader={leader} index={i} />
-                    })}
+                    {data && data.leaderboard.leaderboard.length ? 
+                        data.leaderboard.leaderboard.map((leader: {userId: number, wilksScore: number}, i: number) => {
+                            return <LifterItem key={i} leader={leader} index={i} />
+                        })
+                    :
+                        <p style={{ padding: '0.5rem' }}>No verified users</p>
+                    }
                 </div>
             </div>
         </div>

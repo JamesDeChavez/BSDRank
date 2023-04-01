@@ -44,6 +44,17 @@
     border: solid 1px #FFFFFF;
 }
 
+.LoginForm_loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginForm_loadingSvg {
+    width: 2rem;
+    height: 100%;
+}
+
 @media screen and (min-width: 500px) {
     .LoginForm_input {
         max-width: none

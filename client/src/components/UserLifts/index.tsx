@@ -65,7 +65,7 @@ const UserLifts = () => {
                         return <UserLiftItem key={i} date={lift.date} lift={lift.lift} weight={lift.weight} reps={lift.reps} />
                     })
                 :
-                    <p style={{position: 'absolute'}}>Your workouts will apear here</p>
+                    <p style={{gridColumn: '1/4', justifySelf: 'flex-start'}}>Your workouts will apear here</p>
                 }
             </div>
         </div>

@@ -121,6 +121,19 @@
 
 .RegisterForm_error {
     color: #FFFFFF;
+    text-align: center;
+}
+
+
+.RegisterForm_loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RegisterForm_loadingSvg {
+    width: 2rem;
+    height: 100%;
 }
 
 @media screen and (min-width: 500px) {
