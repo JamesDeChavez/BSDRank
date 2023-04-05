@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from 'react'
+import { useState, useContext, useRef, useEffect } from 'react'
 import { calculateWilksScore, determineUserRank } from '../../utils/functions'
 import classNames from 'classnames'
 import './styles.css'
@@ -16,14 +16,22 @@ const RankSearch = () => {
     const [deadliftWeight, setDeadliftWeight] = useState(265)
     const [deadliftReps, setDeadliftReps] = useState(5)
     const [sex, setSex] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const weightRef: any = useRef()
     const intervalRef: any = useRef()
     const changeRef: any = useRef()
     const countRef: any = useRef()
 
+    useEffect(() => {
+        setErrorMessage('')
+    }, [weight, benchWeight, benchReps, squatWeight, squatReps, deadliftWeight, deadliftReps, sex])
+
     const submitSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!sex) return;
+        if (!sex) {
+            setErrorMessage('Please select your sex to perform search')
+            return
+        }
 
         const userLiftingStats = {
             weight, benchWeight, benchReps, squatWeight, squatReps, deadliftWeight, deadliftReps, sex
@@ -280,8 +288,8 @@ const RankSearch = () => {
                         }}>Female</button>
                     </div>
                 </div>
-
                 <input type="submit" value='Calculate BSD Rank' className={`${className}_submitButton`} />
+                <p className={`${className}_error`}>{errorMessage}</p>
             </form>            
         </div>
     )
