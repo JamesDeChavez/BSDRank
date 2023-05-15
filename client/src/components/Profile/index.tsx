@@ -12,7 +12,7 @@ import Loading from '../Loading'
 
 const Profile = () => {
     const { userId, setUserLoggedIn } = useContext(UserLoggedInContext)
-    const userProfile = client.readFragment({ id: `User:${userId}`, fragment: UserProfile})
+    const userProfile = client.readFragment({ id: `User:${userId}`, fragment: UserProfile}) ?? {username: '', email: ''}
     const leaderboardRequest = useQuery(GET_LEADERBOARD)
     const [deleteUser, {loading}] = useMutation(DELETE_USER)
     const [updateLeaderboard] = useMutation(UPDATE_LEADERBOARD)
@@ -65,9 +65,9 @@ const Profile = () => {
                 <div className={`${className}_headerContainer`} onClick={e => setProfileVisible(prevState => !prevState)}>
                     <h3 className={`${className}_header`}>Your Profile</h3>
                     {profileVisible ?
-                        <MinusSvg className={`${className}_headerSvg`} />
+                        <MinusSvg className={`${className}_headerSvg`} data-testid="minusSvg" />
                     :
-                        <PlusSvg className={`${className}_headerSvg`} />
+                        <PlusSvg className={`${className}_headerSvg`} data-testid="plusSvg" />
                     }
                 </div>
                 <div className={`${className}_profileContainer`} style={{ display: profileVisible ? 'grid' : 'none' }}>

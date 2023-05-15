@@ -108,9 +108,9 @@ const UserLiftItem: React.FC<Props> = ({ date, lift, weight, reps }) => {
             </div>
             <p className={`${className}_text`}>{date}</p>
             {{
-                'Bench': <BenchSVG className={`${className}_svgIcon`} />,
-                'Squat': <SquatSVG className={`${className}_svgIcon`} />,
-                'Deadlift': <DeadliftSVG className={`${className}_svgIcon`} />
+                'Bench': <BenchSVG className={`${className}_svgIcon`} data-testid={'svgTestId'} />,
+                'Squat': <SquatSVG className={`${className}_svgIcon`} data-testid={'svgTestId'} />,
+                'Deadlift': <DeadliftSVG className={`${className}_svgIcon`} data-testid={'svgTestId'} />
             }[lift]}
             <p className={`${className}_text`}>{`${weight} x ${reps}`}</p>
         </div>

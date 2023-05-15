@@ -24,7 +24,7 @@ const NavButtons = () => {
                 {[`${className}_active`]: render === RENDERS[0]}
                 )} onClick={(e) => navButtonClick(e, 0)}
             >
-                <HouseSVG className={`${className}_icon`} />
+                <HouseSVG data-testid='svgNavIcon' className={`${className}_icon`} />
                 <p>Home</p>
             </button>
             <button className={classNames(
@@ -32,7 +32,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[1]}
                 )} onClick={(e) => navButtonClick(e, 1)}
             >
-                <PlusSVG className={`${className}_icon`} />
+                <PlusSVG data-testid='svgNavIcon' className={`${className}_icon`} />
                 <p>New Lift</p>
             </button>
             <button className={classNames(
@@ -40,7 +40,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[2]}
                 )} onClick={(e) => navButtonClick(e, 2)}
             >
-                <CheckSVG className={`${className}_icon`} />
+                <CheckSVG data-testid='svgNavIcon' className={`${className}_icon`} />
                 <p>Verify Rank</p>
             </button>
             <button className={classNames(
@@ -48,7 +48,7 @@ const NavButtons = () => {
                     {[`${className}_active`]: render === RENDERS[3]}
                 )} onClick={(e) => navButtonClick(e, 3)}
             >
-                <PeopleSVG className={`${className}_icon`} />
+                <PeopleSVG data-testid='svgNavIcon' className={`${className}_icon`} />
                 <p>Community</p>
             </button>
         </div>

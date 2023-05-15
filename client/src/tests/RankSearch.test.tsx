@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react'
+import { screen, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import userEvent from '@testing-library/user-event'
 import { HeroBranchContext } from '../branches/Hero'
@@ -112,5 +112,32 @@ describe('RankSearch', () => {
         const submitButton = screen.getByRole('button', { name: 'Calculate BSD Rank' })
         expect(submitButton).toBeInTheDocument()
     
+    })
+    it('should display error message if no sex is selected', async () => {
+        render(
+            <HeroBranchContext.Provider value={mockHeroContext} >
+                <LandingPageContext.Provider value={mockLandingContext} >
+                    <RankSearch />
+                </LandingPageContext.Provider>
+            </HeroBranchContext.Provider>
+        )
+        const submitButton = screen.getByRole('button', { name: 'Calculate BSD Rank' })
+        userEvent.click(submitButton)
+        const errorMessage = await screen.findByText('Please select your sex to perform search')
+        expect(errorMessage).toBeInTheDocument()
+    })
+    it('should call setResultsVisible if sex is chosen and submit button is clicked', async () => {
+        render(
+            <HeroBranchContext.Provider value={mockHeroContext} >
+                <LandingPageContext.Provider value={mockLandingContext} >
+                    <RankSearch />
+                </LandingPageContext.Provider>
+            </HeroBranchContext.Provider>
+        )
+        const maleButton = screen.getByRole('button', { name: 'Male' })
+        userEvent.click(maleButton)
+        const submitButton = screen.getByRole('button', { name: 'Calculate BSD Rank' })
+        userEvent.click(submitButton)
+        waitFor(() => expect(mockLandingContext.setResultsVisible).toHaveBeenCalled())
     })
 })
