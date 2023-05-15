@@ -2,18 +2,16 @@ import { useContext } from 'react'
 import { LandingPageContext } from '../../pages/Landing';
 import './styles.css'
 
-const NonAuthNavButtons = () => {
+const NonAuthNavButton = () => {
     const { setLoginVisible, setRegisterVisible, setResultsVisible } = useContext(LandingPageContext)
 
     const navClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, n: number) => {
         e.preventDefault()
         if (n === 1) {
-            console.log('login')
             setRegisterVisible(false)
             setResultsVisible(false)
             setLoginVisible(true)
         } else {
-            console.log('register')
             setLoginVisible(false)
             setResultsVisible(false)
             setRegisterVisible(true)
@@ -29,4 +27,4 @@ const NonAuthNavButtons = () => {
     );
 };
 
-export default NonAuthNavButtons
+export default NonAuthNavButton

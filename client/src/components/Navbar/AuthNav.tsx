@@ -7,15 +7,14 @@ import './styles.css'
 
 const AuthNavButtons = () => {
     const {setUserLoggedIn, userId} = useContext(UserLoggedInContext)
-    const { role } = client.readFragment({ id: `User:${userId}`, fragment: UserRoleFragment })
+    const { role } = client.readFragment({ id: `User:${userId}`, fragment: UserRoleFragment }) || {role: ''}
     const [RENDERS, setRender] = useContext(AuthRenderContext)
 
     const handleLogoutClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         client.clearStore()
         localStorage.clear()
-        setUserLoggedIn(false)
-        
+        setUserLoggedIn(false)        
     };
 
     const handleAdminClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

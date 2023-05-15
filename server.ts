@@ -4,6 +4,8 @@ import { startStandaloneServer } from '@apollo/server/standalone'
 import typeDefs from './graphql/typeDefs'
 import resolvers from './graphql/resolvers'
 import dotenv from 'dotenv'
+import db from './models'
+import { WorkoutInputs } from './utils/interfaces'
 
 dotenv.config()
 const PORT = Number(process.env.PORT) || 3001
@@ -16,7 +18,7 @@ const server = new ApolloServer({
 const main = async () => {
     await mongoose.connect(`${MONGODB_URI}`)
     const { url } = await startStandaloneServer(server, {
-        context: async ({req, res}) => ({
+        context: async ({ req, res }) => ({
             authScope: req.headers.authorization
         }),
         listen: { port: PORT }

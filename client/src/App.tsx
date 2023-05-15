@@ -6,15 +6,11 @@ import LandingPage from './pages/Landing';
 import './App.css';
 
 export const UserLoggedInContext = React.createContext<{
-  userLoggedIn: boolean,
-  setUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>,
-  userId: string,
-  setUserId: React.Dispatch<React.SetStateAction<string>>
+  userLoggedIn: boolean, setUserLoggedIn: React.Dispatch<React.SetStateAction<boolean>>,
+  userId: string, setUserId: React.Dispatch<React.SetStateAction<string>>
 }>({
-  userLoggedIn: false,
-  setUserLoggedIn: () => {},
-  userId: '',
-  setUserId: () => {}
+  userLoggedIn: false, setUserLoggedIn: () => {},
+  userId: '', setUserId: () => {}
 })
 
 function App() {
