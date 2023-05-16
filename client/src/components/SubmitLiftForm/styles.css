@@ -90,3 +90,7 @@
 .SubmitLiftForm_submitButton:hover {
     border: solid 1px #FFFFFF
 }
+
+.SubmitLiftForm_error {
+    text-align: center;
+}

@@ -14,8 +14,8 @@ interface Props {
 
 const VerifyForm: React.FC<Props> = ({ setFormVisible, actionSelected }) => {
     const { userId } = useContext(UserLoggedInContext)
-    const pendingVerifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment })
-    const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment })
+    const pendingVerifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment }) ?? { pendingVerified: { weight: {amount: 0, videoURL: ''}, bench: { weight: 0, reps: 0, videoURL: '' }, squat: { weight: 0, reps: 0, videoURL: '' }, deadlift: { weight: 0, reps: 0, videoURL: '' } } } 
+    const unverifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: UnverifiedLiftsFragment }) ?? { weight: 0, bestLifts: { bench: { weight: 0, reps: 0 }, squat: { weight: 0, reps: 0 }, deadlift: { weight: 0, reps: 0 } }  }
     const [updatePendingVerified, {loading: loading1}] = useMutation(UPDATE_PENDING_VERIFIED)
     const [createVerifyRequest, {loading: loading2}] = useMutation(CREATE_VERIFY_REQUEST)
 

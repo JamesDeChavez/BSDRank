@@ -14,8 +14,6 @@ interface Props {
 
 const LifterItem: React.FC<Props> = ({ leader, index }) => {
     const { data } = useQuery(GET_USER, { variables: { userId: leader.userId }})
-    console.log('data', data)
-
     const [rank, setRank] = useState('')
 
     useEffect(() => {

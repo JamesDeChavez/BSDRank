@@ -6,8 +6,8 @@ import { PendingVerifiedFragment } from '../../graphql/fragments'
 
 const PendingVerified = () => {
     const { userId } = useContext(UserLoggedInContext)
-    const { pendingVerified } = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment})
-
+    const { pendingVerified } = client.readFragment({ id: `User:${userId}`, fragment: PendingVerifiedFragment}) ?? { pendingVerified: { weight: { amount: 0 }, bench: { weight: 0, reps: 0 }, squat: { weight: 0, reps: 0 }, deadlift: { weight: 0, reps: 0 } } }
+    console.log('pendingVerified', pendingVerified)
 
     const className = 'PendingVerified'
     return (

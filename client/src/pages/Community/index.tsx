@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import NavButtons from "../../components/NavButtons";
-import RecentLifts from "../../components/CommunityTable";
+import CommunityTable from "../../components/CommunityTable";
 import './styles.css'
 
 const CommunityPage = () => {
@@ -9,7 +9,7 @@ const CommunityPage = () => {
         <div className={className}>
             <Navbar/>
             <div className={`${className}_main`}>
-                <RecentLifts/>
+                <CommunityTable/>
             </div>
             <NavButtons/>
         </div>

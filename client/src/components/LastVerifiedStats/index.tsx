@@ -6,7 +6,7 @@ import './styles.css'
 
 const LastVerifiedStats = () => {
     const { userId } = useContext(UserLoggedInContext)
-    const verifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: VerifiedLiftsFragment })
+    const verifiedLifts = client.readFragment({ id: `User:${userId}`, fragment: VerifiedLiftsFragment }) ?? { verified: {weight: {amount: 0}, bench: {weight: 0, reps: 0}, squat: {weight: 0, reps: 0}, deadlift: {weight: 0, reps: 0}}}
 
     const [weight, setWeight] = useState(0)
     const [benchWeight, setBenchWeight] = useState(0)

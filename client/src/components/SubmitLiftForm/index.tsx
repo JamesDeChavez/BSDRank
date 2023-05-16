@@ -1,4 +1,4 @@
-import { useRef, useState, useContext } from 'react'
+import { useRef, useState, useContext, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import classNames from 'classnames'
 import { CREATE_LIFT } from '../../graphql/mutations'
@@ -13,18 +13,23 @@ import Loading from '../Loading'
 const SubmitLiftForm = () => {
     const { userId } = useContext(UserLoggedInContext)
     const [ RENDERS, setRender ] = useContext(AuthRenderContext)
-    const userLifts = client.readFragment({ id: `User:${userId}`, fragment: UserLiftsFragment })
-    const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment })
+    const userLifts = client.readFragment({ id: `User:${userId}`, fragment: UserLiftsFragment }) ?? {lifts: []}
+    const bestLifts = client.readFragment({ id: `User:${userId}`, fragment: BestLiftsFragment }) ?? {bestLifts: {bench: {weight: '0', reps: '0'}, squat: {weight: '0', reps: '0'}, deadlift: {weight: '0', reps: '0'}}}
     const [createLift, {loading}] = useMutation(CREATE_LIFT)
 
     const LIFT_OPTIONS = ['Bench', 'Squat', 'Deadlift']
     const [lift, setLift] = useState('')
     const [weight, setWeight] = useState<number>(bestLifts.bestLifts.squat.weight)
     const [reps, setReps] = useState<number>(bestLifts.bestLifts.squat.reps)
+    const [error, setError] = useState<string | undefined>()
     const weightRef: any = useRef()
     const countRef: any = useRef()
     const changeRef: any = useRef()
     const intervalRef: any = useRef()
+
+    useEffect(() => {
+        setError(undefined)
+    }, [lift, weight, reps])
 
     const handleLiftClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, n: number) => {
         e.preventDefault()
@@ -92,6 +97,9 @@ const SubmitLiftForm = () => {
 
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if (!lift) { setError('Please select a lift'); return }
+        if (weight === 0) { setError('Please enter a weight'); return }
+        if (reps === 0) { setError('Please enter reps'); return }
         const date = new Date()
         const newLiftsData = [{
             lift, weight, reps, date: date.toLocaleDateString()
@@ -178,6 +186,7 @@ const SubmitLiftForm = () => {
                 </div>
                 <input type="submit" value="Submit Lift" className={`${className}_submitButton`}/>
                 <Loading loading={loading} />
+                {error && <p className={`${className}_error`}>{error}</p>}
             </form>
         </div>
     )
