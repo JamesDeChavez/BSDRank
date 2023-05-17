@@ -59,7 +59,7 @@ const HeroBranch = () => {
                     <picture>
                         <source srcSet={'./squatrack_MJ2.webp'} type="image/webp" />
                         <source srcSet={'./squatrack_MJ2.png'} type='image/png' />
-                        <img src={'./squatrack_MJ2.png'} alt="squatRack" className={`${className}_image`} loading="lazy" />
+                        <img src={'./squatrack_MJ2.png'} alt="squatRack" className={`${className}_image`} />
                     </picture>
                 </div>
             </div>        
