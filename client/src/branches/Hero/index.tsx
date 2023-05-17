@@ -1,14 +1,13 @@
 import React, { useState, useRef, useLayoutEffect, useContext } from 'react'
 import RankSearch from '../../components/RankSearch'
-import UserRank from '../../components/UserRank';
-import squatRackImage from '../../assets/squatrack_MJ2.png'
-import { SearchResults } from '../../utils/interfaces';
-import gsap from 'gsap';
-import LoginForm from '../../components/LoginForm';
-import RegisterForm from '../../components/RegisterForm';
+import UserRank from '../../components/UserRank'
+import { SearchResults } from '../../utils/interfaces'
+import gsap from 'gsap'
+import LoginForm from '../../components/LoginForm'
+import RegisterForm from '../../components/RegisterForm'
+import { LandingPageContext } from '../../pages/Landing'
+import { UserLoggedInContext } from '../../App'
 import './styles.css'
-import { LandingPageContext } from '../../pages/Landing';
-import { UserLoggedInContext } from '../../App';
 
 export const HeroBranchContext = React.createContext<{
     searchResults: SearchResults | undefined,
@@ -57,7 +56,11 @@ const HeroBranch = () => {
                 </div>
             }
                 <div className={`${className}_imageContainer`}>
-                    <img src={squatRackImage} alt="squatRack" className={`${className}_image`} />
+                    <picture>
+                        <source srcSet={'./squatrack_MJ2.webp'} type="image/webp" />
+                        <source srcSet={'./squatrack_MJ2.png'} type='image/png' />
+                        <img src={'./squatrack_MJ2.png'} alt="squatRack" className={`${className}_image`} />
+                    </picture>
                 </div>
             </div>        
         </HeroBranchContext.Provider>
