@@ -1,0 +1,9 @@
+.SuspenseLoad {
+    display: grid;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    background-color: #050607;
+    color: #FFFFFF;
+    place-content: center;
+}
