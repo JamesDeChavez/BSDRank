@@ -19,10 +19,13 @@
     text-align: left;
     color: #fcdb2d;
     font-weight: 400;
+    font-size: 1.5rem;
 }
 
 .CallToAction_text {
     text-align: left;
+    line-height: 1.2;
+    font-size: 1rem
 }
 
 .CallToAction_chart {
@@ -47,5 +50,13 @@
 @media screen and (min-width: 850px) {
     .CallToAction_container {
         padding: 2rem;
+    }
+    .CallToAction_header{
+        font-size: 2rem;
+    }
+    
+    .CallToAction_text {
+        line-height: 1.4;
+        font-size: 1.2rem
     }
 }
