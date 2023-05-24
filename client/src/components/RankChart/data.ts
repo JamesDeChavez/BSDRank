@@ -47,17 +47,17 @@ const rankData = [
     {
         name: 'P3',
         value: 139457,
-        color: '#264264'
+        color: '#118190'
     },
     {
         name: 'P2',
         value: 87521,
-        color: '#264264'
+        color: '#118190'
     },
     {
         name: 'P1',
         value: 39679,
-        color: '#264264'
+        color: '#118190'
     },
     {
         name: 'D3',
