@@ -5,6 +5,7 @@ import Footer from "../../components/Footer"
 import Navbar from "../../components/Navbar"
 import CommunityTable from "../../components/CommunityTable"
 import './styles.css'
+import RankChart from '../../components/RankChart'
 
 export const LandingPageContext = React.createContext<{
     resultsVisible: boolean, setResultsVisible: React.Dispatch<React.SetStateAction<boolean>>,
