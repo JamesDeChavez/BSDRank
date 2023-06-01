@@ -49,6 +49,7 @@
 .RegisterForm_numberButton {
     padding: 0.5rem 2rem;
     border: none;
+    user-select: none;
 }
 
 .RegisterForm_numberButton:hover {

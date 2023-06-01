@@ -34,6 +34,7 @@
 .RankSearch_numberButton {
     padding: 0.5rem 2rem;
     border: none;
+    user-select: none;
 }
 
 .RankSearch_numberButton:hover {

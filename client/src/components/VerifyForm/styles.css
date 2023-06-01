@@ -42,6 +42,7 @@
 .VerifyForm_numberButton {
     padding: 0.5rem 2rem;
     border: none;
+    user-select: none;
 }
 
 .VerifyForm_numberButton:hover {
