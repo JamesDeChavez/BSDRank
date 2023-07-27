@@ -1,6 +1,7 @@
 .RankSearch {
     gap: 0.5rem;
     padding: 0 1rem;
+    display: grid;
 }
 
 .RankSearch_form {
@@ -11,6 +12,9 @@
     border-radius: 5px;
     background-color: #26426460;
     backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 720px;
+    justify-self: center;
 }
 
 .RankSearch_header {
@@ -110,19 +114,9 @@
     text-align: center;
 }
 
-@media screen and (min-width: 850px) {
-
-.RankSearch_form {    
-    padding: 1.5rem 2rem;
-}
-
-}
-
-@media screen and (min-width: 1250px) {
-
+@media screen and (min-width: 1050px) {
     .RankSearch_form {
         padding: 2rem 4rem;
         gap: 1rem;
     }
-    
 }

@@ -9,7 +9,7 @@
 .CommunityTable_container {
     display: grid;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1080px;
     margin: auto;
 }
 
@@ -28,6 +28,12 @@
     display: grid;
     grid-template-columns:  1fr 6fr repeat(4, 3fr);
     padding: 0.5rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.CommunityTable_tableHeaders > p:first-child {
+    text-align: left;
 }
 
 @media screen and (min-width: 850px) {
